@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="col-xs-12 adminDataBox" ng-controller="Organization">
+        <ol class="breadcrumb">
+            <li><a href="#/">الصفحة الرئيسية لإدارة النظام</a></li>
+            <li><a href="#Organizations">إدارة وتسجيل الجهات الخارجية</a></li>
+            <!--<li><a href="#Organization">عرض بيانات الجهة الخارجية </a></li>-->
+            <li class="active">{{organization.Name}}</li>
+        </ol>
+
+        <div class="row">
+            <div class="form-group col-md-3">
+                <label for="txtName">اسم الجهة</label>
+                <input type="text" class="form-control" id="txtName"  ng-model="organization.Name">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="txtURL">العنوان الإلكتروني</label>
+                <input type="text" class="form-control" id="txtURL" disabled="disabled" ng-model="organization.URL">
+            </div>
+            
+            <div class="form-group col-md-3">
+                <label for="txtEmail">البريد الإلكتروني</label>
+                <input type="text" class="form-control" id="txtEmail" disabled="disabled" ng-model="organization.Email">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-3">
+                <label for="txtAbout">عن الجهة</label>
+                <textarea class="form-control" id="txtAbout" rows="5" disabled="disabled" ng-model="organization.About" />
+            </div>
+            <div class="form-group col-md-3">
+                <label for="txtAddress">عنوان الجهة</label>
+                <textarea class="form-control" id="txtAddress" rows="5" disabled="disabled" ng-model="organization.Address" />
+            </div>
+            <div class="form-group col-md-3">
+                <label for="txtOfficeNumber">رقم الهاتف</label>
+                <input type="text" class="form-control" id="txtOfficeNumber" disabled="disabled" ng-model="organization.OfficeNumber">
+                <br />
+                <br />
+                <label for="txtFax">رقم الفاكس</label>
+                <input type="text" class="form-control" id="txtFax" disabled="disabled" ng-model="organization.Fax">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-3">
+                <label for="txtCreationDate">تاريخ الإنشاء</label>
+                <input type="text" class="form-control" id="txtCreationDate" disabled="disabled" ng-model="organization.CreationDate">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="txtCreatedBy">أنشء بواسطة</label>
+                <input type="text" class="form-control" id="txtCreatedBy" disabled="disabled" ng-model="organization.CreatedBy" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-3">
+                <label for="txtLastModified">تاريخ أخر تحديث</label>
+                <input type="text" class="form-control" id="txtLastModified" disabled="disabled" ng-model="organization.LastModified">
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="txtLastModifiedBy">إسم المحدث</label>
+                <input type="text" class="form-control" id="txtLastModifiedBy" disabled="disabled" ng-model="organization.LastModifiedBy" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-3">
+                <input type="submit" value="حفظ" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

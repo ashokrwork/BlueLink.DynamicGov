@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.App.Shared" namespace="OneHub360.App.Shared" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="FeedTypes" table="FeedTypes" >
+    <id name="Id" column="Id" />
+    <property name="CreatedBy">
+      <column name="CreatedBy" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="CreationDate">
+      <column name="CreationDate" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="LastModified">
+      <column name="LastModified" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="IsDeleted">
+      <column name="IsDeleted" sql-type="bit" not-null="false" />
+    </property>
+    <property name="Language">
+      <column name="Language" sql-type="int" not-null="false" />
+    </property>
+    <property name="EntityId">
+      <column name="EntityId" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="Title">
+      <column name="Title" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="ShowInHome">
+      <column name="ShowInHome" sql-type="bit" not-null="true" />
+    </property>
+    <property name="TemplateUrl">
+      <column name="TemplateUrl" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="NewFormUrl">
+      <column name="NewFormUrl" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="ShowInNewItemStrip">
+      <column name="ShowInNewItemStrip" sql-type="bit" not-null="true" />
+    </property>
+    <property name="NewStripImageUrl">
+      <column name="NewStripImageUrl" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="GroupTitle">
+      <column name="GroupTitle"></column>
+    </property>
+   <!-- <bag name="Feeds">
+      <key column="FeedType" />
+      <one-to-many class="Feeds" />
+    </bag> -->
+  </class>
+</hibernate-mapping>

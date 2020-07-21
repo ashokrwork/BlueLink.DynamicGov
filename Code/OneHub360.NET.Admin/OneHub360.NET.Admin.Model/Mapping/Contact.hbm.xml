@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.NET.Admin.Model" namespace="OneHub360.NET.Admin.Model" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <union-subclass name="Contact" table="Contact" extends="OneHub360.NET.Core.Model.NHEntity">
+    <property name="ListingOrder" type="Int32">
+      <column name="ListingOrder" not-null="false" precision="10" scale="0" sql-type="int" />
+    </property>
+    <property name="IsFavourite" type="Boolean">
+      <column name="IsFavourite" not-null="false" sql-type="bit" />
+    </property>
+    <property name="Name" type="String">
+      <column name="Name" not-null="true" length="4000" sql-type="nvarchar" />
+    </property>
+    <many-to-one name="Owner" class="UserInfo">
+      <column name="FK_UserInfo" not-null="true" sql-type="uniqueidentifier" />
+    </many-to-one>
+    <many-to-one name="UserInfo" class="UserInfo">
+      <column name="FK_ContactUserInfo" not-null="true" sql-type="uniqueidentifier" />
+    </many-to-one>
+  </union-subclass>
+</hibernate-mapping>

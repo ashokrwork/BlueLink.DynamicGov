@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="col-xs-12 adminDataBox">
+        <ol class="breadcrumb">
+            <li><a href="#/">الصفحة الرئيسية لإدارة النظام</a></li>
+            <li><a href="#Organizations">أنواع الجهات الخارجية</a></li>
+            <!--<li><a href="#">تعديل البيانات الشخصية </a></li>
+            <li class="active">مجموعات العمل</li>-->
+        </ol>
+
+        <!-- Body -->
+        <div class="col-md-12 admintabslin">
+            <a href="#UsersInfo" class="col-xs-2">إدارة بيانات الموظفين</a>
+            <a href="#Roles" class="col-xs-2 ">ادوار العمل</a>
+            <a href="#Groups" class="col-xs-2 ">إدارة المجموعات التعريفية</a>
+            <a href="#Delegates" class="col-xs-2 ">إدارة الإنابة</a>
+            <a href="#indicators" class="col-xs-2 active">التوجيه</a>
+            <a href="#Configuration" class="col-xs-2">
+                الإعدادات
+
+            </a>
+        </div>
+        <div class="col-md-12" style="padding-left:0 !important;" ng-controller="indicators">
+            <div class="adminContent">
+
+                <h4>
+                    اسلوب التوجيه :
+                    {{indicatortext}} :
+                    <img src="img/org-types.png" />
+                </h4>
+                <div>
+                    <div class="table-responsive" id="tableview" >
+                       
+                        <select ng-model="indicatorvalue" class="form-control" style="width:250px">
+                            <option value="2"> الهيكل التنظيمي</option>
+                            <option value="1">جميع الوحدات</option>
+                        </select>
+                    </div>
+                    <br />
+                    <button class="btn btnView3 " data-ng-click="update()">حفظ <i class="fa fa-floppy-o" aria-hidden="true"></i>   </button>
+
+                </div>
+            
+                <br /><br />
+                <br />
+            </div>
+         
+        </div>
+
+        <!-- Body -->
+    </div>
+</body>
+</html>

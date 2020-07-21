@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.NET.Admin.Model" namespace="OneHub360.NET.Admin.Model" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <union-subclass name="Invitation" table="Invitations" extends="OneHub360.NET.Core.Model.NHEntity">
+    <property name="ReplayDate" type="DateTime">
+      <column name="ReplayDate" not-null="false" sql-type="datetime2" />
+    </property>
+    <property name="Status" >
+      <column name="Status" />
+    </property>
+    <many-to-one name="UserInfoFrom" class="UserInfo">
+      <column name="FK_UserInfoFrom" not-null="true"/>
+    </many-to-one>
+    <many-to-one name="UserInfoTo" class="UserInfo">
+      <column name="FK_UserInfoTo" not-null="true" />
+    </many-to-one>
+  </union-subclass>
+</hibernate-mapping>

@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="col-xs-12 adminDataBox">
+        <ol class="breadcrumb">
+            <li><a href="#/">الصفحة الرئيسية لإدارة النظام</a></li>
+            <li><a href="#UsersInfo">ادوار العمل</a></li>
+            <!--<li><a href="#">تعديل البيانات الشخصية </a></li>
+            <li class="active">مجموعات العمل</li>-->
+        </ol>
+        <div class="col-md-12 admintabslin">
+            <a href="#UsersInfo" class="col-xs-2">إدارة بيانات الموظفين</a>
+            <a href="#Roles" class="col-xs-2 active">ادوار العمل</a>
+            <a href="#Groups" class="col-xs-2">إدارة المجموعات التعريفية</a>
+            <a href="#Delegates" class="col-xs-2">إدارة الإنابة</a>
+
+            <a href="#indicators" class="col-xs-2">التوجيه</a>
+            <a href="#Configuration" class="col-xs-2">
+                الإعدادات
+
+            </a>
+
+        </div>
+
+        <div class="col-md-12" style="padding-left:0 !important;" ng-controller="Role">
+            <!-- Need to change <div ng-show="loading" class="loader"></div>-->
+
+            <div class="adminContent" ng-show="listmode == 1">
+
+
+                <h4>إدارة الوحدات التنظيمية<img src="img/orgadmin.png" /></h4>
+                <div class="row">
+                    <!--<div class="form-Role col-md-3">
+                        <label for="usr">البحث</label>
+                        <input type="text" class="form-control" id="usr" ng-model="keyword">
+                    </div>
+
+                    <div class="col-md-3 btnStyle">
+                        <button class="btn btn-info" ng-click="Filter()"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        <a class="btn btn-primary" href="" ng-click="clearfilter()"><i class="fa fa-undo" aria-hidden="true"></i></a>
+                    </div>-->
+                </div>
+                <div>
+                    <div class="table-responsive" id="tableview">
+                        <table st-table="RoleData" st-safe-src="rowCollection" class="col-md-12 table-hover">
+                            <thead>
+                                <tr>
+                                    <td class="serchTd">
+                                        <button class="btn btnView btn-default" ng-click="New()">انشاء جديد <i class="fa fa-plus" aria-hidden="true"></i></button>
+
+                                        <input st-search="" class="form-control" placeholder="البحث" type="text" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>#</th>
+                                    <th st-sort="Name">إسم الوحدة</th>
+                                    <th st-sort="Description">الوصف</th>
+
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="Role in RoleData">
+                                    <td>{{$index +1}}</td>
+                                    <td><a href="#Role/{{Role.Id}}">{{Role.Name}}</a></td>
+                                    <td>{{Role.Description}}</td>
+                                    <td></td>
+                                    <td>
+                                        <!--<button class="smallbtnRed" ng-click="delete(Role.Id)"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></button>-->
+
+                                        <button class="smallbtn" ng-model="$scope.Role"
+                                                ng-click="edit(RoleData[$index])">
+                                            <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                                        </button>
+                                        <button class="smallbtn" ng-click="showusers(Role)"><i class="fa fa-users fa-lg" aria-hidden="true"></i> </button>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="5" class="text-center">
+                                        <div st-pagination="" st-items-by-page="8" st-displayed-pages="7"></div>
+                                    </td>
+                                </tr>
+
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <br /><br />
+
+            </div>
+
+            <div class="adminContent" ng-show="updateitem  == 1 ">
+
+                <h3>تحرير دور</h3>
+                <br /><br />
+                <form name="updateorgform">
+
+                    <div class="row">
+                        <div class="form-Role col-md-3">
+                            <label for="txtName">الدور</label>
+                            <input type="text" ng-disabled="true" ng-class="{submitted:updateorgform.submitted}" required class="form-control" id="txtName" ng-model="Role.Name">
+                        </div>
+                        <div class="form-Role col-md-3">
+                            <label for="txtName">الوصف</label>
+                            <input type="text" class="form-control" id="txtName" ng-model="Role.Description">
+                        </div>
+                    </div>
+
+
+
+                    <br />
+                    <div>
+                        <button class="btn btnView2 " data-ng-click="cancel()">إلغاء <i class="fa fa-times" aria-hidden="true"></i> </button>
+                        <button class="btn btnView3 " data-ng-click="update()">تحديث <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+
+                    </div>
+                </form>
+            </div>
+
+            <div class="adminContent" ng-show="newitem  == 1 ">
+
+                <h3>إنشاء دور</h3>
+                <br /><br />
+                <form name="neworgform">
+
+                    <div class="row">
+                        <div class="form-Role col-md-3">
+                            <label for="txtName">الدور</label>
+                            <input type="text" ng-class="{submitted:neworgform.submitted}" required class="form-control" id="txtName" ng-model="Role.Name">
+                        </div>
+                        <div class="form-Role col-md-3">
+                            <label for="txtName">الوصف</label>
+                            <input type="text" class="form-control" id="txtName" ng-model="Role.Description">
+                        </div>
+                    </div>
+
+
+                    <br />
+                    <div>
+                        <button class="btn btnView2" data-ng-click="cancel()">إلغاء <i class="fa fa-times" aria-hidden="true"></i> </button>
+                        <button class="btn btnView2 " data-ng-click="clear()">مسح الحقول <i class="fa fa-paint-brush" aria-hidden="true"></i> </button>
+                        <button class="btn btnView3 " data-ng-click="save()">حفظ <i class="fa fa-floppy-o" aria-hidden="true"></i>   </button>
+
+                    </div>
+                </form>
+            </div>
+
+            <div class="adminContent" ng-show="usersmode == 1" dir="rtl">
+                <div>
+
+                    <h3>المستخدمين </h3>
+                    <br /><br />
+                    <div class="row">
+                        <div class="form-Role col-md-5">
+                            <form name="adduserform">
+                                <md-autocomplete md-selected-item="selectedUser"
+                                                 md-items="item in Users"
+                                                 ng-class="{submitted:adduserform.submitted}"
+                                                 required
+                                                 md-item-text="item.ArabicFullName"
+                                                 md-search-text="UsersearchText"
+                                                 md-min-length="0"
+                                                 placeholder="المستخدم" class="autocomBox">
+                                    <md-item-template>
+                                        <span md-highlight-text="UsersearchText" md-highlight-flags="^i">{{item.ArabicFullName}}</span>
+                                    </md-item-template>
+
+                                </md-autocomplete>
+
+                                <button class="btn btnView btn-default" style="margin-top:-35px;" ng-click="Adduser()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                            </form>
+                        </div>
+
+                    </div>
+                    <br /><br />
+                    <div class="table-responsive" id="tableview">
+                        <table class="">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>إسم المستخدم</th>
+                                    <th></th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="Roleuser in Role.Users">
+                                <tr>
+                                    <td>{{$index +1}}</td>
+                                    <td><a href="#Role/{{Roleuser.Id}}">{{Roleuser.ArabicFullName}}</a></td>
+
+                                    <td>
+                                        <button class="smallbtnRed" ng-click="deleteuser(Roleuser)"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <br />
+                    <div>
+
+                        <button class="btn btnView2" data-ng-click="back()"><i class="fa fa-arrow-right" aria-hidden="true"></i> رجوع</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

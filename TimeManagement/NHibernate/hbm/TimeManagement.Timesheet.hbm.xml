@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub.NET.TimeManagement" namespace="OneHub.NET.TimeManagement" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Timesheet" table="Timesheet" schema="dbo">
+    <id name="Id" type="Guid">
+      <column name="Id" not-null="true" sql-type="uniqueidentifier" />
+      <generator class="guid.comb" />
+    </id>
+    <property name="Name" type="String">
+      <column name="Name" not-null="true" />
+    </property>
+    <property name="StartDate" type="Date">
+      <column name="StartDate" not-null="true" />
+    </property>
+    <property name="EndDate" type="Date">
+      <column name="EndDate" not-null="true" />
+    </property>
+    <property name="Owner" type="String">
+      <column name="Owner" not-null="true" />
+    </property>
+    <property name="LastUpdateDate" type="DateTime">
+      <column name="LastUpdateDate" not-null="false" sql-type="datetime2" />
+    </property>
+    <property name="LastUpdatedBy" type="String">
+      <column name="LastUpdatedBy" not-null="false" length="256" sql-type="nvarchar" />
+    </property>
+    <property name="CreationDate" type="DateTime">
+      <column name="CreationDate" not-null="true" sql-type="datetime2" />
+    </property>
+    <property name="CreatedBy" type="String">
+      <column name="CreatedBy" not-null="true" length="256" sql-type="nvarchar" />
+    </property>
+    <property name="IsDeleted" type="Boolean">
+      <column name="IsDeleted" default="0" not-null="true" sql-type="bit" />
+    </property>
+    <many-to-one name="TimesheetStatus" class="TimesheetStatus">
+      <column name="FK_TimesheetStatus" not-null="true" />
+    </many-to-one>
+    <bag name="TimesheetItems" generic="true">
+      <key not-null="true">
+        <column name="FK_Timesheet" not-null="true" sql-type="uniqueidentifier" />
+      </key>
+      <one-to-many class="TimesheetItem" />
+    </bag>
+  </class>
+</hibernate-mapping>

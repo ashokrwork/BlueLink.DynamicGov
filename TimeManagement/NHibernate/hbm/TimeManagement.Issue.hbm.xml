@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub.NET.TimeManagement" namespace="OneHub.NET.TimeManagement" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Issue" table="Issue" schema="dbo">
+    <id name="Id" type="Guid">
+      <column name="Id" not-null="true" sql-type="uniqueidentifier" />
+      <generator class="guid.comb" />
+    </id>
+    <property name="ReferenceNumber" type="String">
+      <column name="ReferenceNumber" not-null="true" length="256" sql-type="nvarchar" />
+    </property>
+    <property name="Name" type="String">
+      <column name="Name" not-null="true" length="512" sql-type="nvarchar" />
+    </property>
+    <property name="Description" type="StringClob">
+      <column name="Description" not-null="false" length="1073741823" sql-type="ntext" />
+    </property>
+    <property name="RaisedBy" type="String">
+      <column name="RaisedBy" not-null="false" length="256" sql-type="nvarchar" />
+    </property>
+    <property name="Type" type="Byte">
+      <column name="Type" default="1" not-null="true" precision="3" scale="0" sql-type="tinyint" />
+    </property>
+    <property name="RaisedDate" type="DateTime">
+      <column name="RaisedDate" not-null="false" sql-type="date" />
+    </property>
+    <property name="SolutionDate" type="DateTime">
+      <column name="SolutionDate" not-null="false" sql-type="date" />
+    </property>
+    <property name="Resolution" type="StringClob">
+      <column name="Resolution" not-null="false" length="1073741823" sql-type="ntext" />
+    </property>
+    <property name="CommentThreadId" type="Guid">
+      <column name="CommentThreadId" not-null="false" sql-type="uniqueidentifier" />
+    </property>
+    <property name="IsDeleted" type="Boolean">
+      <column name="IsDeleted" default="0" not-null="true" sql-type="bit" />
+    </property>
+    <property name="CreationDate" type="DateTime">
+      <column name="CreationDate" not-null="true" sql-type="datetime2" />
+    </property>
+    <property name="LastUpdateDate" type="DateTime">
+      <column name="LastUpdateDate" not-null="false" sql-type="datetime2" />
+    </property>
+    <property name="CreatedBy" type="String">
+      <column name="CreatedBy" not-null="true" length="256" sql-type="nvarchar" />
+    </property>
+    <property name="LastUpdatedBy" type="String">
+      <column name="LastUpdatedBy" not-null="false" length="256" sql-type="nvarchar" />
+    </property>
+    <many-to-one name="Issue_FK_RelatedToIssue" class="Issue">
+      <column name="FK_RelatedToIssue" not-null="false" sql-type="uniqueidentifier" />
+    </many-to-one>
+    <many-to-one name="Severity" class="Severity">
+      <column name="FK_Severity" not-null="true" />
+    </many-to-one>
+    <many-to-one name="Priority" class="Priority">
+      <column name="FK_Priority" not-null="true" />
+    </many-to-one>
+    <bag name="Issues_FK_RelatedToIssue" inverse="true" generic="true">
+      <key>
+        <column name="FK_RelatedToIssue" />
+      </key>
+      <one-to-many class="Issue" />
+    </bag>
+    <bag name="IssueAttachments" generic="true">
+      <key not-null="true">
+        <column name="FK_Issue" not-null="true" sql-type="uniqueidentifier" />
+      </key>
+      <one-to-many class="IssueAttachment" />
+    </bag>
+  </class>
+</hibernate-mapping>

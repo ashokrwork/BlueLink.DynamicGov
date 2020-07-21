@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.NET.Admin.Model" namespace="OneHub360.NET.Admin.Model" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <union-subclass name="CustomConfiguration" table="Configuration" extends="OneHub360.NET.Core.Model.NHEntity">
+    
+    <property name="ConfigurationName" type="String">
+      <column name="ConfigurationName" not-null="true" length="200" sql-type="nvarchar" />
+    </property>
+    <property name="ConfigurationValue" type="String">
+      <column name="ConfigurationValue" not-null="false" length="2000" sql-type="nvarchar" />
+    </property>
+    <property name="ConfigurationGroup" type="String">
+      <column name="ConfigurationGroup" not-null="false" length="200" sql-type="nvarchar" />
+    </property>
+    
+  </union-subclass>
+</hibernate-mapping>

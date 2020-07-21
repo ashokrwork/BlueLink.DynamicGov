@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.App.Shared" namespace="OneHub360.App.Shared" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="UserInfos" table="UserInfo">
+    <id name="Id" column="Id" />
+   <!-- <many-to-one name="JobTitles">
+      <column name="FK_JobTitle" sql-type="uniqueidentifier" not-null="false" />
+    </many-to-one>
+    <many-to-one name="OrganizationUnits">
+      <column name="FK_OrganizationUnit" sql-type="uniqueidentifier" not-null="false" />
+    </many-to-one>
+    <many-to-one name="UserInfos">
+      <column name="FK_Manager" sql-type="uniqueidentifier" not-null="false" />
+    </many-to-one> -->
+    <property name="CreatedBy">
+      <column name="CreatedBy" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="CreationDate">
+      <column name="CreationDate" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="LastModified">
+      <column name="LastModified" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="IsDeleted">
+      <column name="IsDeleted" sql-type="bit" not-null="false" />
+    </property>
+    
+   
+    
+    <property name="Password">
+      <column name="Password" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="PasswordSalt">
+      <column name="PasswordSalt" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="ArabicFullName">
+      <column name="ArabicFullName" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="LatinFullName">
+      <column name="LatinFullName" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="Email">
+      <column name="Email" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="Mobile">
+      <column name="Mobile" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="Photo" type="Byte[]">
+      <column name="Photo" not-null="false" sql-type="varbinary" length="2147483647" />
+    </property>
+    <property name="PersonalMessage">
+      <column name="PersonalMessage" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="BirthDate">
+      <column name="BirthDate" sql-type="datetime2" not-null="false" />
+    </property>
+    <property name="About">
+      <column name="About" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="OfficePhone">
+      <column name="OfficePhone" sql-type="decimal" not-null="false" />
+    </property>
+    <property name="Status">
+      <column name="Status" sql-type="int" not-null="true" />
+    </property>
+    <property name="LoginName">
+      <column name="LoginName" sql-type="nvarchar" not-null="true" />
+    </property>
+   <!-- <bag name="Contacts">
+      <key column="FK_ContactUser" />
+      <one-to-many class="Contacts" />
+    </bag>
+    <bag name="Contacts">
+      <key column="FK_Owner" />
+      <one-to-many class="Contacts" />
+    </bag>
+    <bag name="Contacts">
+      <key column="FK_UserInfo" />
+      <one-to-many class="Contacts" />
+    </bag>
+    <bag name="Feeds">
+      <key column="FK_UserInfo" />
+      <one-to-many class="Feeds" />
+    </bag>
+    <bag name="FeedsViews">
+      <key column="FK_UserInfo" />
+      <one-to-many class="FeedsViews" />
+    </bag>
+    <bag name="FeedsViewUsers">
+      <key column="FK_UserInfo" />
+      <one-to-many class="FeedsViewUsers" />
+    </bag>
+    <bag name="Groups">
+      <key column="FK_Owner" />
+      <one-to-many class="Groups" />
+    </bag>
+    <bag name="GroupsMembers">
+      <key column="FK_UserInfo" />
+      <one-to-many class="GroupsMembers" />
+    </bag>
+    <bag name="Invitations">
+      <key column="FK_UserInfoFrom" />
+      <one-to-many class="Invitations" />
+    </bag>
+    <bag name="Invitations">
+      <key column="FK_UserInfoTo" />
+      <one-to-many class="Invitations" />
+    </bag>
+    <bag name="OrganizationUnits">
+      <key column="FK_Manager" />
+      <one-to-many class="OrganizationUnits" />
+    </bag>
+    <bag name="UserInfos">
+      <key column="FK_Manager" />
+      <one-to-many class="UserInfos" />
+    </bag>
+    <bag name="UsersRoles">
+      <key column="FK_UserInfo" />
+      <one-to-many class="UsersRoles" />
+    </bag> -->
+  </class>
+</hibernate-mapping>

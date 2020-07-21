@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub.NET.TimeManagement" namespace="OneHub.NET.TimeManagement" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <subclass name="Meeting" extends="PlannedItem" discriminator-value="Meeting">
+    <property name="Subject" type="String">
+      <column name="Subject" not-null="true" />
+    </property>
+    <property name="Location" type="String">
+      <column name="Location" not-null="true" />
+    </property>
+    <many-to-one name="MeetingStatus" class="MeetingStatus">
+      <column name="FK_MeetingStatus" not-null="true" />
+    </many-to-one>
+    <bag name="MeetingInvitations" generic="true">
+      <key>
+        <column name="FK_Meeting" not-null="true" />
+      </key>
+      <one-to-many class="MeetingInvitation" />
+    </bag>
+  </subclass>
+</hibernate-mapping>

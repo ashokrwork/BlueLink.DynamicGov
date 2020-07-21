@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub.NET.TimeManagement" namespace="OneHub.NET.TimeManagement" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="TimesheetItem" table="TimesheetItem">
+    <id name="Id" type="Guid">
+      <column name="Id" not-null="true" />
+      <generator class="guid.comb" />
+    </id>
+    <property name="Comment" type="String">
+      <column name="Comment" not-null="true" />
+    </property>
+    <property name="Date" type="Date">
+      <column name="Date" not-null="true" />
+    </property>
+    <property name="Duration" type="Decimal">
+      <column name="Duration" not-null="true" />
+    </property>
+    <property name="IsDeleted" type="Boolean">
+      <column name="IsDeleted" default="0" not-null="true" sql-type="bit" />
+    </property>
+    <property name="CreationDate" type="DateTime">
+      <column name="CreationDate" not-null="true" sql-type="datetime2" />
+    </property>
+    <property name="LastUpdateDate" type="DateTime">
+      <column name="LastUpdateDate" not-null="false" sql-type="datetime2" />
+    </property>
+    <property name="CreatedBy" type="String">
+      <column name="CreatedBy" not-null="true" length="256" sql-type="nvarchar" />
+    </property>
+    <property name="LastUpdatedBy" type="String">
+      <column name="LastUpdatedBy" not-null="false" length="256" sql-type="nvarchar" />
+    </property>
+    <many-to-one name="PlannedItem" class="PlannedItem">
+      <column name="FK_PlannedItem" not-null="true" />
+    </many-to-one>
+  </class>
+</hibernate-mapping>

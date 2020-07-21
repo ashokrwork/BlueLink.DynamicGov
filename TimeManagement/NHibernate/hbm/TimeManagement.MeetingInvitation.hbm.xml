@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub.NET.TimeManagement" namespace="OneHub.NET.TimeManagement" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="MeetingInvitation" table="MeetingInvitations">
+    <id name="Id" type="Guid">
+      <column name="Id" not-null="true" />
+      <generator class="guid.comb" />
+    </id>
+    <property name="To" type="String">
+      <column name="To" not-null="true" />
+    </property>
+    <many-to-one name="Status" class="InvitationStatus">
+      <column name="FK_InvitationStatus" not-null="true" />
+    </many-to-one>
+  </class>
+</hibernate-mapping>

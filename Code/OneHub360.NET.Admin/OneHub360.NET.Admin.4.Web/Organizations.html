@@ -1,0 +1,404 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+  
+      
+   
+    <title></title>
+</head>
+<body>
+    <div class="col-xs-12 adminDataBox">
+        <ol class="breadcrumb">
+            <li><a href="#/">الصفحة الرئيسية لإدارة النظام</a></li>
+            <li><a href="#Organizations">إدارة وتسجيل الجهات الخارجية</a></li>
+            <li  ng-show="unitsmode == 1"><a href="#">إدارة وتسجيل الوحدات التنظيمية</a></li>
+
+            <!--<li><a href="#">تعديل البيانات الشخصية </a></li>
+            <li class="active">مجموعات العمل</li>-->
+        </ol>
+
+        <!-- Body -->
+        <div class="col-md-12 admintabslin">
+            <a href="#Organizations" class="col-xs-2 active">إدارة وتسجيل الجهات الخارجية</a>
+            <a href="#OrganizationUnits" ng-click="opennew()" class="col-xs-2">إدارة الوحدات التنظيمية</a>
+            <a href="#JobTitles" class="col-xs-2 ">إدارة المسميات الوظيفية</a>
+            <!--<a href="#UsersInfo" class="col-xs-1">تسجيل بيانات موظف</a>-->
+            <a href="#OrganizationUnitTypes" class="col-xs-2">أنواع الوحدات التنظيمية</a>
+            <a href="#OrganizationTypes" class="col-xs-2"> أنواع الجهات الخارجية</a>
+        </div>
+        
+        <div class="col-md-12" style="padding-left:0 !important;" ng-controller="Organization">
+            <div ng-show="loading" class="loader"></div>
+          
+            <div class="adminContent" ng-show="listmode == 1">
+        
+                <h4>إدارة وتسجيل الجهات الخارجية<img src="img/outeradmin.png" /></h4>
+                <div>
+                 
+                    <div class="table-responsive" id="tableview" st-table="OrganizationData" st-safe-src="rowCollection">
+                        <table class="table-hover">
+                            <thead>
+                                <tr>
+
+                                    <td class="serchTd">
+                                        <button class="btn btnView btn-default" ng-click="New()">انشاء جديد <i class="fa fa-plus" aria-hidden="true"></i></button>
+                                        <input st-search="" class="form-control" placeholder="البحث" type="text" />
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th>#</th>
+                                    <th>إسم الجهة</th>
+                                    <th>نوع الجهة</th>
+                                    <th>البريد الإلكتروني</th>
+                                    <th>تاريخ الإنشاء</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="Organization in OrganizationData">
+                                <tr>
+                                    <td>{{$index +1}}</td>
+                                    <td><a href="#Organization/{{Organization.Id}}">{{Organization.Name}}</a></td>
+                                    <td>{{Organization.OrganizationType.Name}}</td>
+                                    <td>{{Organization.Email}}</td>
+                                    <td>{{Organization.CreationDate}}</td>
+                                    <td>
+
+                                        <button class="smallbtnRed" ng-click="delete(Organization.Id)"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></button>
+
+                                        <button class="smallbtn"  ng-model="$scope.Organization"
+                                                ng-click="edit(OrganizationData[$index])">
+                                            <i class="fa fa-pencil fa-lg" aria-hidden="true"></i> 
+                                        </button>
+                                        <button class="smallbtn" ng-click="showunits(Organization)"><i class="fa fa-users fa-lg" aria-hidden="true"></i> </button>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br /><br />
+                <!--<button class="btn btnView btn-default" ng-click="New()"> <i class="fa fa-plus" aria-hidden="true"></i> انشاء جديد </button>-->
+                <br /><br />
+     
+            </div>
+
+            <div class="adminContent" ng-show="updateitem == 1">
+                <form name="updateorgform">
+                    <h3>تحرير جهة</h3>
+               <br /><br /> 
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="OrganizationTypeID">نوع الجهة</label>
+                        <select class="form-control" ng-class="{submitted:updateorgform.submitted}" required ng-model="selected" ng-options="OT.Name for OT in Organizationtypes track by OT.Id">
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="txtName">اسم الجهة</label>
+                        <input type="text" ng-class="{submitted:updateorgform.submitted}" required class="form-control" id="txtName" ng-model="Organization.Name">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="txtURL">العنوان الإلكتروني</label>
+                        <input type="text" class="form-control" id="txtURL" ng-model="Organization.URL">
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="txtEmail">البريد الإلكتروني</label>
+                        <input type="text" class="form-control" id="txtEmail" ng-model="Organization.Email">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="txtOfficeNumber">رقم الهاتف</label>
+                        <input type="text" class="form-control" id="txtOfficeNumber" ng-model="Organization.OfficeNumber">
+                        </div>
+                    <div class="form-group col-md-4">
+                        <label for="txtFax">رقم الفاكس</label>
+                        <input type="text" class="form-control" id="txtFax" ng-model="Organization.Fax">
+                    </div>
+                    </div>
+
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="txtAbout">عن الجهة</label>
+                        <textarea class="form-control" id="txtAbout" rows="5" ng-model="Organization.About" ></textarea>
+                    </div>
+                   
+                    <div class="form-group col-md-6">
+                        <label for="txtAddress">عنوان الجهة</label>
+                        <textarea class="form-control" id="txtAddress" rows="5" ng-model="Organization.Address" ></textarea>
+                    </div>
+                  
+                </div>
+
+                <div class="row">
+                    
+                </div>
+                <br />
+                <div>
+                    <button data-ng-click="update()" class="btn btnView2 " >تحديث <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                    <button class="btn btnView2 " data-ng-click="cancel()">إلغاء <i class="fa fa-times" aria-hidden="true"></i> </button>
+                </div>
+                </form>
+            </div>
+
+            <div class="adminContent" ng-show="newitem == 1 ">
+           
+                    <h3>  إنشاء جهة</h3>
+              
+               <br /><br />
+                <form name="neworgform" >
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <label for="OrganizationTypeID">نوع الجهة</label>
+                        <select ng-class="{submitted:neworgform.submitted}" class="form-control" required ng-model="selected" ng-options="OT.Name for OT in Organizationtypes track by OT.Id">
+                            <option value="">نوع الجهة</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="txtName">اسم الجهة</label>
+                        <input type="text" ng-class="{submitted:neworgform.submitted}" class="form-control" id="txtName" ng-model="Organization.Name" required/>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="txtURL">الموقع الإلكتروني</label>
+                        <input type="text" class="form-control" id="txtURL" ng-model="Organization.URL"/>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="txtEmail">البريد الإلكتروني</label>
+                        <input type="text" class="form-control" id="txtEmail" ng-model="Organization.Email" />
+                    </div>
+                    
+                    <div class="form-group col-md-4">
+                        <label for="txtOfficeNumber">رقم الهاتف</label>
+                        <input type="text" class="form-control" id="txtOfficeNumber" ng-model="Organization.OfficeNumber" />
+                    </div>
+                    <div class="form-group col-md-4">
+
+                        <label for="txtFax">رقم الفاكس</label>
+                        <input type="text" class="form-control" id="txtFax" ng-model="Organization.Fax" />
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    
+                  
+                    <div class="form-group col-md-6">
+                        <label for="txtAddress">عنوان الجهة</label>
+                        <textarea class="form-control" id="txtAddress" rows="5" ng-model="Organization.Address"></textarea>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="txtAbout">عن الجهة</label>
+                        <textarea class="form-control" id="txtAbout" rows="5" ng-model="Organization.About"></textarea>
+                    </div>
+                   
+                </div>
+          
+                
+                <br />
+                <div>
+                    <button class="btn btnView2" data-ng-click="cancel()">إلغاء <i class="fa fa-times" aria-hidden="true"></i> </button>
+                    <button class="btn btnView2 " data-ng-click="clear()">مسح الحقول <i class="fa fa-paint-brush" aria-hidden="true"></i> </button>
+                    <button  data-ng-click="save()" class="btn btnView3 " >حفظ <i class="fa fa-floppy-o" aria-hidden="true"></i>   </button>
+
+                </div>
+                    </form>
+            </div>
+        </div>
+        <div class="adminContent" style="padding-left:0 !important;"  ng-show="unitsmode == 1" ng-controller="OrganizationUnit">
+              <div class="adminContent" >
+
+                    <div>
+                        <div class="table-responsive" id="tableview" st-table="OrganizationUnitData" st-safe-src="rowCollection">
+                            <table class="table-hover">
+                                <thead>
+                                    <tr>
+
+                                        <td class="serchTd">
+                                            <button class="btn btnView btn-default" ng-click="New()">انشاء جديد <i class="fa fa-plus" aria-hidden="true"></i></button>
+                                            <input st-search="" class="form-control" placeholder="البحث" type="text" />
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>إسم الوحدة التنظيمية</th>
+                                        <th>نوع الوحدة التنظيمية</th>
+                                        <th>تاريخ الإنشاء</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody ng-repeat="OrganizationUnit in OrganizationUnitData">
+                                    <tr>
+                                        <td>{{$index +1}}</td>
+                                        <td>{{OrganizationUnit.Title}}</td>
+                                        <td>{{OrganizationUnit.OrganizationUnitType.Name}}</td>
+                                        <td>{{OrganizationUnit.CreationDate}}</td>
+                                        <td>
+                                            <button class="smallbtnRed" ng-click="delete(OrganizationUnit.Id)"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></button>
+
+                                            <button class="smallbtn" ng-model="$scope.OrganizationUnit"
+                                                    ng-click="edit(OrganizationUnitData[$index])">
+                                                <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="5" class="text-center">
+                                            <div st-pagination="" st-items-by-page="8" st-displayed-pages="7"></div>
+                                        </td>
+                                    </tr>
+
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <!--<ul class="pagination">
+                <li><a href="#">1</a></li>
+                <li class="active"><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+            </ul>-->
+                    <!--<button class="btn btnView btn-default" ng-click="New()"><i class="fa fa-plus" aria-hidden="true"></i> انشاء جديد</button>-->
+                    <br /><br />
+                    <br />
+                </div>
+                <div class="adminContent" ng-show="updateitemOrganizationUnit  == 1 ">
+                    <form name="updateorgform">
+                        <h3>تحرير الوحدة التنظيمية</h3>
+                        <br /><br />
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="txtName">الوحدة التنظيمية</label>
+                                <input type="text" ng-class="{submitted:updateorgform.submitted}" required class="form-control" id="txtName" ng-model="OrganizationUnit.Title">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="txtName">عن الوحدة</label>
+                                <input type="text" class="form-control" id="txtName" ng-model="OrganizationUnit.About">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="txtName">الموقع</label>
+                                <input type="text" class="form-control" id="txtName" min="1" max="5" ng-model="OrganizationUnit.Location">
+                            </div>
+
+
+                            <div class="form-group col-md-4">
+                                <label for="selectedArabicFullName">المدير</label>
+                                <select id="selectedArabicFullName" class="form-control" required ng-model="selectedUserInfo" ng-options="OT.ArabicFullName for OT in UserInfo track by OT.Id"></select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="SelectedOrganization">المنظمة</label>
+                                <select id="SelectedOrganization" class="form-control" required ng-model="selectedOrganization" ng-options="OT.Name for OT in Organizations track by OT.Id"></select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="selectedOrganizationUnit">المنظمة المتبوعة</label>
+                                <select id="selectedOrganizationUnit" class="form-control" required ng-model="selectedOrganizationUnit" ng-options="OT.Title for OT in OrganizationUnitData track by OT.Id"></select>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="selectedOrganizationUnitType"> نوع المنظمة</label>
+                                <select id="selectedOrganizationUnitType" class="form-control" required ng-model="selectedOrganizationUnitType" ng-options="OT.Name for OT in OrganizationUnitTypes track by OT.Id"></select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="txtPersonTitle">اسم الشخص المسؤول</label>
+                                <input type="text" class="form-control" ng-class="{submitted:updateorgform.submitted}" required id="txtPersonTitle" min="1" max="5" ng-model="OrganizationUnit.PersonTitle">
+                            </div>
+                            <div class="row">
+
+                                <div class="form-group col-md-3">
+                                    <label for="file">صورة</label>
+                                    <div ng-if="content">
+                                        <img alt="يتم التحميل ......" width="120" height="150" data-ng-src="data:image/png;base64,{{content}}" id="photo-id" />
+                                    </div>
+
+                                    <input id="fileinput" type="file" on-read-file="showContent($fileContent)" />
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <br />
+                        <div>
+                            <button class="btn btnView2 " data-ng-click="update()">تحديث <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                            <button class="btn btnView2 " data-ng-click="cancel()">إلغاء <i class="fa fa-times" aria-hidden="true"></i> </button>
+
+                        </div>
+                    </form>
+                </div>
+
+                <div class="adminContent" ng-show="newitemOrganizationUnit  == 1 ">
+                    <form name="neworgform">
+                        <h3>إنشاء الوحدة التنظيمية</h3>
+                        <br /><br />
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label for="txtName">الوحدة التنظيمية</label>
+                                <input type="text"
+                                       ng-class="{submitted:neworgform.submitted}" required class="form-control" id="txtName" ng-model="OrganizationUnit.Title">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="txtName">عن الوحدة</label>
+                                <input type="text" class="form-control" id="txtName" ng-model="OrganizationUnit.About">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="txtName">الموقع</label>
+                                <input type="text" class="form-control" id="txtName" min="1" max="5" ng-model="OrganizationUnit.Location">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="selectedArabicFullName">المدير</label>
+                                <select class="form-control" id="selectedArabicFullName" required ng-model="selectedUserInfo" ng-options="OT.ArabicFullName for OT in UserInfo track by OT.Id"></select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="SelectedOrganization">المنظمة</label>
+                                <select class="form-control" id="SelectedOrganization" required ng-model="selectedOrganization" ng-options="OT.Name for OT in Organizations track by OT.Id"></select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="selectedOrganizationUnit">المنظمة المتبوعة</label>
+                                <select class="form-control" id="selectedOrganizationUnit" required ng-model="selectedOrganizationUnit" ng-options="OT.Title for OT in OrganizationUnitData track by OT.Id"></select>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="selectedOrganizationUnitType"> نوع المنظمة</label>
+                                <select class="form-control" id="selectedOrganizationUnitType" required ng-model="selectedOrganizationUnitType" ng-options="OT.Name for OT in OrganizationUnitTypes track by OT.Id"></select>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="txtPersonTitle">اسم الشخص المسؤول</label>
+                                <input type="text" class="form-control" ng-class="{submitted:neworgform.submitted}" required id="txtPersonTitle" min="1" max="5" ng-model="OrganizationUnit.PersonTitle">
+                            </div>
+                            <div class="row">
+
+                                <div class="form-group col-md-3">
+                                    <!--<label for="file">صورة</label>-->
+                                    <!--<div ng-if="content">
+                                        <img alt="يتم التحميل ......" width="120" height="150" data-ng-src="data:image/png;base64,{{content}}" id="photo-id" />
+                                    </div>-->
+
+                                    <input id="fileinput" type="file" on-read-file="showContent($fileContent)" />
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <br />
+                        <div>
+                            <button class="btn btnView2" data-ng-click="cancel()">إلغاء <i class="fa fa-times" aria-hidden="true"></i> </button>
+                            <button class="btn btnView2 " data-ng-click="clear()">مسح الحقول <i class="fa fa-paint-brush" aria-hidden="true"></i> </button>
+                            <button class="btn btnView3 " data-ng-click="save()">حفظ <i class="fa fa-floppy-o" aria-hidden="true"></i>   </button>
+
+                        </div>
+                    </form>
+                </div>
+
+
+        </div>
+        <!-- Body -->
+    </div>
+   
+</body>
+</html>

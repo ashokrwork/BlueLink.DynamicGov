@@ -1,0 +1,25 @@
+@charset "utf-8";
+/* CSS Document */
+@import url("font-awesome.min.css");
+@font-face {
+ font-family: Kufi;
+ src: url(../fonts/DroidKufi-Regular.ttf ), url('../fonts/DroidKufi-Regular.eot');;
+}
+ @font-face {
+ font-family: Kufibold;
+ src: url(../fonts/DroidKufi-Bold.ttf), url('../fonts/DroidKufi-bold.eot');
+ }
+body{ background:#f4f4f4;font : 11px 'Kufi', arial, helvetica, helve, sans-serif;}
+.container{ background:#fff !important; max-width:1200px !important; padding:0 !important; border:#fff 20px solid; width:100% !important; }
+header img{ width:100% !important; height:auto !important;} 
+footer{ text-align:center !important; color:#444 !important; padding:7px 0 !important}
+.contentBody{ padding-left:0 !important;}
+.panel-body ul{ padding:0; padding-right:10px !important;}
+.panel-body ul li { border-bottom:#eee 1px solid !important; padding:7px 0; font-family:kufibold !important;}
+.servItem{ margin-bottom:10px !important;}
+.servItem a{ background:#f5f5f5 !important; display:block !important; height:80px !important; padding:15px !important; border-right:#bce8f1 5px solid; text-decoration:none !important; font-size:12px; line-height:1.5; color:#333;}
+.servItem a:hover{ background:#337ab7 !important; color:#fff !important; border-right:#CB6161 5px solid;}
+.stepsBox { margin-bottom:15px !important;}
+.stepsBox img{ width:100% !important; height:auto !important;}
+.stepsBox strong{ color:#39F !important; }
+.stepsBox h4 { line-height:2;}

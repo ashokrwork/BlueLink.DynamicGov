@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="col-xs-12 adminDataBox">
+        <ol class="breadcrumb">
+            <li><a href="#/">الصفحة الرئيسية لإدارة النظام</a></li>
+            <li><a href="#Organizations">أنواع الجهات الخارجية</a></li>
+            <!--<li><a href="#">تعديل البيانات الشخصية </a></li>
+            <li class="active">مجموعات العمل</li>-->
+        </ol>
+
+        <!-- Body -->
+        <div class="col-md-12 admintabslin">
+            <a href="#Organizations" class="col-xs-2">إدارة وتسجيل الجهات الخارجية</a>
+            <a  ng-click="opennew()" href="#OrganizationUnits" class="col-xs-2">إدارة الوحدات التنظيمية</a>
+            <a href="#JobTitles" class="col-xs-2">إدارة المسميات الوظيفية</a>
+            <!--<a href="#UsersInfo" class="col-xs-1">تسجيل بيانات موظف</a>-->
+            <a href="#OrganizationUnitTypes" class="col-xs-2 active">أنواع الوحدات التنظيمية</a>
+            <a href="#OrganizationTypes" class="col-xs-2"> أنواع الجهات الخارجية</a>
+        </div>
+        <div class="col-md-12" style="padding-left:0 !important;" ng-controller="OrganizationUnitType">
+            <div class="adminContent" ng-show="listmodeOrganizationUnitType  == 1">
+
+                <h4>أنواع الوحدات التنظيمية<img src="img/org-types.png" /></h4>
+                <!--<div class="row">
+                    <div class="form-group col-md-3">
+                        <label for="usr">النوع</label>
+                        <input type="text" class="form-control" id="usr" ng-model="keyword">
+                    </div>
+
+                    <div class="col-md-9 btnStyle">
+                        <button class="btn btn-info" ng-click="Filter()"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        <a class="btn btn-primary" href="" ng-click="clearfilter()"><i class="fa fa-undo" aria-hidden="true"></i></a>
+                        <button class="btn btnView btn-default" ng-click="New()">انشاء جديد <i class="fa fa-plus" aria-hidden="true"></i></button>
+
+                    </div>
+                </div>-->
+                <div>
+                    <div class="table-responsive" id="tableview" st-table="OrganizationUnitTypeData" st-safe-src="rowCollection">
+                        <table class="table-hover">
+                            <thead>
+                                <tr>
+
+                                    <td class="serchTd">
+                                        <button class="btn btnView btn-default" ng-click="New()">انشاء جديد <i class="fa fa-plus" aria-hidden="true"></i></button>
+                                        <input st-search="" class="form-control" placeholder="البحث" type="text" />
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th>#</th>
+                                    <th>نوع الجهة</th>
+                                    <th>تاريخ الإنشاء</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="OrganizationUnitType in OrganizationUnitTypeData">
+                                <tr>
+                                    <td>{{$index +1}}</td>
+                                    <td>{{OrganizationUnitType.Name}}</td>
+                                    <td>{{OrganizationUnitType.CreationDate}}</td>
+                                    <td></td>
+                                    <td>
+                                        <button class="smallbtnRed" ng-click="delete(OrganizationUnitType.Id)"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></button>
+
+                                        <button class="smallbtn" ng-model="$scope.OrganizationUnitType"
+                                                ng-click="edit(OrganizationUnitTypeData[$index])">
+                                            <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--<ul class="pagination">
+                    <li><a href="#">1</a></li>
+                    <li class="active"><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                </ul>-->
+                <!--<button class="btn btnView btn-default" ng-click="New()">انشاء جديد <i class="fa fa-plus" aria-hidden="true"></i></button>-->
+                <br /><br />
+                <br />
+            </div>
+            <div class="adminContent" ng-show="updateitemOrganizationUnitType  == 1 ">
+
+                <h3>تحرير نوع جهة</h3>
+                <br /><br />
+                <form name="updateorgform">
+                    <div class="row">
+                        <div class="form-group col-md-5">
+                            <label for="txtName">نوع الجهة</label>
+                            <input type="text" ng-class="{submitted:updateorgform.submitted}" required class="form-control" id="txtName" ng-model="OrganizationUnitType.Name">
+                        </div>
+                    </div>
+
+
+
+                    <br />
+                    <div>
+                        <button class="btn btnView2 " data-ng-click="update()">تحديث <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                        <button class="btn btnView2 " data-ng-click="cancel()">إلغاء <i class="fa fa-times" aria-hidden="true"></i> </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="adminContent" ng-show="newitemOrganizationUnitType  == 1 ">
+                <form name="neworgform">
+                    <h3>إنشاء نوع جهة</h3>
+                    <br /><br />
+                    <div class="row">
+                        <div class="form-group col-md-5">
+                            <label for="txtName">نوع الجهة</label>
+                            <input type="text" ng-class="{submitted:neworgform.submitted}" required class="form-control" id="txtName" ng-model="OrganizationUnitType.Name">
+                        </div>
+                    </div>
+
+
+                    <br />
+                    <div>
+                        <button class="btn btnView2" data-ng-click="cancel()">إلغاء <i class="fa fa-times" aria-hidden="true"></i> </button>
+                        <button class="btn btnView2 " data-ng-click="clear()">مسح الحقول <i class="fa fa-paint-brush" aria-hidden="true"></i> </button>
+                        <button class="btn btnView3 " data-ng-click="save()">حفظ <i class="fa fa-floppy-o" aria-hidden="true"></i>   </button>
+
+                    </div>
+                    </form>
+</div>
+        </div>
+
+        <!-- Body -->
+    </div>
+</body>
+</html>

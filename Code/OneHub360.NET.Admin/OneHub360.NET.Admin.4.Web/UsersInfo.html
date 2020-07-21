@@ -1,0 +1,366 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function readURL(input) {
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#photo-id').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#fileinput").change(function () {
+            readURL(this);
+        });
+    </script>
+</head>
+<body>
+    <div class="col-xs-12 adminDataBox">
+        <ol class="breadcrumb">
+            <li><a href="#/">الصفحة الرئيسية لإدارة النظام</a></li>
+            <li><a href="#UsersInfo"> بيانات الموظفين</a></li>
+            <!--<li><a href="#">تعديل البيانات الشخصية </a></li>
+            <li class="active">مجموعات العمل</li>-->
+        </ol>
+        <div class="col-md-12 admintabslin">
+            <a href="#UsersInfo" class="col-xs-2 active">إدارة بيانات الموظفين</a>
+            <a href="#Roles" class="col-xs-2 ">ادوار العمل</a>
+            <a href="#Groups" class="col-xs-2">إدارة المجموعات التعريفية</a>
+            <a href="#Delegates" class="col-xs-2">إدارة الإنابة</a>
+            <a href="#indicators" class="col-xs-2">التوجيه</a>
+            <a href="#Configuration" class="col-xs-2">
+                الإعدادات
+
+            </a>
+        </div>
+
+        <div class="col-md-12" style="padding-left:0 !important;" ng-controller="UserInfo">
+            <div ng-show="loading" class="loader"></div>
+
+            <div class="adminContent" ng-show="listmode == 1">
+
+                <h4>إدارة بيانات الموظفين<img src="img/useradmin.png" /></h4>
+                <div class="row">
+                    <!--<div class="form-group col-md-3">
+                        <label for="usr">البحث</label>
+                        <input type="text" class="form-control" id="usr" ng-model="keyword">
+                    </div>
+
+                    <div class="col-md-3 btnStyle">
+                        <button class="btn btn-info" ng-click="Filter()"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        <a class="btn btn-primary" href="" ng-click="clearfilter()"><i class="fa fa-undo" aria-hidden="true"></i></a>
+                    </div>-->
+                </div>
+                <div>
+                    <div class="table-responsive" id="tableview">
+                        <table st-table="UserInfoData" st-safe-src="rowCollection" class="col-md-12 table-hover">
+                            <thead>
+                                <tr>
+
+                                    <td class="serchTd">
+                                        <button class="btn btnView btn-default" ng-click="New()">انشاء جديد <i class="fa fa-plus" aria-hidden="true"></i></button>
+                                        <input st-search="" class="form-control" placeholder="البحث" type="text" />
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <th>#</th>
+                                    <th st-sort="ArabicFullName">إسم الموظف</th>
+                                    <th st-sort="Email">البريد الإلكتروني</th>
+                                    <th st-sort="Mobile">الموبيل</th>
+                                    <th st-sort="About">عن الموظف</th>
+                                    <th st-sort="BirthDate">تاريخ الميلاد</th>
+                                    <th></th>
+
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="UserInfo in UserInfoData">
+                                <tr>
+                                    <td>{{$index +1}}</td>
+                                    <td><a href="#UserInfo/{{UserInfo.Id}}">{{UserInfo.ArabicFullName}}</a></td>
+                                    <td>{{UserInfo.Email}}</td>
+                                    <td>{{UserInfo.Mobile}}</td>
+                                    <td>{{UserInfo.About}}</td>
+                                    <td>{{UserInfo.BirthDate | date:'MM/dd/yyyy' }}</td>
+                                    <td>
+                                        <button class="smallbtnRed" ng-click="delete(UserInfo.Id)"> <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> </button>
+
+                                        <button class="smallbtn" ng-model="$scope.UserInfo"
+                                                ng-click="edit(UserInfoData[$index])">
+                                            <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="5" class="text-center">
+                                        <div st-pagination="" st-items-by-page="8" st-displayed-pages="7"></div>
+                                    </td>
+                                </tr>
+
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <!--<button class="btn btnView btn-default" ng-click="New()">انشاء جديد <i class="fa fa-plus" aria-hidden="true"></i></button>-->
+                <br /><br />
+
+            </div>
+
+            <div class="adminContent" ng-show="updateitem == 1 ">
+                    <h3>تحرير موظف</h3>
+                    <br /><br />
+                    <form name="updateorgform">
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label for="txtLoginName">اسم الموظف كمستخدم</label>
+                                <input type="text"
+                                       ng-class="{submitted:updateorgform.submitted}" required class="form-control" id="txtLoginName" ng-model="UserInfo.LoginName" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="txtArabicFullName">اسم الموظف العربي</label>
+                                <input type="text"
+                                       ng-class="{submitted:updateorgform.submitted}" required class="form-control" id="txtArabicFullName" ng-model="UserInfo.ArabicFullName" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="txtLatinFullName">اسم الموظف الأجنبي</label>
+                                <input type="text" class="form-control" id="txtLatinFullName" ng-model="UserInfo.LatinFullName" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="txtFax">الحالة</label>
+                                <select ng-class="{submitted:updateorgform.submitted}" required ng-model="selectedStatus" class="form-control" ng-options="OT.Name for OT in statusenum track by OT.Id"></select>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="txtPassword">كلمة المرور</label>
+                                <input type="password"
+                                       ng-class="{submitted:updateorgform.submitted}" required class="form-control" id="txtPassword" ng-model="UserInfo.Password" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="txtconfPassword">تأكيد كلمة المرور</label>
+                                <input type="password"
+                                       ng-class="{submitted:updateorgform.submitted}" required class="form-control" id="txtconfPassword" ng-model="UserInfo.Passwordconfirm"  />
+                            </div>
+
+
+                            <div class="form-group col-md-3">
+                                <label for="txtEmail">البريد الإلكتروني</label>
+                                <input class="form-control" 
+ng-class="{submitted:updateorgform.submitted}" required id="txtEmail" ng-model="UserInfo.Email" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="txtMobile">موبيل</label>
+                                <input class="form-control" 
+ng-class="{submitted:updateorgform.submitted}" required id="txtMobile" ng-model="UserInfo.Mobile"/>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="txtPersonalMessage">الرسالة الشخصية</label>
+                                <input type="text" class="form-control" id="txtPersonalMessage" ng-model="UserInfo.PersonalMessage" />
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="txtAbout">عن الموظف</label>
+                                <input type="text" ng-class="{submitted:updateorgform.submitted}" required  class="form-control" id="txtAbout" ng-model="UserInfo.About" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="txtOfficePhone">تليفون المكتب</label>
+                                <input type="text" class="form-control" id="txtOfficePhone" ng-model="UserInfo.OfficePhone" />
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="txtBirthDate">تاريخ الميلاد</label>
+                                <input id="birthdateedit"  class="form-control datepicker" ng-model="UserInfo.BirthDate  | date:'MM/dd/yyyy' " placeholder="تاريخ الميلاد" />
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="drpOrganizationUnit">نوع الجهة</label>
+                                <select class="form-control" ng-class="{submitted:updateorgform.submitted}" required id="drpOrganizationUnit" ng-model="selectedOrganizationUnit" ng-options="OT.Title for OT in OrganizationUnits track by OT.Id"></select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="drpJobTitle">الوظيفة</label>
+                                <select class="form-control" id="drpJobTitle" ng-model="selectedJobTitle" ng-options="OT.Title for OT in JobTitles track by OT.Id"></select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="drpReportedTo">المدير المباشر</label>
+                                <select class="form-control" id="drpReportedTo" ng-model="selectedReportedTo" ng-options="OT.ArabicFullName for OT in UserInfoData track by OT.Id"></select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <md-autocomplete md-selected-item="ADselectedUser"
+                                                 md-items="item in ADUsers"
+                                                 md-item-text="item"
+                                                 md-search-text="ADUsersearchText"
+                                                 md-min-length="0"
+                                                 placeholder="المستخدم" class="autocomBox">
+                                    <md-item-template>
+                                        <span md-highlight-text="ADUsersearchText" md-highlight-flags="^i">{{item}}</span>
+                                    </md-item-template>
+
+                                </md-autocomplete>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="form-group col-md-3">
+                                <label for="file">صورة</label>
+                                <div ng-if="content">
+                                    <img width="120" alt="يتم التحميل ......" height="150" data-ng-src="data:image/png;base64,{{content}}" id="photo-id" />
+                                </div>
+
+                                <input id="fileinput" class="btn btn-default btnuploadaria"  type="file" on-read-file="showContent($fileContent)" />
+
+                            </div>
+
+                        </div>
+                        <br />
+                        <div>
+                            <button class="btn btnView2 " data-ng-click="update()">تحديث <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                            <button class="btn btnView2 " data-ng-click="cancel()">إلغاء <i class="fa fa-times" aria-hidden="true"></i> </button>
+                        </div>
+                    </form>
+            </div>
+
+            <div class="adminContent" ng-show="newitem == 1 ">
+                <form name="neworgform">
+
+
+                    <h3>إنشاء موظف جديد</h3>
+                    <br /><br />
+
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <label for="txtLoginName">اسم الموظف كمستخدم</label>
+                            <input type="text"
+                                   ng-class="{submitted:neworgform.submitted}" required class="form-control" id="txtLoginName" ng-model="UserInfo.LoginName" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="txtArabicFullName">اسم الموظف العربي</label>
+                            <input type="text"
+                                   ng-class="{submitted:neworgform.submitted}" required class="form-control" id="txtArabicFullName" ng-model="UserInfo.ArabicFullName" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="txtLatinFullName">اسم الموظف الأجنبي</label>
+                            <input type="text" class="form-control" id="txtLatinFullName" ng-model="UserInfo.LatinFullName" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="txtFax">الحالة</label>
+                            <select ng-class="{submitted:neworgform.submitted}" required ng-model="selectedStatus" class="form-control" ng-options="OT.Name for OT in statusenum track by OT.Id"></select>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="txtPassword">كلمة المرور</label>
+                            <input type="password"
+                                   ng-class="{submitted:neworgform.submitted}" required class="form-control" id="txtPassword" ng-model="UserInfo.Password" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="txtconfPassword">تأكيد كلمة المرور</label>
+                            <input type="password"
+                                   ng-class="{submitted:neworgform.submitted}" required class="form-control" id="txtconfPassword" ng-model="UserInfo.Passwordconfirm" />
+                        </div>
+
+
+                        <div class="form-group col-md-3">
+                            <label for="txtEmail">البريد الإلكتروني</label>
+                            <input class="form-control"
+                                   ng-class="{submitted:neworgform.submitted}" required id="txtEmail" ng-model="UserInfo.Email" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="txtMobile">موبيل</label>
+                            <input class="form-control"
+                                   ng-class="{submitted:neworgform.submitted}" required id="txtMobile" ng-model="UserInfo.Mobile"/>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="txtPersonalMessage">الرسالة الشخصية</label>
+                            <input type="text" class="form-control" id="txtPersonalMessage" ng-model="UserInfo.PersonalMessage" />
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="txtAbout">عن الموظف</label>
+                            <input type="text" ng-class="{submitted:neworgform.submitted}" required class="form-control" id="txtAbout" ng-model="UserInfo.About" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="txtOfficePhone">تليفون المكتب</label>
+                            <input type="text" class="form-control" id="txtOfficePhone" ng-model="UserInfo.OfficePhone" />
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="txtBirthDate">تاريخ الميلاد</label>
+                            <input id="birthdateadd" class="form-control datepicker" ng-model="UserInfo.BirthDate  | date:'MM/dd/yyyy' " placeholder="تاريخ الميلاد" />
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="drpOrganizationUnit">نوع الجهة</label>
+                            <select class="form-control" required id="drpOrganizationUnit" ng-model="selectedOrganizationUnit" ng-options="OT.Title for OT in OrganizationUnits track by OT.Id"></select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="drpJobTitle">الوظيفة</label>
+                            <select class="form-control" id="drpJobTitle" ng-model="selectedJobTitle" ng-options="OT.Title for OT in JobTitles track by OT.Id"></select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="drpReportedTo">المدير المباشر</label>
+                            <select class="form-control" id="drpReportedTo" ng-model="selectedReportedTo" ng-options="OT.ArabicFullName for OT in UserInfoData track by OT.Id"></select>
+                        </div>
+                        <div class="form-group col-md-3">
+                                <md-autocomplete md-selected-item="ADselectedUser"
+                                                 md-items="item in ADUsers"
+                                                 md-item-text="item"
+                                                 md-search-text="ADUsersearchText"
+                                                 md-min-length="0"
+                                                 placeholder="المستخدم" class="autocomBox">
+                                    <md-item-template>
+                                        <span md-highlight-text="ADUsersearchText" md-highlight-flags="^i">{{item}}</span>
+                                    </md-item-template>
+
+                                </md-autocomplete>
+
+                            </div>
+                        </div>
+
+                    <div class="row">
+
+                        <div class="form-group col-md-3">
+                            <label for="file">صورة</label>
+
+                            <input id="fileinput" class="btn btn-default btnuploadaria"  type="file" on-read-file="showContent($fileContent)" />
+                            <!--<div ng-if="content">
+                            </div>-->
+                            <!--<input type="file" id="file" class="input-text" data-ng-change="changeimage(this.File)" ngf-select ng-model="picFile1" name="attachement" accept="image/png, image/jpeg, image/jpg " />-->
+                        </div>
+
+                    </div>
+                    <br />
+                    <br />
+                    <div>
+                        <button class="btn btnView2" data-ng-click="cancel()">إلغاء <i class="fa fa-times" aria-hidden="true"></i> </button>
+                        <button class="btn btnView2 " data-ng-click="clear()">مسح الحقول <i class="fa fa-paint-brush" aria-hidden="true"></i> </button>
+                        <button class="btn btnView3 " data-ng-click="save()">حفظ <i class="fa fa-floppy-o" aria-hidden="true"></i>   </button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <style>
+        .thumb {
+            width: 40px;
+            height: 40px;
+            float: none;
+            position: relative;
+            display: inline;
+        }
+    </style>
+
+</body>
+</html>

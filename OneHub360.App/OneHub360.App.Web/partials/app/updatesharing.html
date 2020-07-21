@@ -1,0 +1,28 @@
+﻿
+<div class="Modal-box" ng-init="loadShared()" ngCloak ng-controller="shareUpdateController">  
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close(false)">&times;</button>
+        <h4 class="modal-title"><img src="/img/app/share.png" width="36" height="36" />  مشاركة</h4>
+    </div>
+    <div class="modal-body">
+        <div>
+            <people-Picker title="الرجاء إختيار مستخدم"
+                           selectedobject="addSharing"
+                           pickerid="toUser"
+                           reuired="true"></people-Picker>
+        </div>
+        <div style="margin-top:10px;margin-bottom:10px">
+            <div ng-repeat="userInfoData in SharingList track by $index">
+                <div class="input-group" style="margin-top:3px!important">
+                    <span class="form-control">
+                        <aviatoroneline userid="{{userInfoData}}"></aviatoroneline>
+                    </span>
+                    <span class="input-group-addon" ng-click="removeSharing($index)"><i class="fa fa-times"></i></span>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button class="form-control btn-green" ng-click="updateSharing()" type="button">حفظ التغييرات</button>
+        </div>
+    </div>
+</div>

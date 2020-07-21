@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.App.Shared" namespace="OneHub360.App.Shared" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="UserInfoAutoComplete" table="UserInfoAutoComplete" >
+    
+    <id column="Id" name="Id"/>
+    <property name="FullName">
+      <column name="ArabicFullName" sql-type="nvarchar"/>
+    </property>
+    <property name="PersonalMessage">
+      <column name="PersonalMessage"/>
+    </property>
+    <property name="About">
+      <column name="About"/>
+    </property>
+    <property name="Organization">
+      <column name="Organization"/>
+    </property>
+    <property name="IsDeleted">
+      <column name="IsDeleted"/>
+    </property>
+    <property name="Mobile">
+      <column name="Mobile"/>
+    </property>
+  </class>
+</hibernate-mapping>

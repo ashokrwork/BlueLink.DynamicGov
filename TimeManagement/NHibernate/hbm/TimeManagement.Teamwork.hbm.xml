@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub.NET.TimeManagement" namespace="OneHub.NET.TimeManagement" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Teamwork" table="Teamwork" schema="dbo">
+    <id name="Id" type="Guid">
+      <column name="ID" not-null="true" sql-type="uniqueidentifier" />
+      <generator class="guid.comb" />
+    </id>
+    <property name="Name" type="String">
+      <column name="Name" not-null="true" />
+    </property>
+    <property name="Description" type="String">
+      <column name="Description" not-null="true" />
+    </property>
+    <property name="Objectives" type="String">
+      <column name="Objectives" not-null="true" />
+    </property>
+    <property name="Date" type="DateTime">
+      <column name="Date" not-null="true" />
+    </property>
+    <property name="IsDeleted" type="Boolean">
+      <column name="IsDeleted" default="0" not-null="true" sql-type="bit" />
+    </property>
+    <property name="CreationDate" type="DateTime">
+      <column name="CreationDate" not-null="true" sql-type="datetime2" />
+    </property>
+    <property name="LastUpdateDate" type="DateTime">
+      <column name="LastUpdateDate" not-null="false" sql-type="datetime2" />
+    </property>
+    <property name="CreatedBy" type="String">
+      <column name="CreatedBy" not-null="true" length="256" sql-type="nvarchar" />
+    </property>
+    <property name="LastUpdatedBy" type="String">
+      <column name="LastUpdatedBy" not-null="false" length="256" sql-type="nvarchar" />
+    </property>
+    <many-to-one name="Project" class="Project">
+      <column name="FK_Project" not-null="true" sql-type="uniqueidentifier" />
+    </many-to-one>
+    <bag name="Members" generic="true">
+      <key not-null="true">
+        <column name="FK_Teamwork" not-null="true" sql-type="uniqueidentifier" />
+      </key>
+      <one-to-many class="TeamworkMember" />
+    </bag>
+  </class>
+</hibernate-mapping>

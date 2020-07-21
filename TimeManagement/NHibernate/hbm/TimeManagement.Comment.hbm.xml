@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub.NET.TimeManagement" namespace="OneHub.NET.TimeManagement" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Comment" table="Comments" schema="dbo">
+    <id name="Id" type="Guid">
+      <column name="Id" not-null="true" sql-type="uniqueidentifier" />
+      <generator class="guid.comb" />
+    </id>
+    <property name="ThreadId" type="Guid">
+      <column name="ThreadId" not-null="true" sql-type="uniqueidentifier" />
+    </property>
+    <property name="Body" type="StringClob">
+      <column name="Body" not-null="true" length="1073741823" sql-type="ntext" />
+    </property>
+    <property name="IsDeleted" type="Boolean">
+      <column name="IsDeleted" default="0" not-null="true" sql-type="bit" />
+    </property>
+    <property name="CreationDate" type="DateTime">
+      <column name="CreationDate" not-null="true" sql-type="datetime2" />
+    </property>
+    <property name="CreatedBy" type="String">
+      <column name="CreatedBy" not-null="true" length="256" sql-type="nvarchar" />
+    </property>
+    <many-to-one name="Parent" class="Comment">
+      <column name="FK_Comment" not-null="false" sql-type="uniqueidentifier" />
+    </many-to-one>
+    <bag name="Children" inverse="true" generic="true">
+      <key>
+        <column name="FK_Comment" />
+      </key>
+      <one-to-many class="Comment" />
+    </bag>
+  </class>
+</hibernate-mapping>

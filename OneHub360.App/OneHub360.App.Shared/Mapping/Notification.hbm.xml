@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.App.Shared" namespace="OneHub360.App.Shared" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Notification" table="Notifications" lazy="true" >
+    <id name="Id" column="ID" />
+    <property name="Title">
+      <column name="Title" sql-type="nchar" not-null="true" />
+    </property>
+    <property name="Description">
+      <column name="Description" sql-type="nchar" not-null="true" />
+    </property>
+    <property name="FK_FeedId">
+      <column name="FK_FeedId" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="IsRead">
+      <column name="IsRead" sql-type="bit" not-null="true" />
+    </property>
+    <property name="FK_User">
+      <column name="FK_User" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="FK_From">
+      <column name="FK_From" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="CreationDate">
+      <column name="CreationDate" sql-type="datetime2" not-null="false" />
+    </property>
+    <property name="IsDeleted">
+      <column name="IsDeleted" sql-type="bit" not-null="false" />
+    </property>
+    <property name="Language">
+      <column name="Language" sql-type="int" not-null="false" />
+    </property>
+    <property name="TemplateUrl">
+      <column name="TemplateUrl" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="EntityId">
+      <column name="EntityId" sql-type="uniqueidentifier" not-null="false" />
+    </property>
+    <property name="LastModified">
+      <column name="LastModified" sql-type="datetime2" not-null="false" />
+    </property>
+    <property name="CreatedBy">
+      <column name="CreatedBy" sql-type="nvarchar" not-null="false" />
+    </property>
+  </class>
+</hibernate-mapping>

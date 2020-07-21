@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneHub360.NET.Admin.ModelUnitTest", "OneHub360.NET.Admin.ModelUnitTest\OneHub360.NET.Admin.ModelUnitTest.csproj", "{2931865B-51A1-40AF-B12D-29D61C13F375}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Test", "Unit Test", "{E7ACC835-49E6-46A5-ADA4-902187DCA68E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneHub360.NET.Admin.Model", "OneHub360.NET.Admin.Model\OneHub360.NET.Admin.Model.csproj", "{75C7193E-5E93-473C-BB69-B30818A5FDCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneHub360.NET.Admin.API", "OneHub360.NET.Admin.API\OneHub360.NET.Admin.API.csproj", "{B7EF005B-4A1D-4C55-B6D9-AAB8464328A8}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "OneHub360.NET.Admin.Web", "OneHub360.NET.Admin.Web\OneHub360.NET.Admin.Web.xproj", "{AC60764B-6065-467E-99D1-71A8CEFAFB53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneHub360.NET.Admin.4.Web", "OneHub360.NET.Admin.4.Web\OneHub360.NET.Admin.4.Web.csproj", "{E3AB4F61-1565-4053-8B7A-058AA1E02479}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Serial Generator", "Serial Generator", "{368E9DCC-F1F0-4F04-8037-F0FF4A065540}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerialGenerator", "SerialGenerator\SerialGenerator.csproj", "{D29383FD-EF74-4C0C-B256-FB885C1EF441}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2931865B-51A1-40AF-B12D-29D61C13F375}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2931865B-51A1-40AF-B12D-29D61C13F375}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2931865B-51A1-40AF-B12D-29D61C13F375}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2931865B-51A1-40AF-B12D-29D61C13F375}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75C7193E-5E93-473C-BB69-B30818A5FDCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75C7193E-5E93-473C-BB69-B30818A5FDCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75C7193E-5E93-473C-BB69-B30818A5FDCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75C7193E-5E93-473C-BB69-B30818A5FDCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7EF005B-4A1D-4C55-B6D9-AAB8464328A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7EF005B-4A1D-4C55-B6D9-AAB8464328A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7EF005B-4A1D-4C55-B6D9-AAB8464328A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7EF005B-4A1D-4C55-B6D9-AAB8464328A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC60764B-6065-467E-99D1-71A8CEFAFB53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC60764B-6065-467E-99D1-71A8CEFAFB53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC60764B-6065-467E-99D1-71A8CEFAFB53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC60764B-6065-467E-99D1-71A8CEFAFB53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3AB4F61-1565-4053-8B7A-058AA1E02479}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3AB4F61-1565-4053-8B7A-058AA1E02479}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3AB4F61-1565-4053-8B7A-058AA1E02479}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3AB4F61-1565-4053-8B7A-058AA1E02479}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D29383FD-EF74-4C0C-B256-FB885C1EF441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D29383FD-EF74-4C0C-B256-FB885C1EF441}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D29383FD-EF74-4C0C-B256-FB885C1EF441}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D29383FD-EF74-4C0C-B256-FB885C1EF441}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2931865B-51A1-40AF-B12D-29D61C13F375} = {E7ACC835-49E6-46A5-ADA4-902187DCA68E}
+		{D29383FD-EF74-4C0C-B256-FB885C1EF441} = {368E9DCC-F1F0-4F04-8037-F0FF4A065540}
+	EndGlobalSection
+EndGlobal

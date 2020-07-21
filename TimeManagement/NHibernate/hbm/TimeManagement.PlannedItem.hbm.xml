@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub.NET.TimeManagement" namespace="OneHub.NET.TimeManagement" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="PlannedItem" table="PlannedItem" discriminator-value="PlannedItem">
+    <id name="Id" type="Guid">
+      <column name="Id" not-null="true" />
+      <generator class="guid.comb" />
+    </id>
+    <discriminator>
+      <column name="Discriminator" not-null="true" />
+    </discriminator>
+    <property name="Name" type="String">
+      <column name="Name" not-null="true" length="512" sql-type="nvarchar" />
+    </property>
+    <property name="Description" type="StringClob">
+      <column name="Description" not-null="false" length="1073741823" sql-type="ntext" />
+    </property>
+    <property name="PlannedStartDate" type="DateTime">
+      <column name="PlannedStartDate" not-null="true" sql-type="date" />
+    </property>
+    <property name="PlannedEndDate" type="DateTime">
+      <column name="PlannedEndDate" not-null="true" sql-type="date" />
+    </property>
+    <property name="IsDeleted" type="Boolean">
+      <column name="IsDeleted" default="0" not-null="true" sql-type="bit" />
+    </property>
+    <property name="CreationDate" type="DateTime">
+      <column name="CreationDate" not-null="true" sql-type="datetime2" />
+    </property>
+    <property name="LastUpdateDate" type="DateTime">
+      <column name="LastUpdateDate" not-null="false" sql-type="datetime2" />
+    </property>
+    <property name="CreatedBy" type="String">
+      <column name="CreatedBy" not-null="true" length="256" sql-type="nvarchar" />
+    </property>
+    <property name="LastUpdatedBy" type="String">
+      <column name="LastUpdatedBy" not-null="false" length="256" sql-type="nvarchar" />
+    </property>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,49 @@
+﻿
+<div ng-controller="loginController" style="height:auto" class="authentication" ng-init="init()" >
+    <div class="container">
+        <div class="col-md-12 content-center">
+            <div class="row clearfix">
+                <div class="col-lg-6 col-md-12">
+                    <div class="company_detail">
+                        <h4 class="logo" style="text-align:right"><img src="../assets/images/logo.svg" alt="Logo"> &reg;DynamicGov</h4>
+                        <h3 style="text-align:right">نظام التراسل والتوقيع الالكتروني</h3>
+                        <p style="text-align:right">نظام التراسل الالكتروني المتكامل من شركة بلولينك الامارات العربية المتحدة</p>
+                        <div class="footer" style="text-align:right">
+                            
+                            <hr>
+                            <ul class="list-unstyled">
+                                <li><a href="https://www.bluelink.ws/" target="_blank">تواصل معنا</a></li>
+                                
+                                <li><a href="https://www.bluelink.ws/e-leaning-portal" target="_blank">نظام التعليم الالكتروني</a></li>
+                                <li><a href="javascript:void(0);">الاسئلة الشائعة</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-12 offset-lg-1">
+                    <div class="card-plain">
+                        <div class="header">
+                            <h5>تسجيل الدخول</h5>
+                        </div>
+                        <form class="form">
+                            <div class="input-group">
+                                <input type="text" ng-model="loginData.userName" class="form-control" placeholder="اسم المستخدم">
+                                <span class="input-group-addon"><i class="zmdi zmdi-account-circle"></i></span>
+                            </div>
+                            <div class="input-group">
+                                <input type="password" ng-model="loginData.password" placeholder="كلمة المرور" class="form-control">
+                                <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
+                            </div>
+                        </form>
+                        <div class="footer">
+                            <a ng-click="doLogin()" class="btn btn-primary btn-round btn-block">تسجيل الدخول</a>
+                            
+                        </div>
+                        <a href="" class="link">نسيت كلمة المرور</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.NET.Admin.Model" namespace="OneHub360.NET.Admin.Model" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <union-subclass name="UserInfo" table="UserInfo" extends="OneHub360.NET.Core.Model.NHEntity">
+    
+    <property name="LoginName" type="String">
+      <column name="LoginName" not-null="true" length="4000" sql-type="nvarchar" />
+    </property>
+    <property name="Password" type="String">
+      <column name="Password" not-null="false" length="4000" sql-type="nvarchar" />
+    </property>
+    <property name="PasswordSalt" type="String">
+      <column name="PasswordSalt" not-null="false" length="4000" sql-type="nvarchar" />
+    </property>
+    <property name="ArabicFullName" type="String">
+      <column name="ArabicFullName" not-null="true" length="4000" sql-type="nvarchar" />
+    </property>
+    <property name="LatinFullName" type="String">
+      <column name="LatinFullName" not-null="false" length="4000" sql-type="nvarchar" />
+    </property>
+    <property name="ADUsername" type="String">
+      <column name="ADUsername" not-null="false" length="300" sql-type="nvarchar" />
+    </property>
+    <property name="Email" type="String">
+      <column name="Email" not-null="true" length="4000" sql-type="nvarchar" />
+    </property>
+    <property name="Mobile" type="String">
+      <column name="Mobile" not-null="true" length="4000" sql-type="nvarchar" />
+    </property>
+    <property name="Photo" type="Byte[]">
+      <column name="Photo" not-null="false" sql-type="varbinary" length="2147483647" />
+    </property>
+    <property name="PersonalMessage" type="String">
+      <column name="PersonalMessage" not-null="false" length="4000" sql-type="nvarchar" />
+    </property>
+    <property name="BirthDate" type="DateTime">
+      <column name="BirthDate" not-null="false" sql-type="datetime2" />
+    </property>
+    <property name="About" type="String">
+      <column name="About" not-null="false" length="4000" sql-type="nvarchar" />
+    </property>
+    <property name="OfficePhone" type="Decimal">
+      <column name="OfficePhone" not-null="false" precision="18" scale="0" sql-type="decimal" />
+    </property>
+    <property name="Status" >
+      <column name="Status" not-null="true" />
+    </property>
+    
+    <many-to-one name="OrganizationUnit" class="OrganizationUnit">
+      <column name="FK_OrganizationUnit" not-null="false" sql-type="uniqueidentifier" />
+    </many-to-one>
+    <many-to-one name="JobTitle" class="JobTitle">
+      <column name="FK_JobTitle" not-null="false" sql-type="uniqueidentifier" />
+    </many-to-one>
+    <many-to-one name="ReportingTo" class="UserInfo">
+      <column name="FK_ReportingTo" not-null="false" sql-type="uniqueidentifier" />
+    </many-to-one>
+    <!--<bag name="Groups" generic="true">
+      <key not-null="false">
+        <column name="FK_UserInfo" not-null="false" sql-type="uniqueidentifier" />
+      </key>
+      <one-to-many class="UsersGroup" />
+    </bag>-->
+    <!--<bag name="Roles" table="RolesUsers" generic="true">
+      <key not-null="true">
+        <column name="FK_UserInfo" not-null="true" sql-type="uniqueidentifier" />
+      </key>
+      <many-to-many class="Role" fetch="join">
+        <column name="FK_Role" not-null="true" />
+      </many-to-many>
+    </bag>
+    
+    <bag name="Signatures" generic="true">
+      <key not-null="false">
+        <column name="FK_UserInfo" not-null="false" sql-type="uniqueidentifier" />
+      </key>
+      <one-to-many class="Signature" />
+    </bag>-->
+  </union-subclass>
+</hibernate-mapping>

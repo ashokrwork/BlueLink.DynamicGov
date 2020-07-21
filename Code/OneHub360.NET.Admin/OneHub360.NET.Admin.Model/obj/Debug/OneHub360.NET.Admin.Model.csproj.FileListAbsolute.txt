@@ -1,0 +1,12 @@
+C:\inetpub\wwwroot\cms\OneHub-master\Code\OneHub360.NET.Admin\OneHub360.NET.Admin.Model\bin\Debug\OneHub360.NET.Admin.Model.dll.config
+C:\inetpub\wwwroot\cms\OneHub-master\Code\OneHub360.NET.Admin\OneHub360.NET.Admin.Model\bin\Debug\OneHub360.NET.Admin.Model.dll
+C:\inetpub\wwwroot\cms\OneHub-master\Code\OneHub360.NET.Admin\OneHub360.NET.Admin.Model\bin\Debug\OneHub360.NET.Admin.Model.pdb
+C:\inetpub\wwwroot\cms\OneHub-master\Code\OneHub360.NET.Admin\OneHub360.NET.Admin.Model\bin\Debug\Iesi.Collections.dll
+C:\inetpub\wwwroot\cms\OneHub-master\Code\OneHub360.NET.Admin\OneHub360.NET.Admin.Model\bin\Debug\NHibernate.dll
+C:\inetpub\wwwroot\cms\OneHub-master\Code\OneHub360.NET.Admin\OneHub360.NET.Admin.Model\bin\Debug\OneHub360.NET.Core.Model.dll
+C:\inetpub\wwwroot\cms\OneHub-master\Code\OneHub360.NET.Admin\OneHub360.NET.Admin.Model\bin\Debug\Iesi.Collections.xml
+C:\inetpub\wwwroot\cms\OneHub-master\Code\OneHub360.NET.Admin\OneHub360.NET.Admin.Model\bin\Debug\NHibernate.xml
+C:\inetpub\wwwroot\cms\OneHub-master\Code\OneHub360.NET.Admin\OneHub360.NET.Admin.Model\obj\Debug\OneHub360.NET.Admin.Model.csprojAssemblyReference.cache
+C:\inetpub\wwwroot\cms\OneHub-master\Code\OneHub360.NET.Admin\OneHub360.NET.Admin.Model\obj\Debug\OneHub360.NET.Admin.Model.csproj.CopyComplete
+C:\inetpub\wwwroot\cms\OneHub-master\Code\OneHub360.NET.Admin\OneHub360.NET.Admin.Model\obj\Debug\OneHub360.NET.Admin.Model.dll
+C:\inetpub\wwwroot\cms\OneHub-master\Code\OneHub360.NET.Admin\OneHub360.NET.Admin.Model\obj\Debug\OneHub360.NET.Admin.Model.pdb

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub.NET.TimeManagement" namespace="OneHub.NET.TimeManagement" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Project" table="Project" schema="dbo">
+    <id name="Id" type="Guid">
+      <column name="Id" not-null="true" sql-type="uniqueidentifier" />
+      <generator class="guid.comb" />
+    </id>
+    <property name="Name" type="String">
+      <column name="Name" not-null="true" length="512" sql-type="nvarchar" />
+    </property>
+    <property name="Description" type="String">
+      <column name="Description" not-null="false" length="1024" sql-type="nvarchar" />
+    </property>
+    <property name="PlannedStartDate" type="DateTime">
+      <column name="PlannedStartDate" not-null="false" sql-type="date" />
+    </property>
+    <property name="PlannedEndDate" type="DateTime">
+      <column name="PlannedEndDate" not-null="false" sql-type="date" />
+    </property>
+    <property name="ActualStartDate" type="DateTime">
+      <column name="ActualStartDate" not-null="false" sql-type="date" />
+    </property>
+    <property name="ActualEndDate" type="DateTime">
+      <column name="ActualEndDate" not-null="false" sql-type="date" />
+    </property>
+    <property name="IsDeleted" type="Boolean">
+      <column name="IsDeleted" default="0" not-null="true" sql-type="bit" />
+    </property>
+    <property name="CreationDate" type="DateTime">
+      <column name="CreationDate" not-null="true" sql-type="datetime2" />
+    </property>
+    <property name="LastUpdateDate" type="DateTime">
+      <column name="LastUpdateDate" not-null="false" sql-type="datetime2" />
+    </property>
+    <property name="CreatedBy" type="String">
+      <column name="CreatedBy" not-null="true" length="256" sql-type="nvarchar" />
+    </property>
+    <property name="LastUpdatedBy" type="String">
+      <column name="LastUpdatedBy" not-null="false" length="256" sql-type="nvarchar" />
+    </property>
+    <many-to-one name="FiscalYear" class="FiscalYear">
+      <column name="FK_FiscalYear" not-null="false" sql-type="uniqueidentifier" />
+    </many-to-one>
+    <many-to-one name="Status" class="ProjectStatus">
+      <column name="FK_ProjectStatus" not-null="true" />
+    </many-to-one>
+    <bag name="Classifications" table="ProjectClassification" schema="dbo" inverse="true" generic="true">
+      <key>
+        <column name="FK_Project" />
+      </key>
+      <many-to-many class="Classification" fetch="join">
+        <column name="FK_Classification" />
+      </many-to-many>
+    </bag>
+    <bag name="Issues" generic="true">
+      <key not-null="true">
+        <column name="FK_Project" not-null="true" sql-type="uniqueidentifier" />
+      </key>
+      <one-to-many class="Issue" />
+    </bag>
+    <bag name="ProjectAttachments" generic="true">
+      <key not-null="true">
+        <column name="FK_Project" not-null="true" sql-type="uniqueidentifier" />
+      </key>
+      <one-to-many class="ProjectAttachment" />
+    </bag>
+    <bag name="Tasks" generic="true">
+      <key not-null="true">
+        <column name="FK_Project" not-null="true" sql-type="uniqueidentifier" />
+      </key>
+      <one-to-many class="Task" />
+    </bag>
+  </class>
+</hibernate-mapping>

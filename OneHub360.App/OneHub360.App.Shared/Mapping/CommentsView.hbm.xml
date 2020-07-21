@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.App.Shared" namespace="OneHub360.App.Shared" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="CommentsView" table="CommentsView"  >
+    <id name="Id" column="Id"/>
+    <property name="CreatedBy">
+      <column name="CreatedBy" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="CreationDate">
+      <column name="CreationDate" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="LastModified">
+      <column name="LastModified" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="IsDeleted">
+      <column name="IsDeleted" sql-type="bit" not-null="false" />
+    </property>
+    <property name="Language">
+      <column name="Language" sql-type="int" not-null="false" />
+    </property>
+    <property name="EntityId">
+      <column name="EntityId" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="FK_Feed">
+      <column name="FK_Feed" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="FK_Parent">
+      <column name="FK_Parent" sql-type="uniqueidentifier" not-null="false" />
+    </property>
+    <property name="FK_User">
+      <column name="FK_User" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="Body">
+      <column name="Body" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="Private">
+      <column name="Private" sql-type="bit" not-null="true" />
+    </property>
+    
+    <property name="ThreadId">
+      <column name="ThreadId" sql-type="uniqueidentifier" not-null="false" />
+    </property>
+  </class>
+</hibernate-mapping>

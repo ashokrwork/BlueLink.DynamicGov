@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping assembly="OneHub360.CMS.DAL" namespace="OneHub360.CMS.DAL" xmlns="urn:nhibernate-mapping-2.2">
+  <sql-query xmlns="urn:nhibernate-mapping-2.2"
+             name="SimpleSearch">
+    <return-scalar column="Id" type="Guid"/>
+    <return-scalar column="CreationDate" type="DateTime"/>
+    <return-scalar column="CreatedBy" type="String"/>
+    <return-scalar column="IsDeleted" type="Boolean"/>
+    <return-scalar column="LastModified" type="DateTime"/>
+    <return-scalar column="Title" type="String"/>
+
+    <return-scalar column="Brief" type="String"/>
+    <return-scalar column="Body" type="String"/>
+    <return-scalar column="ImageUrl" type="String"/>
+    <return-scalar column="FeedId" type="String"/>
+    <return-scalar column="Status" type="Int32"/>
+    <return-scalar column="Scope" type="Int32"/>
+
+    <return-scalar column="Pinned" type="Boolean"/>
+    <return-scalar column="FileUrl" type="String"/>
+    <return-scalar column="FK_From" type="Guid"/>
+    <return-scalar column="FK_To" type="Guid"/>
+    <return-scalar column="TemplateUrl" type="String"/>
+    <return-scalar column="FeedTypeName" type="String"/>
+
+    <return-scalar column="Text1" type="String"/>
+    <return-scalar column="Text2" type="String"/>
+    <return-scalar column="Text3" type="String"/>
+    <return-scalar column="Date1" type="DateTime"/>
+    <return-scalar column="Date2" type="DateTime"/>
+    <return-scalar column="Date3" type="DateTime"/>
+    <return-scalar column="Number1" type="Int32"/>
+    <return-scalar column="Number2" type="Int32"/>
+    <return-scalar column="Number3" type="Int32"/>
+    <return-scalar column="SharedWith" type="String"/>
+    <return-scalar column="FollowedBy" type="String"/>
+    <return-scalar column="FeedTypeId" type="Guid"/>
+    exec SimpleSearch :keyword,:user,:feedType,:dateFrom,:dateTo
+  </sql-query>
+</hibernate-mapping>

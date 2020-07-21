@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="OneHub360.App.Services.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="WorkerMode" Type="OneHub360.Business.WorkerMode" Scope="Application">
+      <Value Profile="(Default)">NonQueue</Value>
+    </Setting>
+    <Setting Name="AppApiBaseUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://localhost:363/</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

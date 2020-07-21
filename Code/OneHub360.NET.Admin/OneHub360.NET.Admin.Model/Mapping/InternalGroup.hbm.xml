@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.NET.Admin.Model" namespace="OneHub360.NET.Admin.Model" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <subclass name="InternalGroup" extends="Group" discriminator-value="InternalGroup">
+    <bag name="Members" table="InternalGroupsMembers" generic="true">
+      <key>
+        <column name="FK_InternalGroup" not-null="false" />
+      </key>
+      <many-to-many class="UserInfo" fetch="join">
+        <column name="FK_UserInfo" />
+      </many-to-many>
+    </bag>
+  </subclass>
+</hibernate-mapping>

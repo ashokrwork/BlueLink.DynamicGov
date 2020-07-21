@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub.NET.TimeManagement" namespace="OneHub.NET.TimeManagement" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <subclass name="CheckItem" extends="PlannedItem" discriminator-value="CheckItem">
+    <property name="IsCompleted" type="Boolean">
+      <column name="IsCompleted" not-null="true" />
+    </property>
+  </subclass>
+</hibernate-mapping>

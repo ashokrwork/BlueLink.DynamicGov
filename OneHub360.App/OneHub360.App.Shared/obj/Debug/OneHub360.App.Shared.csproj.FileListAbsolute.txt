@@ -1,0 +1,5 @@
+C:\inetpub\wwwroot\cms\OneHub-master\References\OneHub360.App.Shared.dll
+C:\inetpub\wwwroot\cms\OneHub-master\References\OneHub360.App.Shared.pdb
+C:\inetpub\wwwroot\cms\OneHub-master\OneHub360.App\OneHub360.App.Shared\obj\Debug\OneHub360.App.Shared.csproj.CopyComplete
+C:\inetpub\wwwroot\cms\OneHub-master\OneHub360.App\OneHub360.App.Shared\obj\Debug\OneHub360.App.Shared.dll
+C:\inetpub\wwwroot\cms\OneHub-master\OneHub360.App\OneHub360.App.Shared\obj\Debug\OneHub360.App.Shared.pdb

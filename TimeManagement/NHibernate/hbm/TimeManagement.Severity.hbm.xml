@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub.NET.TimeManagement" namespace="OneHub.NET.TimeManagement" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Severity" table="Severity">
+    <id name="Id" type="Guid">
+      <column name="Id" not-null="true" />
+      <generator class="guid.comb" />
+    </id>
+    <property name="Name" type="String">
+      <column name="Name" not-null="true" />
+    </property>
+  </class>
+</hibernate-mapping>

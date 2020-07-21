@@ -1,0 +1,16 @@
+﻿<div class="mailDetailBox">
+    <div class="col-md-12" id="templateBox" ng-controller="newItemStripController">
+        <div ng-if="status == 0">
+            <loading></loading>
+        </div>
+
+        <div ng-if="status == 1" class="col-md-2" ng-repeat="feedTypeData in feedData track by $index">
+            <a class="btn-large" ui-sref="{{feedTypeData.NewFormUrl}}">
+                <img width="64" height="64" ng-src="{{feedTypeData.NewStripImageUrl}}" alt="" />
+                <h6><strong ng-bind="feedTypeData.Title"></strong></h6>
+                <h6 ng-bind="feedTypeData.GroupTitle"></h6>
+            </a>
+        </div>
+
+    </div>
+</div>

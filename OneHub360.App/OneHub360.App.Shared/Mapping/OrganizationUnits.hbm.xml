@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.App.Shared" namespace="OneHub360.App.Shared" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="OrganizationUnits" table="OrganizationUnits"  >
+    <id name="Id" column="Id" />
+    <!--<many-to-one name="OrganizationUnits">
+      <column name="FK_OrganizationUnitParent" sql-type="uniqueidentifier" not-null="false" />
+    </many-to-one>
+    <many-to-one name="UserInfos">
+      <column name="FK_Manager" sql-type="uniqueidentifier" not-null="false" />
+    </many-to-one>
+    <many-to-one name="OrganizationUnitTypes">
+      <column name="FK_OrganizationUnitType" sql-type="uniqueidentifier" not-null="false" />
+    </many-to-one> -->    
+    <property name="Name">
+      <column name="Name" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="About">
+      <column name="About" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="Location">
+      <column name="Location" sql-type="nvarchar" not-null="false" />
+    </property>
+    
+   <!-- <bag name="OrganizationUnits">
+      <key column="FK_OrganizationUnitParent" />
+      <one-to-many class="OrganizationUnits" />
+    </bag>
+    <bag name="UserInfos">
+      <key column="FK_OrganizationUnit" />
+      <one-to-many class="UserInfos" />
+    </bag> -->
+  </class>
+</hibernate-mapping>

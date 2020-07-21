@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.App.Shared" namespace="OneHub360.App.Shared" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Signature" table="Signature" lazy="true" >
+    <id name="FK_UserInfo" column="FK_UserInfo" />
+    <property name="Title">
+      <column name="Title" sql-type="nvarchar" not-null="true" />
+    </property>
+    <!--<property name="Photo" type="Byte[]">
+      <column name="Photo" not-null="false" sql-type="varbinary" length="2147483647" />
+    </property>-->
+    <property name="Image" type="BinaryBlob">
+      <column name="Image" not-null="true" />
+    </property>
+    
+    <property name="EnrollmentDate">
+      <column name="EnrollmentDate" sql-type="datetime2"  />
+    </property>
+    <property name="NotAfter">
+      <column name="NotAfter" sql-type="datetime2"  />
+    </property>
+    <property name="NotBefore">
+      <column name="NotBefore" sql-type="datetime2"  />
+    </property>
+    <property name="Certificate">
+      <column name="Certificate" sql-type="nvarchar"  />
+    </property>
+    <property name="Status">
+      <column name="Status" sql-type="int" not-null="true" />
+    </property>
+    <property name="SMSActivationCode">
+      <column name="SMSActivationCode" sql-type="nvarchar"  />
+    </property>
+    <property name="EmailActivationCode">
+      <column name="EmailActivationCode" sql-type="nvarchar"  />
+    </property>
+    <property name="ActivationFailureCount">
+      <column name="ActivationFailureCount" sql-type="int"  />
+    </property>
+    <property name="IncludePrivateKey">
+      <column name="IncludePrivateKey" sql-type="bit"  />
+    </property>
+    <property name="CreationDate">
+      <column name="CreationDate" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="CreatedBy">
+      <column name="CreatedBy" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="LastModified">
+      <column name="LastModified" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="LastModifiedBy">
+      <column name="LastModifiedBy" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="IsDeleted">
+      <column name="IsDeleted" sql-type="bit" not-null="false" />
+    </property>
+    <property name="PrivateKey">
+      <column name="PrivateKey" sql-type="nvarchar" not-null="true" />
+    </property>
+  </class>
+</hibernate-mapping>

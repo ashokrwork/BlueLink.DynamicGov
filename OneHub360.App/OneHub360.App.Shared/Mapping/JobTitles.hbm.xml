@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.App.Shared" namespace="OneHub360.App.Shared" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="JobTitles" table="JobTitles"  >
+    <id name="Id" column="Id" />
+    <property name="Title">
+      <column name="Title" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="Responsibilities">
+      <column name="Responsibilities" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="Rank">
+      <column name="Rank" sql-type="int" not-null="false" />
+    </property>
+    <property name="Description">
+      <column name="Description" sql-type="nvarchar" not-null="false" />
+    </property>
+   <!-- <bag name="UserInfos">
+      <key column="FK_JobTitle" />
+      <one-to-many class="UserInfos" />
+    </bag> -->
+  </class>
+</hibernate-mapping>

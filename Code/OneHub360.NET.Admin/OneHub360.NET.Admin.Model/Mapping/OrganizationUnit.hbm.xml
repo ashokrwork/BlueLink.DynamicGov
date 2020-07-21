@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.NET.Admin.Model" namespace="OneHub360.NET.Admin.Model" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <union-subclass name="OrganizationUnit" table="OrganizationUnit" extends="OneHub360.NET.Core.Model.NHEntity">
+
+    <property name="Prifix" type="String">
+      <column name="Prifix" not-null="true" length="20" sql-type="nvarchar" />
+    </property>
+    <property name="LastGeneratedNumber" type="int">
+      <column name="LastGeneratedNumber" not-null="true"  sql-type="int" />
+    </property>
+    
+    <property name="Title" type="String">
+      <column name="Title" not-null="true" length="4000" sql-type="nvarchar" />
+    </property>
+    <property name="About" type="String">
+      <column name="About" not-null="false" length="4000" sql-type="nvarchar" />
+    </property>
+    <property name="Location" type="String">
+      <column name="Location" not-null="false" length="4000" sql-type="nvarchar" />
+    </property>
+    <property name="PersonTitle" type="String">
+      <column name="PersonTitle" not-null="true" length="4000" sql-type="nvarchar" />
+    </property>
+    <property name="Logo" type="Byte[]">
+      <column name="Logo" not-null="false" sql-type="varbinary" length="2147483647" />
+    </property>
+    <property name="ManagerId" type="Guid">
+      <column name="FK_Manager" />
+    </property>
+    
+    <many-to-one name="OrganizationUnitParent" class="OrganizationUnit" not-null="false">
+      <column name="FK_OrganizationUnitParent" not-null="false" />
+    </many-to-one>
+    <!--<many-to-one name="Manager" class="UserInfo">
+      <column name="FK_Manager" not-null="false" />
+    </many-to-one>-->
+    <many-to-one name="Organization" class="Organization" not-null="false">
+      <column name="FK_Organization" not-null="false" />
+    </many-to-one>
+    <many-to-one name="OrganizationUnitType" class="OrganizationUnitType" not-null="false">
+      <column name="FK_OrganizationUnitType" not-null="false" />
+    </many-to-one>
+  </union-subclass>
+</hibernate-mapping>

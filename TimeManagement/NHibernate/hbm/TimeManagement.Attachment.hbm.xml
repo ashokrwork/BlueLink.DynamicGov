@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub.NET.TimeManagement" namespace="OneHub.NET.TimeManagement" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Attachment" table="Attachment" discriminator-value="Attachment">
+    <id name="Id" type="Guid">
+      <column name="Id" not-null="true" />
+      <generator class="guid.comb" />
+    </id>
+    <discriminator>
+      <column name="Discriminator" not-null="true" />
+    </discriminator>
+    <property name="Name" type="String">
+      <column name="Name" not-null="true" />
+    </property>
+    <property name="FileBinaries" type="BinaryBlob">
+      <column name="FileBinaries" not-null="true" />
+    </property>
+    <property name="Description" type="String">
+      <column name="Description" not-null="true" />
+    </property>
+    <property name="Type" type="String">
+      <column name="Type" not-null="true" />
+    </property>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,496 @@
+﻿
+
+
+
+    <div class="container" ng-controller="profileController" ng-init="Init()">
+        <div class="row clearfix">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="body block-header">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <h2>الملف الشخصي</h2>
+                                <ul class="breadcrumb p-l-0 p-b-0 ">
+                                    <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
+                                    
+                                    <li class="breadcrumb-item active">الملف الشخصي</li>
+                                </ul>
+                            </div>
+                            <!--<div class="col-lg-6 col-md-12 col-sm-12">
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#overview">بيانات المستخدم</a></li>
+                                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#usersettings">تعديل البيانات</a></li>
+                                </ul>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12">
+                <div class="card active-bg text-white">
+                    <div class="body profile-header">
+                        <img width="180" data-ng-src="data:image/png;base64,{{content}}" class="user_pic rounded-circle img-raised" alt="User">
+                        <div class="detail">
+                            <div class="u_name" style="color:white">
+                                <h4>{{profileUserInfo.ArabicFullName}}</h4>
+                                <span>{{profileUserInfo.About}}</span>
+                            </div>
+                            <div id="m_area_chart"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane" id="overview">
+                        <div class="row clearfix">
+                            <div class="col-lg-3 col-md-6 col-6">
+                                <div class="card text-center">
+                                    <div class="body">
+                                        <i class="zmdi zmdi-thumb-up zmdi-hc-2x"></i>
+                                        <h5 class="m-b-0 number count-to" data-from="0" data-to="1203" data-speed="1000" data-fresh-interval="700">1203</h5>
+                                        <small>Likes</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-6">
+                                <div class="card text-center">
+                                    <div class="body">
+                                        <i class="zmdi zmdi-comment-text zmdi-hc-2x"></i>
+                                        <h5 class="m-b-0 number count-to" data-from="0" data-to="324" data-speed="1000" data-fresh-interval="700">324</h5>
+                                        <small>Comments</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-6">
+                                <div class="card text-center">
+                                    <div class="body">
+                                        <i class="zmdi zmdi-eye zmdi-hc-2x"></i>
+                                        <h5 class="m-b-0 number count-to" data-from="0" data-to="1980" data-speed="1000" data-fresh-interval="700">1980</h5>
+                                        <small>Views</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-6">
+                                <div class="card text-center">
+                                    <div class="body">
+                                        <i class="zmdi zmdi-attachment zmdi-hc-2x"></i>
+                                        <h5 class="m-b-0 number count-to" data-from="0" data-to="52" data-speed="1000" data-fresh-interval="700">52</h5>
+                                        <small>Attachment</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-lg-4 col-md-12">
+                                <div class="card">
+                                    <div class="header">
+                                        <h2><strong>Info</strong></h2>
+                                        <ul class="header-dropdown">
+                                            <li class="dropdown">
+                                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li><a href="javascript:void(0);">Action</a></li>
+                                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                                    <li><a href="javascript:void(0);">Something else</a></li>
+                                                    <li><a href="javascript:void(0);" class="boxs-close">Delete</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="body">
+                                        <small class="text-muted">Address: </small>
+                                        <p>795 Folsom Ave, Suite 600 San Francisco, 94107</p>
+                                        <div>
+                                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1923731.7533500232!2d-120.39098936853455!3d37.63767091877441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan+Francisco%2C+CA%2C+USA!5e0!3m2!1sen!2sin!4v1522391841133" width="100%" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                        </div>
+                                        <hr>
+                                        <small class="text-muted">Email address: </small>
+                                        <p>michael@gmail.com</p>
+                                        <hr>
+                                        <small class="text-muted">Phone: </small>
+                                        <p>+ 202-555-9191</p>
+                                        <hr>
+                                        <small class="text-muted">Mobile: </small>
+                                        <p>+ 202-555-2828</p>
+                                        <hr>
+                                        <small class="text-muted">Birth Date: </small>
+                                        <p class="m-b-0">October 22th, 1990</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="header">
+                                        <h2><strong>Who</strong> to follow</h2>
+                                        <ul class="header-dropdown">
+                                            <li class="dropdown">
+                                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li><a href="javascript:void(0);">Action</a></li>
+                                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                                    <li><a href="javascript:void(0);">Something else</a></li>
+                                                    <li><a href="javascript:void(0);" class="boxs-close">Delete</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="body">
+                                        <ul class="follow_us list-unstyled m-b-0">
+                                            <li class="online">
+                                                <a href="javascript:void(0);">
+                                                    <div class="media">
+                                                        <img class="media-object " src="../assets/images/xs/avatar4.jpg" alt="">
+                                                        <div class="media-body">
+                                                            <span class="name">Chris Fox</span>
+                                                            <span class="message">Designer, Blogger</span>
+                                                            <span class="badge badge-outline status"></span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="online">
+                                                <a href="javascript:void(0);">
+                                                    <div class="media">
+                                                        <img class="media-object " src="../assets/images/xs/avatar5.jpg" alt="">
+                                                        <div class="media-body">
+                                                            <span class="name">Joge Lucky</span>
+                                                            <span class="message">Java Developer</span>
+                                                            <span class="badge badge-outline status"></span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="offline">
+                                                <a href="javascript:void(0);">
+                                                    <div class="media">
+                                                        <img class="media-object " src="../assets/images/xs/avatar2.jpg" alt="">
+                                                        <div class="media-body">
+                                                            <span class="name">Isabella</span>
+                                                            <span class="message">CEO, Thememakker</span>
+                                                            <span class="badge badge-outline status"></span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="offline">
+                                                <a href="javascript:void(0);">
+                                                    <div class="media">
+                                                        <img class="media-object " src="../assets/images/xs/avatar1.jpg" alt="">
+                                                        <div class="media-body">
+                                                            <span class="name">Folisise Chosielie</span>
+                                                            <span class="message">Art director, Movie Cut</span>
+                                                            <span class="badge badge-outline status"></span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li class="online">
+                                                <a href="javascript:void(0);">
+                                                    <div class="media">
+                                                        <img class="media-object " src="../assets/images/xs/avatar3.jpg" alt="">
+                                                        <div class="media-body">
+                                                            <span class="name">Alexander</span>
+                                                            <span class="message">Writter, Mag Editor</span>
+                                                            <span class="badge badge-outline status"></span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-md-12">
+                                <div class="card">
+                                    <div class="header">
+                                        <h2><strong>Add</strong> Post</h2>
+                                        <ul class="header-dropdown">
+                                            <li class="dropdown">
+                                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li><a href="blog-post.html">New Post</a></li>
+                                                    <li><a href="blog-details.html">Post Detail</a></li>
+                                                    <li><a href="blog-dashboard.html">Dashboard</a></li>
+                                                    <li><a href="javascript:void(0);" class="boxs-close">Delete</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="body m-b-10">
+                                        <div class="form-group">
+                                            <textarea rows="4" class="form-control no-resize" placeholder="Please type what you want..."></textarea>
+                                        </div>
+                                        <div class="post-toolbar-b">
+                                            <button class="btn btn-warning btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-attachment"></i></button>
+                                            <button class="btn btn-warning btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-camera"></i></button>
+                                            <button class="btn btn-primary btn-round">Post</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="body">
+                                        <div class="post-img">
+                                            <img src="../assets/images/image1.jpg" class="img-fluid" alt="">
+                                        </div>
+                                        <h5 class="m-t-20 m-b-0 post_title">It is a long established fact that a be distracted</h5>
+                                        <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text</p>
+                                        <div class="form-group m-b-0">
+                                            <button class="btn btn-info btn-round">Like 5</button>
+                                            <button class="btn btn-primary btn-simple btn-round">Reply</button>
+                                            <span class="date m-l-20"><i class="zmdi zmdi-alarm"></i> 7min ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane page-calendar" id="schedule">
+                        <div class="row clearfix text-center">
+                            <div class="col-lg-3 col-md-6 col-6">
+                                <div class="card">
+                                    <div class="body">
+                                        <input type="text" class="knob" value="22" data-width="70" data-height="70" data-thickness="0.1" data-bgcolor="#27303e" data-fgColor="#49c5b6">
+                                        <h6>Events</h6>
+                                        <spapn>12 of this month</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-6">
+                                <div class="card">
+                                    <div class="body">
+                                        <input type="text" class="knob" value="78" data-width="70" data-height="70" data-thickness="0.1" data-bgcolor="#27303e" data-fgColor="#2196f3">
+                                        <h6>Birthday</h6>
+                                        <span>4 of this month</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-6">
+                                <div class="card">
+                                    <div class="body">
+                                        <input type="text" class="knob" value="66" data-width="70" data-height="70" data-thickness="0.1" data-bgcolor="#27303e" data-fgColor="#f44336">
+                                        <h6>Conferences</h6>
+                                        <span>8 of this month</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-6">
+                                <div class="card">
+                                    <div class="body">
+                                        <input type="text" class="knob" value="50" data-width="70" data-height="70" data-thickness="0.1" data-bgcolor="#27303e" data-fgColor="#4caf50">
+                                        <h6>Seminars</h6>
+                                        <span>2 of this month</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-md-12 col-lg-4">
+                                <div class="card">
+                                    <div class="body">
+                                        <div class="event-name b-lightred row">
+                                            <div class="col-3 text-center">
+                                                <h4>09<span>Dec</span><span>2017</span></h4>
+                                            </div>
+                                            <div class="col-9">
+                                                <h6>Repeating Event</h6>
+                                                <p>It is a long established fact that a reader will be distracted</p>
+                                                <address><i class="zmdi zmdi-pin"></i> 123 6th St. Melbourne, FL 32904</address>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="event-name b-greensea row">
+                                            <div class="col-3 text-center">
+                                                <h4>16<span>Dec</span><span>2017</span></h4>
+                                            </div>
+                                            <div class="col-9">
+                                                <h6>Repeating Event</h6>
+                                                <p>It is a long established fact that a reader will be distracted</p>
+                                                <address><i class="zmdi zmdi-pin"></i> 123 6th St. Melbourne, FL 32904</address>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="event-name row">
+                                            <div class="col-3 text-center">
+                                                <h4>28<span>Dec</span><span>2017</span></h4>
+                                            </div>
+                                            <div class="col-9">
+                                                <h6>Google</h6>
+                                                <p>It is a long established fact that a reader will be distracted</p>
+                                                <address><i class="zmdi zmdi-pin"></i> 123 6th St. Melbourne, FL 32904</address>
+                                            </div>
+                                        </div>
+                                        <div class="event-name row">
+                                            <div class="col-3 text-center">
+                                                <h4>13<span>Dec</span><span>2017</span></h4>
+                                            </div>
+                                            <div class="col-9">
+                                                <h6>Birthday</h6>
+                                                <p>It is a long established fact that a reader will be distracted</p>
+                                                <address><i class="zmdi zmdi-pin"></i> 123 6th St. Melbourne, FL 32904</address>
+                                            </div>
+                                        </div>
+                                        <div class="event-name row">
+                                            <div class="col-3 text-center">
+                                                <h4>11<span>Dec</span><span>2017</span></h4>
+                                            </div>
+                                            <div class="col-9">
+                                                <h6>Conference</h6>
+                                                <p>It is a long established fact that a reader will be distracted</p>
+                                                <address><i class="zmdi zmdi-pin"></i> 123 6th St. Melbourne, FL 32904</address>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-round btn-primary m-t-15" data-toggle="modal" data-target="#addevent">Add Events</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-8">
+                                <div class="card">
+                                    <div class="body">
+                                        <div id="calendar"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane active" id="usersettings">
+                        <div class="card">
+                            <div class="header">
+                                <h2><strong>بيانات</strong> المستخدم</h2>
+                            </div>
+                            <div class="body">
+                                <form name="updateorgform">
+                                    <div class="row">
+
+                                        <div class="form-group col-md-6">
+                                            <label for="txtArabicFullName">اسم الموظف العربي</label>
+                                            <input type="text"
+                                                   ng-class="{submitted:updateorgform.submitted}" required class="form-control" id="txtArabicFullName" ng-model="profileUserInfo.ArabicFullName" />
+                                        </div>
+                                        <!--<div class="form-group col-md-6">
+                                            <label for="txtLatinFullName">اسم الموظف الأجنبي</label>
+                                            <input type="text" class="form-control" id="txtLatinFullName" ng-model="profileUserInfo.LatinFullName" />
+                                        </div>-->
+
+
+                                        <div class="form-group col-md-3">
+                                            <label for="txtPassword">كلمة المرور</label>
+                                            <input type="password"
+                                                   ng-class="{submitted:updateorgform.submitted}" required class="form-control" id="txtPassword" ng-model="profileUserInfo.Password" />
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="txtconfPassword">تأكيد كلمة المرور</label>
+                                            <input type="password"
+                                                   ng-class="{submitted:updateorgform.submitted}" required class="form-control" id="txtconfPassword" ng-model="profileUserInfo.Passwordconfirm" />
+                                        </div>
+
+
+                                        <div class="form-group col-md-3">
+                                            <label for="txtEmail">البريد الإلكتروني</label>
+                                            <input class="form-control"
+                                                   ng-class="{submitted:updateorgform.submitted}" required id="txtEmail" ng-model="profileUserInfo.Email" />
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="txtMobile">موبيل</label>
+                                            <input class="form-control"
+                                                   ng-class="{submitted:updateorgform.submitted}" required id="txtMobile" ng-model="profileUserInfo.Mobile" />
+                                        </div>
+
+                                        <div class="form-group col-md-3">
+                                            <label for="txtOfficePhone">تليفون المكتب</label>
+                                            <input type="text" class="form-control" id="txtOfficePhone" ng-model="profileUserInfo.OfficePhone" />
+                                        </div>
+                                        <!--<div class="form-group col-md-3">
+                                            <label for="txtBirthDate">تاريخ الميلاد</label>
+                                            <input id="birthdateedit" ng-required="true" class="form-control datepicker" ng-model="profileUserInfo.BirthDate" placeholder="تاريخ الميلاد" />
+                                        </div>-->
+                                        <div class="form-group col-md-3">
+                                            <label for="txtPersonalMessage">الرسالة الشخصية</label>
+                                            <input type="text" class="form-control" id="txtPersonalMessage" ng-model="profileUserInfo.PersonalMessage" />
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                    </div>
+                                    <br />
+                                    <div>
+                                        <button class="btn btn-primary" data-ng-click="update()">تحديث <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="header">
+                                <h2><strong>بيانات</strong> التوقيع الالكتروني</h2>
+                            </div>
+                            <div class="body">
+                                <div class="row clearfix" ng-show="isEmpty">
+                                    <div class="form-group col-md-12">
+
+                                        <h5>لا يوجد بيانات توقيع إلكتروني مسجلة, يرجي التسجيل من خلال الضغط علي الرابط أدناه</h5>
+                                        <br />
+                                        <p>
+                                            يرجي التأكد من توافر التالي قبل البدء في عملية التسجيل:
+                                            <ul>
+                                                <li>فتح البرنامج من خلال Microsoft Internet Explorer</li>
+                                                <li>توافر صورة التوقيع علي الجهاز</li>
+                                                <li>توافر الشهادة الرقمية علي الجهاز</li>
+                                            </ul>
+                                            <br />
+                                            في حالة عدم التأكد من البيانات السابقة, يرجي مراجعة الدعم التقني قبل البدء بعملية التسجيل
+                                        </p>
+                                        <a ng-href="{{SignatureAppLink}}" target="_blank" class="btn  greenBtn">تسجيل التوقيع الإلكتروني</a>
+                                    </div>
+                                    </div>
+                                    <div class="row clearfix" ng-hide="isEmpty">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+
+                                                <h6>{{UserInfo.FullName}}</h6>
+
+                                            </div>
+                                            <div class="form-group">
+
+                                                <h6>{{SignatureData.Title}}</h6>
+                                            </div>
+                                            <div class="form-group">
+
+                                                <img width="150" ng-src="data:image/png;base64,{{SignatureData.Image}}" />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <h6>
+                                                    الشهادة صالحة من
+                                                    <span ng-bind="SignatureData.NotBefore | date:'dd-MM-yyyy'"></span> إلي
+                                                    <span ng-bind="SignatureData.NotAfter | date:'dd-MM-yyyy'"></span>
+                                                </h6>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <a ng-href="{{SignatureAppLink}}" target="_blank" class="btn  greenBtn">تحديث <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+    <script type="text/javascript">
+        $(function () {
+            $(".datepicker").datepicker({
+                showAnim: 'slide',
+                dateFormat: 'mm-dd-yy',
+            });
+        });
+
+    </script>

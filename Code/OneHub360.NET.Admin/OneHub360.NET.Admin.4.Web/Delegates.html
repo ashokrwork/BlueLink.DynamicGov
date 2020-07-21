@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div class="col-xs-12 adminDataBox">
+        <ol class="breadcrumb">
+            <li><a href="#/">الصفحة الرئيسية لإدارة النظام</a></li>
+            <li><a href="#Delegates">الإنابة</a></li>
+        </ol>
+       
+        <div class="col-md-12 admintabslin">    
+            <a href="#UsersInfo" class="col-xs-2">إدارة بيانات الموظفين</a>
+            <a href="#Roles" class="col-xs-2 ">ادوار العمل</a>
+            <a href="#Groups" class="col-xs-2">إدارة المجموعات التعريفية</a>
+            <a href="#Delegates" class="col-xs-2 active">إدارة الإنابة</a>
+            <a href="#indicators" class="col-xs-2">التوجيه</a>
+            <a href="#Configuration" class="col-xs-2">
+                الإعدادات
+               
+            </a>
+        </div>
+
+        <div class="col-md-12" style="padding-left:0 !important;" ng-controller="Delegate">
+            <div ng-show="loading" class="loader"></div>
+       
+            <div class="adminContent" ng-show="listmode == 1">
+              
+                <h4>إدارة الإنابة<img src="img/delegation.png" /></h4>
+
+                <div class="row">
+                    <!--<div class="form-Delegate col-md-3">
+                        <label for="usr">البحث</label>
+                        <input type="text" class="form-control" id="usr" ng-model="keyword">
+                    </div>
+
+                    <div class="col-md-3 btnStyle">
+                        <button class="btn btn-info" ng-click="Filter()"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        <a class="btn btn-primary" href="" ng-click="clearfilter()"><i class="fa fa-undo" aria-hidden="true"></i></a>
+                    </div>-->
+                </div>
+                <div>
+                    <div class="table-responsive" id="tableview">
+                        <table st-table="DelegateData" st-safe-src="rowCollection" class="table-hover">
+                            <thead>
+                                <tr>
+                                    <td class="serchTd">
+                                        <button class="btn btnView btn-default" ng-click="New()">انشاء جديد <i class="fa fa-plus" aria-hidden="true"></i></button>
+                                        <input st-search="" class="form-control" placeholder="البحث" type="text" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>#</th>
+                                    <th st-sort="ArabicFullName">اسم المستخدم</th>
+                                    <th st-sort="DelegeteUser.ArabicFullName">النائب</th>
+                                    <th st-sort="Fromdate">من</th>
+                                    <th st-sort="Todate">الى</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="Delegate in DelegateData">
+                                    <td>{{$index +1}}</td>
+                                    <td><a href="#Delegate/{{Delegate.Id}}">{{Delegate.DelegatorUser.ArabicFullName}}</a></td>
+                                    <td>{{Delegate.DelegeteUser.ArabicFullName}}</td>
+                                    <td>{{Delegate.Fromdate | date:'dd/MM/yyyy'}}</td>
+                                    <td>{{Delegate.Todate | date:'dd/MM/yyyy'}}</td>
+                                    <td>
+                                        <button class="smallbtnRed" ng-click="delete(Delegate.Id)"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> </button>
+
+                                        <button class="smallbtn"ng-model="$scope.Delegate"
+                                                ng-click="edit(DelegateData[$index])">
+                                            <i class="fa fa-pencil fa-lg" aria-hidden="true"></i> 
+                                        </button>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="5" class="text-center">
+                                        <div st-pagination="" st-items-by-page="8" st-displayed-pages="7"></div>
+                                    </td>
+                                </tr>
+
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+         
+
+            </div>
+
+            <div class="adminContent"  ng-show="updateitem  == 1 ">
+                <div>
+                    <h3>تحرير نيابة</h3>
+                    <br /><br />
+                </div>
+                <div class="row">
+                    <div class="form-Delegate col-md-3">
+                        <label for="txtName">المستخدم</label>
+                        <md-autocomplete  md-selected-item="selecteddelegator"
+                                         md-items="item in Users"
+                                         md-item-text="item.ArabicFullName"
+                                         md-search-text="UsersearchText"
+                                         md-min-length="0"
+                                         placeholder="المستخدم">
+                            <md-item-template>
+                                <span md-highlight-text="UsersearchText" md-highlight-flags="^i">{{item.ArabicFullName}}</span>
+                            </md-item-template>
+
+                        </md-autocomplete>
+                        <!--<md-input-container>
+                            <md-select ng-model="selecteddelegator" aria-label="Select">
+                                <md-option ng-repeat="user in Users" ng-selected="user.Id == Delegate.DelegatorUser.Id" ng-value="user">
+                                    {{user.ArabicFullName}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>-->
+                    </div>
+                    <div class="form-Delegate col-md-3">
+                            <label>النائب</label>
+                            <md-autocomplete md-selected-item="selecteddelegate"
+                                             md-items="item in Users"
+                                             md-item-text="item.ArabicFullName"
+                                             md-search-text="UsersearchText1"
+                                             md-min-length="0"
+                                             placeholder="النائب">
+                                <md-item-template>
+                                    <span md-highlight-text="UsersearchText1" md-highlight-flags="^i">{{item.ArabicFullName}}</span>
+                                </md-item-template>
+
+                            </md-autocomplete>
+                            <!--<md-select ng-model="selecteddelegate" aria-label="Select">
+                                <md-option ng-repeat="user in Users" ng-selected="user.Id == Delegate.DelegeteUser.Id" ng-value="user">
+                                    {{user.ArabicFullName}}
+                                </md-option>
+                            </md-select>-->
+                    </div>
+                    <div class="form-Delegate col-md-3">
+                        <label for="txtFromdate" >من</label><br />
+                        <input ng-required="true" class="form-control datepicker" ng-model="Delegate.Fromdate  | date:'MM/dd/yyyy' " placeholder="تاريخ البداية">
+
+                        <!--<md-datepicker aria-label="datepicker" id="txtFromdate" ng-model="Delegate.Fromdate" 
+                                       md-placeholder="تاريخ البداية" ></md-datepicker>-->
+
+                    </div>
+                    <div class="form-Delegate col-md-3">
+                        <label for="txttodate">الى</label><br />
+                        <input ng-required="true" class="form-control datepicker" ng-model="Delegate.Todate  | date:'MM/dd/yyyy' " placeholder="تاريخ النهاية">
+
+                        <!--<md-datepicker aria-label="datepicker" id="txttodate" ng-model="Delegate.Todate" md-placeholder="تاريخ النهاية" ></md-datepicker>-->
+
+                    </div>
+                </div>
+
+                <br />
+                <div>
+                    <button class="btn btnView2 " data-ng-click="cancel()">إلغاء <i class="fa fa-times" aria-hidden="true"></i> </button>
+                    <button class="btn btnView3 " data-ng-click="update()">تحديث <i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+
+                </div>
+            </div>
+
+            <div class="adminContent" ng-show="newitem  == 1 ">
+              
+                    <h3>إنشاء نيابة</h3>
+                <br /><br />
+             
+                <div class="row">
+                    <div class="form-Delegate col-md-3">
+                        <label for="txtName">المستخدم</label>
+                        <md-autocomplete md-selected-item="selecteddelegator"
+                                         md-items="item in Users"
+                                         md-item-text="item.ArabicFullName"
+                                         md-search-text="UsersearchText"
+                                         md-min-length="0"
+                                         placeholder="المستخدم">
+                            <md-item-template>
+                                <span md-highlight-text="UsersearchText" md-highlight-flags="^i">{{item.ArabicFullName}}</span>
+                            </md-item-template>
+
+                        </md-autocomplete>
+                        <!--<md-input-container>
+            <md-select ng-model="selecteddelegator" aria-label="Select">
+                <md-option ng-repeat="user in Users" ng-selected="user.Id == Delegate.DelegatorUser.Id" ng-value="user">
+                    {{user.ArabicFullName}}
+                </md-option>
+            </md-select>
+        </md-input-container>-->
+                    </div>
+                    <div class="form-Delegate col-md-3">
+                        <label>النائب</label>
+                        <md-autocomplete md-selected-item="selecteddelegate"
+                                         md-items="item in Users"
+                                         md-item-text="item.ArabicFullName"
+                                         md-search-text="UsersearchText1"
+                                         md-min-length="0"
+                                         placeholder="النائب">
+                            <md-item-template>
+                                <span md-highlight-text="UsersearchText1" md-highlight-flags="^i">{{item.ArabicFullName}}</span>
+                            </md-item-template>
+
+                        </md-autocomplete>
+                        <!--<md-select ng-model="selecteddelegate" aria-label="Select">
+            <md-option ng-repeat="user in Users" ng-selected="user.Id == Delegate.DelegeteUser.Id" ng-value="user">
+                {{user.ArabicFullName}}
+            </md-option>
+        </md-select>-->
+                    </div>
+                    <div class="form-Delegate col-md-3">
+                        <label for="txtFromdate">من</label><br />
+                        <input ng-required="true" class="form-control datepicker" ng-model="Delegate.Fromdate  | date:'MM/dd/yyyy' " placeholder="تاريخ البداية">
+
+                        <!--<md-datepicker aria-label="datepicker" id="txtFromdate" ng-model="Delegate.Fromdate"
+                                       md-placeholder="تاريخ البداية"></md-datepicker>-->
+
+                    </div>
+                    <div class="form-Delegate col-md-3">
+                        <label for="txttodate">الى</label><br />
+                        <input ng-required="true" class="form-control datepicker" ng-model="Delegate.Todate  | date:'MM/dd/yyyy' " placeholder="تاريخ النهاية">
+
+                        <!--<md-datepicker aria-label="datepicker" id="txttodate" ng-model="Delegate.Todate" md-placeholder="تاريخ النهاية"></md-datepicker>-->
+
+                    </div>
+                </div>
+
+
+                <br /><br />
+
+                <div>
+                    <button class="btn btnView2" data-ng-click="cancel()">إلغاء <i class="fa fa-times" aria-hidden="true"></i> </button>
+                    <button class="btn btnView2 " data-ng-click="clear()">مسح الحقول <i class="fa fa-paint-brush" aria-hidden="true"></i> </button>
+                    <button class="btn btnView3 " data-ng-click="save()">حفظ <i class="fa fa-floppy-o" aria-hidden="true"></i>   </button>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+   
+</body>
+</html>

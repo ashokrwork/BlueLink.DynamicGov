@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub.NET.TimeManagement" namespace="OneHub.NET.TimeManagement" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <subclass name="Task" extends="PlannedItem" discriminator-value="Task">
+    <property name="ReferenceNumber" type="String">
+      <column name="ReferenceNumber" not-null="true" length="256" sql-type="nvarchar" />
+    </property>
+    <property name="SignedPDF" type="BinaryBlob">
+      <column name="SignedPDF" not-null="false" length="2147483647" sql-type="image" />
+    </property>
+    <property name="CommentThreadId" type="Guid">
+      <column name="CommentThreadId" not-null="false" sql-type="uniqueidentifier" />
+    </property>
+    <property name="PercentComplete" type="Decimal">
+      <column name="PercentComplete" not-null="true" />
+    </property>
+    <property name="ExpectedEndDate" type="DateTime">
+      <column name="PlannedEndDate" not-null="true" sql-type="date" />
+    </property>
+    <many-to-one name="Project" class="Project">
+      <column name="FK_Project" not-null="true" sql-type="uniqueidentifier" />
+    </many-to-one>
+    <many-to-one name="Parent" class="Task">
+      <column name="FK_ParentTask" not-null="true" />
+    </many-to-one>
+    <many-to-one name="Priority" class="Priority">
+      <column name="FK_Priority" not-null="true" />
+    </many-to-one>
+    <many-to-one name="Severity" class="Severity">
+      <column name="FK_Severity" not-null="true" />
+    </many-to-one>
+    <bag name="Children" generic="true">
+      <key>
+        <column name="FK_ParentTask" not-null="true" />
+      </key>
+      <one-to-many class="Task" />
+    </bag>
+    <bag name="Attachments" generic="true">
+      <key>
+        <column name="FK_Task" not-null="true" />
+      </key>
+      <one-to-many class="TaskAttachment" />
+    </bag>
+    <bag name="Assignments" generic="true">
+      <key>
+        <column name="FK_Task" not-null="true" />
+      </key>
+      <one-to-many class="TaskAssignment" />
+    </bag>
+  </subclass>
+</hibernate-mapping>

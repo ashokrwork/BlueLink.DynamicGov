@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.NET.Admin.Model" namespace="OneHub360.NET.Admin.Model" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <union-subclass name="Delegates" table="Delegate" extends="OneHub360.NET.Core.Model.NHEntity">
+    <property name="Fromdate">
+      <column name="Fromdate" sql-type="datetime2" not-null="false" />
+    </property>
+    <property name="Todate">
+      <column name="Todate" sql-type="datetime2" not-null="false" />
+    </property>
+    <property name="Delegateid">
+      <column name="DelegateID" sql-type="uniqueidentifier" not-null="false" />
+    </property>
+    <property name="Delegatorid">
+      <column name="DelegatorID" sql-type="uniqueidentifier" not-null="false" />
+    </property>
+    <!--<many-to-one name="DelegeteUser"  column="Delegateid" unique="true"
+       class="UserInfo" not-null="false"/>
+
+    <many-to-one name="DelegatorUser" column="DelegatorID" unique="true"
+         class="UserInfo" not-null="false"/>-->
+
+  
+  </union-subclass>
+</hibernate-mapping>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.NET.Admin.Model" namespace="OneHub360.NET.Admin.Model" xmlns="urn:nhibernate-mapping-2.2">
+  <union-subclass name="UsersGroup" table="UsersGroup" extends="OneHub360.NET.Core.Model.NHEntity">
+    <property name="Fk_Groups">
+      <column name="FK_Groups" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="FK_UserInfo">
+      <column name="FK_UserInfo" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+  </union-subclass>
+</hibernate-mapping>

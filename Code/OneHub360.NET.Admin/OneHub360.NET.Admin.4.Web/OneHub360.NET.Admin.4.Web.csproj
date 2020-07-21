@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E3AB4F61-1565-4053-8B7A-058AA1E02479}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OneHub360.NET.Admin._4.Web</RootNamespace>
+    <AssemblyName>OneHub360.NET.Admin.4.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\jquery-ui.css" />
+    <Content Include="css\loginstyle.css" />
+    <Content Include="Delegates.html" />
+    <Content Include="Groups.html" />
+    <Content Include="Help\css\bootstrap-rtl.min.css" />
+    <Content Include="Help\css\bootstrap-theme-rtl.min.css" />
+    <Content Include="Help\css\style.css" />
+    <Content Include="Help\fonts\fontawesome-webfont.svg" />
+    <Content Include="Help\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Help\images\eservices-banner.jpg" />
+    <Content Include="Help\images\eservices-banner2.jpg" />
+    <Content Include="Help\images\Screens\1.PNG" />
+    <Content Include="Help\images\Screens\10.PNG" />
+    <Content Include="Help\images\Screens\11.PNG" />
+    <Content Include="Help\images\Screens\12.PNG" />
+    <Content Include="Help\images\Screens\13.PNG" />
+    <Content Include="Help\images\Screens\14.PNG" />
+    <Content Include="Help\images\Screens\15.PNG" />
+    <Content Include="Help\images\Screens\16.PNG" />
+    <Content Include="Help\images\Screens\2.PNG" />
+    <Content Include="Help\images\Screens\3.PNG" />
+    <Content Include="Help\images\Screens\4.PNG" />
+    <Content Include="Help\images\Screens\5.PNG" />
+    <Content Include="Help\images\Screens\6.PNG" />
+    <Content Include="Help\images\Screens\7.PNG" />
+    <Content Include="Help\images\Screens\8.PNG" />
+    <Content Include="Help\images\Screens\9.PNG" />
+    <Content Include="Help\images\Screens\news\Add News - 1.png" />
+    <Content Include="Help\images\Screens\news\Add News - 13.png" />
+    <Content Include="Help\images\Screens\news\Add News - 14.png" />
+    <Content Include="Help\images\Screens\news\Add News - 2.png" />
+    <Content Include="Help\images\Screens\news\Add News - 3.png" />
+    <Content Include="Help\images\Screens\news\Add News - 4.png" />
+    <Content Include="Help\images\Screens\news\Add News - 5.png" />
+    <Content Include="Help\images\Screens\news\Add News - 6.png" />
+    <Content Include="Help\images\Screens\news\Add News - 7.png" />
+    <Content Include="Help\images\Screens\news\Add News - 8.png" />
+    <Content Include="Help\images\Screens\news\Add News - 9.png" />
+    <Content Include="Help\images\Screens\news\Homepage.png" />
+    <Content Include="Help\index.html" />
+    <Content Include="Help\indicators.html" />
+    <Content Include="Help\JobTitles.html" />
+    <Content Include="Help\js\bootstrap-rtl.js" />
+    <Content Include="Help\js\bootstrap-rtl.min.js" />
+    <Content Include="Help\Organizations.html" />
+    <Content Include="Help\OrganizationTypes.html" />
+    <Content Include="Help\OrganizationUnits.html" />
+    <Content Include="Help\OrganizationUnitTypes.html" />
+    <Content Include="Help\Roles.html" />
+    <Content Include="Help\UsersInfo.html" />
+    <Content Include="img\cpasmallLogo.jpg" />
+    <Content Include="img\delegation.png" />
+    <Content Include="img\flow_chart.png" />
+    <Content Include="img\forward.png" />
+    <Content Include="img\letteredit.png" />
+    <Content Include="img\logosetting.png" />
+    <Content Include="img\memoedit.png" />
+    <Content Include="img\namesadmin2.png" />
+    <Content Include="img\org-types.png" />
+    <Content Include="img\orgadmin.png" />
+    <Content Include="img\orgnames.png" />
+    <Content Include="img\outeradmin.png" />
+    <Content Include="img\outertype.png" />
+    <Content Include="img\useradmin.png" />
+    <Content Include="Configuration.html" />
+    <Content Include="jquery\fileupload\ng-file-upload-shim.js" />
+    <Content Include="jquery\fileupload\ng-file-upload.js" />
+    <Content Include="jquery\jquery-3.2.0.min.js" />
+    <Content Include="jquery\jquery.dataTables.min.css" />
+    <Content Include="jquery\jquery.dataTables.min.js" />
+    <Content Include="js\angular\angular-animate.min.js" />
+    <Content Include="js\angular\angular-aria.min.js" />
+    <Content Include="js\angular\angular-cookies.js" />
+    <Content Include="js\angular\angular-material.min.css" />
+    <Content Include="js\angular\angular-material.min.js" />
+    <Content Include="js\angular\angular-messages.min.js" />
+    <Content Include="js\angular\angular.min.js" />
+    <Content Include="js\angular\moment.min.js" />
+    <Content Include="js\indicators.js" />
+    <Content Include="js\Configuration.js" />
+    <Content Include="js\login.js" />
+    <Content Include="js\ng-file-upload-all.js.js" />
+    <Content Include="js\JobTitle.js" />
+    <Content Include="js\Group.js" />
+    <Content Include="js\Delegate.js" />
+    <Content Include="js\Role.js" />
+    <Content Include="js\UserInfo.js" />
+    <Content Include="js\Organization.js" />
+    <Content Include="js\OrganizationType.js" />
+    <Content Include="js\OrganizationUnit.js" />
+    <Content Include="js\OrganizationUnitTypes.js" />
+    <Content Include="Login.html" />
+    <Content Include="indicators.html" />
+    <Content Include="pace\CenterRadar.css" />
+    <Content Include="pace\CornerIndicator.css" />
+    <Content Include="pace\MacOSX.css" />
+    <Content Include="pace\pace.min.js" />
+    <Content Include="packages.config" />
+    <Content Include="css\bootstrap.css.map">
+      <DependentUpon>bootstrap.css</DependentUpon>
+    </Content>
+    <Content Include="css\bootstrap.min.css.map">
+      <DependentUpon>bootstrap.min.css</DependentUpon>
+    </Content>
+    <Content Include="css\bootstrap-theme.css.map">
+      <DependentUpon>bootstrap-theme.css</DependentUpon>
+    </Content>
+    <Content Include="css\bootstrap-theme.min.css.map">
+      <DependentUpon>bootstrap-theme.min.css</DependentUpon>
+    </Content>
+    <Content Include="fonts\DroidKufi-Bold.eot" />
+    <Content Include="fonts\DroidKufi-Bold.otf" />
+    <Content Include="fonts\DroidKufi-Bold.ttf" />
+    <Content Include="fonts\DroidKufi-Regular.eot" />
+    <Content Include="fonts\DroidKufi-Regular.otf" />
+    <Content Include="fonts\DroidKufi-Regular.ttf" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\GOTHIC.TTF" />
+    <Content Include="fonts\GOTHICB.TTF" />
+    <Content Include="fonts\GOTHICBI.TTF" />
+    <Content Include="fonts\GOTHICI.TTF" />
+    <Content Include="lib\angular\.bower.json" />
+    <Content Include="lib\angular\angular.min.js.gzip">
+      <DependentUpon>angular.min.js</DependentUpon>
+    </Content>
+    <Content Include="lib\angular\angular.min.js.map">
+      <DependentUpon>angular.min.js</DependentUpon>
+    </Content>
+    <Content Include="lib\angular\bower.json" />
+    <Content Include="lib\angular\LICENSE.md" />
+    <Content Include="lib\angular\package.json" />
+    <Content Include="lib\angular\README.md" />
+    <Content Include="lib\angular-route\.bower.json" />
+    <Content Include="lib\angular-route\angular-route.min.js.map">
+      <DependentUpon>angular-route.min.js</DependentUpon>
+    </Content>
+    <Content Include="lib\angular-route\bower.json" />
+    <Content Include="lib\angular-route\LICENSE.md" />
+    <Content Include="lib\angular-route\package.json" />
+    <Content Include="lib\angular-route\README.md" />
+    <Content Include="lib\bootstrap\dist\css\bootstrap.css.map">
+      <DependentUpon>bootstrap.css</DependentUpon>
+    </Content>
+    <Content Include="lib\bootstrap\dist\css\bootstrap.min.css.map">
+      <DependentUpon>bootstrap.min.css</DependentUpon>
+    </Content>
+    <Content Include="lib\bootstrap\dist\css\bootstrap-theme.css.map">
+      <DependentUpon>bootstrap-theme.css</DependentUpon>
+    </Content>
+    <Content Include="lib\bootstrap\dist\css\bootstrap-theme.min.css.map">
+      <DependentUpon>bootstrap-theme.min.css</DependentUpon>
+    </Content>
+    <Content Include="lib\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="lib\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="lib\bootstrap\.bower.json" />
+    <Content Include="lib\bootstrap\LICENSE" />
+    <Content Include="lib\jquery\dist\jquery.min.map">
+      <DependentUpon>jquery.min.js</DependentUpon>
+    </Content>
+    <Content Include="lib\jquery\.bower.json" />
+    <Content Include="lib\jquery-validation\.bower.json" />
+    <Content Include="lib\jquery-validation\LICENSE.md" />
+    <Content Include="lib\jquery-validation-unobtrusive\.bower.json" />
+    <Content Include="SmartTable\smart-table.min.js.map" />
+    <Content Include="Help\fonts\DroidKufi-Bold.eot" />
+    <Content Include="Help\fonts\DroidKufi-Bold.otf" />
+    <Content Include="Help\fonts\DroidKufi-Bold.ttf" />
+    <Content Include="Help\fonts\DroidKufi-Regular.eot" />
+    <Content Include="Help\fonts\DroidKufi-Regular.otf" />
+    <Content Include="Help\fonts\DroidKufi-Regular.ttf" />
+    <Content Include="Help\fonts\fontawesome-webfont.eot" />
+    <Content Include="Help\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Help\fonts\fontawesome-webfont.woff" />
+    <Content Include="Help\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Help\fonts\FontAwesome.otf" />
+    <Content Include="Help\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Help\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Help\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Help\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Help\fonts\GOTHIC.TTF" />
+    <Content Include="Help\fonts\GOTHICB.TTF" />
+    <Content Include="Help\fonts\GOTHICBI.TTF" />
+    <Content Include="Help\fonts\GOTHICI.TTF" />
+    <None Include="Properties\PublishProfiles\Weblocal.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="home.html" />
+    <Content Include="Index.html" />
+    <Content Include="JobTitles.html" />
+    <Content Include="js\app.js" />
+    <Content Include="Organizations.html" />
+    <Content Include="OrganizationTypes.html" />
+    <Content Include="OrganizationUnits.html" />
+    <Content Include="OrganizationUnitTypes.html" />
+    <Content Include="Roles.html" />
+    <Content Include="SmartTable\script.js" />
+    <Content Include="SmartTable\smart-table.debug.js" />
+    <Content Include="SmartTable\smart-table.js" />
+    <Content Include="SmartTable\smart-table.min.js" />
+    <Content Include="SmartTable\style.css" />
+    <Content Include="test.aspx" />
+    <Content Include="UsersInfo.html" />
+    <Content Include="css\bootstrap-rtl.css" />
+    <Content Include="css\bootstrap-theme-rtl.css" />
+    <Content Include="css\bootstrap-theme.css" />
+    <Content Include="css\bootstrap-theme.min.css">
+      <DependentUpon>bootstrap-theme.css</DependentUpon>
+    </Content>
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css">
+      <DependentUpon>bootstrap.css</DependentUpon>
+    </Content>
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\font-awesome.min.css">
+      <DependentUpon>font-awesome.css</DependentUpon>
+    </Content>
+    <Content Include="css\site.css" />
+    <Content Include="css\site.min.css">
+      <DependentUpon>site.css</DependentUpon>
+    </Content>
+    <Content Include="css\style.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="images\banner1.svg" />
+    <Content Include="images\banner2.svg" />
+    <Content Include="images\banner3.svg" />
+    <Content Include="images\banner4.svg" />
+    <Content Include="img\alert.png" />
+    <Content Include="img\draft.png" />
+    <Content Include="img\mail.png" />
+    <Content Include="img\mailing.png" />
+    <Content Include="img\OneHub360.png" />
+    <Content Include="img\OneHub360_icon.png" />
+    <Content Include="img\OneHub360_w.png" />
+    <Content Include="img\setting.png" />
+    <Content Include="img\tasks.png" />
+    <Content Include="img\tasksetting.png" />
+    <Content Include="img\userImg.jpg" />
+    <Content Include="img\usersetting.png" />
+    <Content Include="js\bootstrap-rtl.js" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\bootstrap.min.js">
+      <DependentUpon>bootstrap.js</DependentUpon>
+    </Content>
+    <Content Include="js\jquery-1.11.2.min.js" />
+    <Content Include="js\npm.js" />
+    <Content Include="js\side_nave.js" />
+    <Content Include="js\site.js" />
+    <Content Include="js\site.min.js">
+      <DependentUpon>site.js</DependentUpon>
+    </Content>
+    <Content Include="lib\angular-route\angular-route.js" />
+    <Content Include="lib\angular-route\angular-route.min.js">
+      <DependentUpon>angular-route.js</DependentUpon>
+    </Content>
+    <Content Include="lib\angular-route\index.js" />
+    <Content Include="lib\angular\angular-csp.css" />
+    <Content Include="lib\angular\angular.js" />
+    <Content Include="lib\angular\angular.min.js">
+      <DependentUpon>angular.js</DependentUpon>
+    </Content>
+    <Content Include="lib\angular\index.js" />
+    <Content Include="lib\bootstrap\dist\css\bootstrap-theme.css" />
+    <Content Include="lib\bootstrap\dist\css\bootstrap-theme.min.css">
+      <DependentUpon>bootstrap-theme.css</DependentUpon>
+    </Content>
+    <Content Include="lib\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="lib\bootstrap\dist\css\bootstrap.min.css">
+      <DependentUpon>bootstrap.css</DependentUpon>
+    </Content>
+    <Content Include="lib\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="lib\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="lib\bootstrap\dist\js\bootstrap.min.js">
+      <DependentUpon>bootstrap.js</DependentUpon>
+    </Content>
+    <Content Include="lib\bootstrap\dist\js\npm.js" />
+    <Content Include="lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <Content Include="lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js">
+      <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
+    </Content>
+    <Content Include="lib\jquery-validation\dist\additional-methods.js" />
+    <Content Include="lib\jquery-validation\dist\additional-methods.min.js">
+      <DependentUpon>additional-methods.js</DependentUpon>
+    </Content>
+    <Content Include="lib\jquery-validation\dist\jquery.validate.js" />
+    <Content Include="lib\jquery-validation\dist\jquery.validate.min.js">
+      <DependentUpon>jquery.validate.js</DependentUpon>
+    </Content>
+    <Content Include="lib\jquery\dist\jquery.js" />
+    <Content Include="lib\jquery\dist\jquery.min.js">
+      <DependentUpon>jquery.js</DependentUpon>
+    </Content>
+    <Content Include="lib\jquery\LICENSE.txt" />
+    <Content Include="Web.config" />
+    <None Include="_references.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="css\fonts\" />
+    <Folder Include="css\images\" />
+    <Folder Include="js\jquery\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>28707</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:28707/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

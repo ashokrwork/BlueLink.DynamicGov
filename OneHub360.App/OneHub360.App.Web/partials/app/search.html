@@ -1,0 +1,419 @@
+﻿<!--<div class="searchbox" ng-controller="feedController" ng-init="initSearch()" ng-if="isLoggedIn">
+    <div ng-if="status == 0">
+        <loading></loading>
+    </div>
+    <div>
+        <form class="form-horizontal" name="searchForm" role="form">
+
+            <div style="visibility:hidden!important;display:none!important" class="form-group">
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+                        <select class="form-control" ng-model="criteria.Feedtype">
+                            <option selected="selected" value="">الكل</option>
+                            <option value="مذكرة">مذكرة</option>
+                            <option value="كتاب">كتاب</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+                        <input type="text" ng-required="true" class="form-control" ng-model="criteria.Keyword" placeholder="بحث عن">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
+                        <input ng-required="true" class="form-control datepicker" ng-model="criteria.DateFrom" placeholder="ليس قبل">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
+                        <input ng-required="true" class="form-control datepicker" ng-model="criteria.DateTo" placeholder="ليس بعد">
+                    </div>
+                </div>
+                <div class="col-md-1 col-xs-1">
+                    <button ng-disabled="status == 0" type="button" ng-click="ReSearchFeeds()" class="btn  greenBtn"><i class="fa fa-search fa-fw"></i></button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div style="width:100%;text-align:center" ng-if="noData">
+        <h3>لم يتم العثور علي نتائج للبحث</h3>
+    </div>
+
+    <div class="TimeLineBox">
+        <div ng-if="status == 1">
+            <div ng-repeat="(category, feeds) in feedData | map: map | groupBy: 'Category'">
+                <div class="timeLin_date {{category}}" ng-click="SlideCategory($event,category)">
+                    <i class="fa fa-calendar fa-lg"></i>
+                    <b> ( {{feeds.length}} ) </b>
+                </div>
+                <content>
+                    <div ng-repeat="feedItemData in feeds">
+                        <div template="{{feedItemData.TemplateUrl}}" feeditem></div>
+                    </div>
+                </content>
+            </div>
+        </div>
+    </div>
+</div>-->
+    <div class="container" ng-controller="searchController" ng-init="init()">
+        <div class="row clearfix">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="body block-header">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-8 col-sm-12">
+                                <h2>نتائج البحث</h2>
+                                <ul class="breadcrumb p-l-0 p-b-0 ">
+                                    <li class="breadcrumb-item"><a href="index.html"><i class="icon-home"></i></a></li>
+                                    <li class="breadcrumb-item active">نتائج البحث</li>
+                                </ul>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-md-12">
+                
+                <div class="card">
+                    <div class="header">
+                        <h2><strong>البحث</strong> المتقدم</h2>
+                    </div>
+                    <div class="body">
+                        <form name="updateorgform">
+                            <div class="row">
+
+                                <div class="form-group col-md-12">
+                                    <label for="txtArabicFullName">كلمة البحث</label>
+                                    <input type="text"
+                                           value="مذكرة" required class="form-control" />
+                                </div>
+                                
+                                <div class="form-group col-md-6 ">
+                                    <label>من تاريخ</label>
+                                    <div class="input-group">
+                                        <input type="datetime-local" class="form-control" />
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-md-6 ">
+                                    <label>الي تاريخ</label>
+                                    <div class="input-group">
+                                        <input type="datetime-local" class="form-control" />
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-md-12 ">
+                                    <label for="txtArabicFullName">تعيين مدخلات البحث الاضافية</label>
+                                    <br />
+                                    <div class="checkbox inlineblock">
+                                        <input id="status1" type="checkbox">
+                                        <label for="status1">
+                                            منتهية
+                                        </label>
+                                    </div>
+                                    <div class="checkbox inlineblock">
+                                        <input id="status2" type="checkbox">
+                                        <label for="status2">
+                                            بحث داخل الوثائق
+                                        </label>
+                                    </div>
+                                    <div class="checkbox inlineblock">
+                                        <input id="status3" type="checkbox">
+                                        <label for="status3">
+                                            متعلقة بي فقط
+                                        </label>
+                                    </div>
+                                    <div class="checkbox inlineblock">
+                                        <input id="status4" type="checkbox">
+                                        <label for="status4">
+                                            تضمين البحث من الارشيف
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                            </div>
+                            <br />
+                            <div>
+                                <button class="btn btn-primary" data-ng-click="init()">بحث <i class="fa fa-search" aria-hidden="true"></i></button>
+                            </div>
+                            <div>
+                                <p class="m-b-0">نتائج البحث عن "مذكرة"</p>
+                                <strong> حوالي ٨ نتيجة (٠.١٣ ثانية)</strong>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane card active" id="Web">
+                        <div class="body">
+                            <h5 class="title">
+                                <a target="_blank" href="https://themeforest.net/item/falcon-bootstrap-admin-dashboard-template-ui-kit/20999984">
+                                    مذكرة جديدة
+                                </a>
+                            </h5>
+                            <small class="m-t-10"><aviatoroneline userid="902980e4-32c5-4dad-9fd9-a6a9015c8755"></aviatoroneline> > <aviatoroneline userid="902980e4-32c5-4dad-9fd9-a6a9015c8756"></aviatoroneline></small>
+
+                            <p class="m-t-10">الملخص: يرجي العمل علي تعديل وثائق المشروع علي النحو...</p>
+                        </div>
+                        <div class="body">
+                            <h5 class="title">
+                                <a target="_blank" href="https://themeforest.net/item/falcon-bootstrap-admin-dashboard-template-ui-kit/20999984">
+                                    مذكرة الشئون الادارية
+                                </a>
+                            </h5>
+                            <small class="m-t-10"><aviatoroneline userid="902980e4-32c5-4dad-9fd9-a6a9015c8755"></aviatoroneline> > <aviatoroneline userid="902980e4-32c5-4dad-9fd9-a6a9015c8756"></aviatoroneline></small>
+
+                            <p class="m-t-10">الملخص: تم الاطلاع...</p>
+                        </div>
+                        <ul class="body pagination pagination-primary">
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
+                            <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane card" id="Images">
+                        <div class="header">
+                            <h2><strong>Images</strong> <small>All pictures taken from <a href="https://pexels.com/" target="_blank">pexels.com</a></small> </h2>
+                            <ul class="header-dropdown">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="javascript:void(0);">Action</a></li>
+                                        <li><a href="javascript:void(0);">Another action</a></li>
+                                        <li><a href="javascript:void(0);">Something else</a></li>
+                                    </ul>
+                                </li>
+                                <li class="remove">
+                                    <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <div id="aniimated-thumbnials" class="list-unstyled row clearfix">
+                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 m-b-20"> <a href="../assets/images/image-gallery/1.jpg"> <img class="img-fluid img-thumbnail" src="../assets/images/image-gallery/thumb/thumb-1.jpg" alt=""> </a> </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 m-b-20"> <a href="../assets/images/image-gallery/2.jpg"> <img class="img-fluid img-thumbnail" src="../assets/images/image-gallery/thumb/thumb-2.jpg" alt=""> </a> </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 m-b-20"> <a href="../assets/images/image-gallery/3.jpg"> <img class="img-fluid img-thumbnail" src="../assets/images/image-gallery/thumb/thumb-3.jpg" alt=""> </a> </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 m-b-20"> <a href="../assets/images/image-gallery/4.jpg"> <img class="img-fluid img-thumbnail" src="../assets/images/image-gallery/thumb/thumb-4.jpg" alt=""> </a> </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 m-b-20"> <a href="../assets/images/image-gallery/5.jpg"> <img class="img-fluid img-thumbnail" src="../assets/images/image-gallery/thumb/thumb-5.jpg" alt=""> </a> </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 m-b-20"> <a href="../assets/images/image-gallery/6.jpg"> <img class="img-fluid img-thumbnail" src="../assets/images/image-gallery/thumb/thumb-6.jpg" alt=""> </a> </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 m-b-20"> <a href="../assets/images/image-gallery/7.jpg"> <img class="img-fluid img-thumbnail" src="../assets/images/image-gallery/thumb/thumb-7.jpg" alt=""> </a> </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 m-b-20"> <a href="../assets/images/image-gallery/8.jpg"> <img class="img-fluid img-thumbnail" src="../assets/images/image-gallery/thumb/thumb-8.jpg" alt=""> </a> </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 m-b-20"> <a href="../assets/images/image-gallery/9.jpg"> <img class="img-fluid img-thumbnail" src="../assets/images/image-gallery/thumb/thumb-9.jpg" alt=""> </a> </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 m-b-20"> <a href="../assets/images/image-gallery/10.jpg"> <img class="img-fluid img-thumbnail" src="../assets/images/image-gallery/thumb/thumb-10.jpg" alt=""> </a> </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 m-b-20"> <a href="../assets/images/image-gallery/11.jpg"> <img class="img-fluid img-thumbnail" src="../assets/images/image-gallery/thumb/thumb-11.jpg" alt=""> </a> </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 m-b-20"> <a href="../assets/images/image-gallery/12.jpg"> <img class="img-fluid img-thumbnail" src="../assets/images/image-gallery/thumb/thumb-12.jpg" alt=""> </a> </div>
+                            </div>
+                        </div>
+                        <ul class="body pagination pagination-primary">
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
+                            <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane card" id="Videos">
+                        <div class="body text-center">
+                            <div class="not_found">
+                                <i class="zmdi zmdi-mood-bad zmdi-hc-4x"></i>
+                                <h4 class="m-b-0">Sorry No result found.</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="InfiniO">
+                        <div class="card">
+                            <div class="body">
+                                <h6 class="m-t-0"><a href="javascript:void(0);">Timeline</a></h6>
+                                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</p>
+                                <a href="javascript:void(0);">http://compass.com/lorem/timeline.html</a>
+                                <div class="row">
+                                    <div class="col-sm-4 m-t-10"> <a href="javascript:void(0);"><img src="../assets/images/image2.jpg" alt="" class="img-fluid img-thumbnail"></a> </div>
+                                    <div class="col-sm-4 m-t-10"> <a href="javascript:void(0);"> <img src="../assets/images/image3.jpg" alt="" class="img-fluid img-thumbnail"></a> </div>
+                                    <div class="col-sm-4 m-t-10"> <a href="javascript:void(0);"> <img src="../assets/images/image4.jpg" alt="" class="img-fluid img-thumbnail"> </a> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card inbox">
+                            <div class="cover">
+                                <h6 class="m-t-20 m-l-20"><a href="javascript:void(0);">Inbox</a></h6>
+                                <ul class="mail_list list-group list-unstyled">
+                                    <li class="list-group-item">
+                                        <div class="media">
+                                            <div class="pull-left">
+                                                <div class="controls">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" id="basic_checkbox_1">
+                                                        <label for="basic_checkbox_1"></label>
+                                                    </div>
+                                                    <a href="javascript:void(0);" class="favourite text-muted hidden-sm-down" data-toggle="active"><i class="zmdi zmdi-star-outline"></i></a>
+                                                </div>
+                                                <div class="thumb hidden-sm-down m-r-20"> <img src="../assets/images/xs/avatar1.jpg" class="rounded-circle" alt=""> </div>
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="media-heading">
+                                                    <a href="mail-single.html" class="m-r-10">Velit a labore</a>
+                                                    <span class="badge badge-info">Family</span>
+                                                    <small class="float-right text-muted"><time class="hidden-sm-down" datetime="2017">12:35 AM</time><i class="zmdi zmdi-attachment-alt"></i> </small>
+                                                </div>
+                                                <p class="msg">Lorem Ipsum is simply dumm dummy text of the printing and typesetting industry. </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="media">
+                                            <div class="pull-left">
+                                                <div class="controls">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" id="basic_checkbox_3">
+                                                        <label for="basic_checkbox_3"></label>
+                                                    </div>
+                                                    <a href="javascript:void(0);" class="favourite text-muted hidden-sm-down" data-toggle="active"><i class="zmdi zmdi-star-outline"></i></a>
+                                                </div>
+                                                <div class="thumb hidden-sm-down m-r-20"> <img src="../assets/images/xs/avatar3.jpg" class="rounded-circle" alt=""> </div>
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="media-heading">
+                                                    <a href="mail-single.html" class="m-r-10">Velit a labore</a>
+                                                    <span class="badge badge-primary">Google</span>
+                                                    <small class="float-right text-muted"><time class="hidden-sm-down" datetime="2017">12:35 AM</time><i class="zmdi zmdi-attachment-alt"></i> </small>
+                                                </div>
+                                                <p class="msg"> If you are going to use a passage of Lorem Ipsum, you need to be sure</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item unread">
+                                        <div class="media">
+                                            <div class="pull-left">
+                                                <div class="controls">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" id="basic_checkbox_4">
+                                                        <label for="basic_checkbox_4"></label>
+                                                    </div>
+                                                    <a href="javascript:void(0);" class="favourite text-muted hidden-sm-down" data-toggle="active"><i class="zmdi zmdi-star-outline"></i></a>
+                                                </div>
+                                                <div class="thumb hidden-sm-down m-r-20"> <img src="../assets/images/xs/avatar4.jpg" class="rounded-circle" alt=""> </div>
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="media-heading">
+                                                    <a href="mail-single.html" class="m-r-10">Variations of passages</a>
+                                                    <span class="badge badge-success">Themeforest</span>
+                                                    <small class="float-right text-muted"><time class="hidden-sm-down" datetime="2017">12:35 AM</time><i class="zmdi zmdi-attachment-alt"></i> </small>
+                                                </div>
+                                                <p class="msg">There are many variations of passages of Lorem Ipsum available, but the majority </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="body">
+                                <h6 class="m-t-0"><a href="javascript:void(0);">Chat</a></h6>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <ul class="list-unstyled team-info">
+                                    <li class="m-r-15"><small>Design Team</small></li>
+                                    <li>
+                                        <img src="../assets/images/xs/avatar10.jpg" alt="Avatar">
+                                    </li>
+                                    <li>
+                                        <img src="../assets/images/xs/avatar9.jpg" alt="Avatar">
+                                    </li>
+                                    <li>
+                                        <img src="../assets/images/xs/avatar8.jpg" alt="Avatar">
+                                    </li>
+                                    <li>
+                                        <img src="../assets/images/xs/avatar7.jpg" alt="Avatar">
+                                    </li>
+                                    <li>
+                                        <img src="../assets/images/xs/avatar6.jpg" alt="Avatar">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <ul class="pagination pagination-primary">
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
+                            <li class="page-item active"><a class="page-link" href="javascript:void(0);">1</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+                            <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#bdatetimepicker').datetimepicker(
+                {
+                    debug: true,
+                    defaultDate: moment().add(2, 'days'),
+                    daysOfWeekDisabled: [0, 6],
+                    disabledDates: ['2018-04-25', '2018-04-26']
+                }
+            );
+        });
+    </script>
+<!--<script type="text/javascript">
+    $(function () {
+        var element = document.getElementById('searchDateRange');
+        console.log(element);
+        $(element).daterangepicker2({
+            "showDropdowns": true,
+            "locale": {
+                "format": "DD/MM/YYYY",
+                "separator": " - ",
+                "applyLabel": "اختار",
+                "cancelLabel": "الغاء",
+                "fromLabel": "من",
+                "toLabel": "إلي",
+                "customRangeLabel": "مخصص",
+                "weekLabel": "W",
+                "daysOfWeek": [
+                    "Su",
+                    "Mo",
+                    "Tu",
+                    "We",
+                    "Th",
+                    "Fr",
+                    "Sa"
+                ],
+                "monthNames": [
+                    "يناير",
+                    "فبراير",
+                    "مارس",
+                    "ابريل",
+                    "مايو",
+                    "يونيو",
+                    "يوليو",
+                    "اغسطس",
+                    "سبتمبر",
+                    "اكتوبر",
+                    "نوفمبر",
+                    "ديسمبر"
+                ],
+                "firstDay": 1
+            },
+            "alwaysShowCalendars": true,
+            "startDate": "07/14/2020",
+            "endDate": "07/20/2020"
+        }, function (start, end, label) {
+            console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+        });
+    });
+</script>-->

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.NET.Admin.Model" namespace="OneHub360.NET.Admin.Model" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <union-subclass name="Group" table="Groups" extends="OneHub360.NET.Core.Model.NHEntity">
+    <property name="Name" type="String">
+      <column name="Name" not-null="true" />
+    </property>
+    <bag name="Users" table="UsersGroup" inverse="true" generic="true" >
+      <key>
+        <column name="FK_Groups" />
+      </key>
+      <many-to-many class="UserInfo" fetch="join">
+        <column name="FK_UserInfo" />
+      </many-to-many>
+    </bag>
+  </union-subclass>
+</hibernate-mapping>

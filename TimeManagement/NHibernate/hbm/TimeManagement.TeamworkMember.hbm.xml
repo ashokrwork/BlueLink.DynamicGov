@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub.NET.TimeManagement" namespace="OneHub.NET.TimeManagement" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="TeamworkMember" table="TeamworkMember">
+    <id name="Id" type="Guid">
+      <column name="Id" not-null="true" />
+      <generator class="guid.comb" />
+    </id>
+    <property name="PlannedStartDate" type="Date">
+      <column name="PlannedStartDate" not-null="false" sql-type="date" />
+    </property>
+    <property name="PlannedEndDate" type="Date">
+      <column name="PlannedEndDate" not-null="false" sql-type="date" />
+    </property>
+    <property name="ActualStartDate" type="Date">
+      <column name="ActualStartDate" not-null="false" sql-type="date" />
+    </property>
+    <property name="ActualEndDate" type="Date">
+      <column name="ActualEndDate" not-null="false" sql-type="date" />
+    </property>
+    <bag name="Resources" generic="true">
+      <key>
+        <column name="FK_TeamworkMember" not-null="true" />
+      </key>
+      <one-to-many class="Resource" />
+    </bag>
+  </class>
+</hibernate-mapping>

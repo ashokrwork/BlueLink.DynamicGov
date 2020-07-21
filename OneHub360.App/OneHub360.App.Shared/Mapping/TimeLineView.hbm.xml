@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.App.Shared" namespace="OneHub360.App.Shared" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="TimeLineView" table="TimeLineView" >
+    <id column="Id" name="Id"/>
+    <property name="CreationDate">
+      <column name="CreationDate" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="CreatedBy">
+      <column name="CreatedBy" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="IsDeleted">
+      <column name="IsDeleted" sql-type="bit" not-null="false" />
+    </property>
+    <property name="LastModified">
+      <column name="LastModified" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="Title">
+      <column name="Title" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="Brief">
+      <column name="Brief" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="Body">
+      <column name="Body" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="ImageUrl">
+      <column name="ImageUrl" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="FeedId">
+      <column name="FeedId" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="Status">
+      <column name="Status" sql-type="int" not-null="true" />
+    </property>
+    <property name="Scope">
+      <column name="Scope" sql-type="int" not-null="true" />
+    </property>
+    <property name="Pinned">
+      <column name="Pinned" sql-type="bit" not-null="true" />
+    </property>
+    <property name="FileUrl">
+      <column name="FileUrl" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="FK_From">
+      <column name="FK_From" sql-type="uniqueidentifier"/>
+    </property>
+    <property name="FK_To">
+      <column name="FK_To" sql-type="uniqueidentifier"/>
+    </property>
+    <property name="Date">
+      <column name="Date" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="Priority">
+      <column name="Priority" sql-type="int" not-null="true" />
+    </property>
+    <property name="TemplateUrl">
+      <column name="TemplateUrl" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="FeedTypeName">
+      <column name="FeedTypeName" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="Text1">
+      <column name="Text1" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="Text2">
+      <column name="Text2" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="Text3">
+      <column name="Text3" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="Date1">
+      <column name="Date1" sql-type="datetime2" not-null="false" />
+    </property>
+    <property name="Date2">
+      <column name="Date2" sql-type="datetime2" not-null="false" />
+    </property>
+    <property name="Date3">
+      <column name="Date3" sql-type="datetime2" not-null="false" />
+    </property>
+    <property name="Number1">
+      <column name="Number1" sql-type="int" not-null="false" />
+    </property>
+    <property name="Number2">
+      <column name="Number2" sql-type="int" not-null="false" />
+    </property>
+    <property name="Number3">
+      <column name="Number3" sql-type="int" not-null="false" />
+    </property>
+    <property name="SharedWith">
+      <column name="SharedWith" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="FollowedBy">
+      <column name="FollowedBy" sql-type="varchar" not-null="false" />
+    </property>
+    <property name="FeedTypeId">
+      <column name="FeedTypeId" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+  </class>
+</hibernate-mapping>

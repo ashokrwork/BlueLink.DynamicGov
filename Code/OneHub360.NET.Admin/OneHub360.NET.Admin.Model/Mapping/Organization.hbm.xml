@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.NET.Admin.Model" namespace="OneHub360.NET.Admin.Model" default-lazy="false" xmlns="urn:nhibernate-mapping-2.2">
+  <union-subclass name="Organization" table="Organization" extends="OneHub360.NET.Core.Model.NHEntity">
+
+    <property name="Name" type="String">
+      <column name="Name" not-null="true" />
+    </property>
+    <property name="About" type="String">
+      <column name="About" not-null="false" />
+    </property>
+    <property name="URL" type="String">
+      <column name="URL" not-null="false" />
+    </property>
+    <property name="Email" type="String">
+      <column name="Email" not-null="true" />
+    </property>
+    <property name="Fax" type="String">
+      <column name="Fax" not-null="false" />
+    </property>
+    <property name="IsLocal" type="Boolean">
+      <column name="IsLocal" not-null="true" />
+    </property>
+    <property name="Address" type="String">
+      <column name="Address" not-null="false" length="4000" sql-type="nvarchar" />
+    </property>
+    <property name="OfficeNumber" type="String">
+      <column name="OfficeNumber" not-null="false" length="4000" sql-type="nvarchar" />
+    </property>
+    <many-to-one name="OrganizationType" not-found="ignore" class="OrganizationType">
+      <column name="FK_OrganizationType" not-null="true" />
+    </many-to-one>
+  </union-subclass>
+</hibernate-mapping>
