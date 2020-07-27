@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.CMS.DAL" namespace="OneHub360.CMS.DAL" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Correspondence" table="Correspondence">
+    <id column="Id" name="Id">
+    </id>
+    <discriminator column="CorrespondenceType"/>
+    <many-to-one name="Parent">
+      <column name="FK_Parent" sql-type="uniqueidentifier" not-null="false" />
+    </many-to-one>
+    <property name="CreatedBy">
+      <column name="CreatedBy" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="CreationDate">
+      <column name="CreationDate" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="LastModified">
+      <column name="LastModified" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="IsDeleted">
+      <column name="IsDeleted" sql-type="bit" not-null="false" />
+    </property>
+    <property name="Language" type="OneHub360.DB.Language, OneHub360.DB" not-null="false" />
+    <property name="EntityId">
+      <column name="EntityId" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="Subject">
+      <column name="Subject" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="From">
+      <column name="[From]" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="To">
+      <column name="[To]" sql-type="varchar" not-null="false" />
+    </property>
+    <property name="Confidential">
+      <column name="Confidential" sql-type="bit" not-null="false" />
+    </property>
+    <property name="SharedWith">
+      <column name="SharedWith" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="ThreadId">
+      <column name="ThreadId" sql-type="uniqueidentifier" not-null="false" />
+    </property>
+    <property name="Brief">
+      <column name="Brief"></column>
+    </property>
+    <property name="CopyTo">
+      <column name="CopyTo" sql-type="varchar" not-null="false" />
+    </property>
+    <property name="AddtionalRecipients">
+      <column name="AddtionalRecipients" sql-type="varchar" not-null="false" />
+    </property>
+    <property name="FK_Document">
+      <column name="FK_Document" />
+    </property>
+    <property name="Status"/>
+  </class>
+</hibernate-mapping>

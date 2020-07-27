@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.CMS.DAL" namespace="OneHub360.CMS.DAL" xmlns="urn:nhibernate-mapping-2.2">
+  <union-subclass name="Template" table="Template"  extends="OneHub360.DB.NHEntity" >
+    <property name="Title">
+      <column name="Title" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="File" type="BinaryBlob">
+      <column name="[File]" not-null="true" />
+    </property>
+    <property name="Status">
+      <column name="Status" sql-type="int" not-null="true" />
+    </property>
+    <property name="Filename">
+      <column name="FileName" sql-type="nvarchar" not-null="false" />
+    </property>
+    <!--<bag name="Document">
+      <key column="FK_Template" />
+      <one-to-many class="Document" />
+    </bag>-->
+  </union-subclass>
+</hibernate-mapping>

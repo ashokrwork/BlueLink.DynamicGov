@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="OneHub360.WPF.Register.App.Controls.MainHome"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OneHub360.WPF.Register.App.Controls"
+             xmlns:toast="clr-namespace:ToastNotifications;assembly=ToastNotifications"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0" Margin="100,200" Click="IncomingLetterClick">
+            <Button.Content>
+                <StackPanel>
+                    <Image Source="/img/incoming.png" Width="64"></Image>
+                    <Label FontSize="25">البريد الوارد</Label>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <Button Grid.Column="1" Margin="100,200" Click="OutgoingLetterClick">
+            <Button.Content>
+                <StackPanel>
+                    <Image Source="/img/outcoming.png" Width="64"></Image>
+                    <Label FontSize="25">البريد الصادر</Label>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        <toast:NotificationTray NotificationsSource="{Binding NotificationSource}"
+                        PopupFlowDirection="RightUp"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Right" />
+    </Grid>
+</UserControl>

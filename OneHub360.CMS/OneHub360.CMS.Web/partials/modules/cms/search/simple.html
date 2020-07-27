@@ -1,0 +1,26 @@
+﻿<div>
+    <div ng-show="status == 0">
+
+        <loading></loading>
+
+    </div>
+    <div class="ng-hide" ng-show="status == 1">
+        <form class="form-horizontal" name="simpleSearchForm" role="form">
+            <div class="form-group">
+                <div class="col-sm-12 col-xs-12">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+                        <input type="text" ng-required="true" class="form-control" ng-model="Keyword" placeholder="بحث عن">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-11">
+                    <button ng-disabled="status == 0" type="button" ng-click="Search()" class="btn  greenBtn">بحث</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>

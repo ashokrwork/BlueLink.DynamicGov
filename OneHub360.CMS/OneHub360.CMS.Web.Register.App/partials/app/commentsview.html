@@ -1,0 +1,33 @@
+﻿<div ng-init="loadComments()" >
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close(true)">&times;</button>
+        <h4 class="modal-title"><img src="/img/app/comment.png" width="36" height="36" />  تعليقات</h4>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal" name="newComment" role="form">
+            <div class="form-group">
+                <div class="col-sm-12 col-xs-12">
+                    <div class="input-group">
+                        <span class="input-group-addon"><input type="checkbox" ng-model="commentData.Private" /><i class="fa fa-lock fa-fw"></i></span>
+                        <input ng ng-required="true" class="form-control" ng-model="commentData.Body" placeholder="التعليق" />
+                        <span data-toggle="tooltip" data-placement="top" ng-click="AddComment();" class="input-group-addon btn"><i class="fa fa-plus-circle fa-fw"></i></span>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="media mediaSub" style="overflow-y:auto!important;height:250px!important">
+            <div ng-if="CommentsList.length == 0" class="media mediaSub2">
+                لا يوجد تعليقات للعرض
+            </div>
+            <div class="media mediaSub2" ng-repeat="commentData in CommentsList track by $index">
+                <div class="media-left tL-SenderInfo-sm">
+                    <img class="media-object" ng-src="{{commentData.Picture}}" alt="..." />
+                </div>
+                <div class="media-body">
+                    <h5 class="media-heading">{{commentData.ArabicFullName}}<span> - {{commentData.CreationDate | date:'medium'}}</span></h5>
+                    <p><i ng-if="commentData.Private" class="fa fa-lock" aria-hidden="true"></i><i ng-if="!commentData.Private" class="fa fa-unlock-alt" aria-hidden="true"></i> - {{commentData.Body}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

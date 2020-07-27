@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.CMS.DAL" namespace="OneHub360.CMS.DAL" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Report" table="Report" lazy="true" >
+    <id name="Id" column="Id" />
+    <property name="EntityId">
+      <column name="EntityId" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="ReportType">
+      <column name="ReportType" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="ReportOfficier">
+      <column name="ReportOfficier" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="CaseNumber">
+      <column name="CaseNumber" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="ReportSubject">
+      <column name="ReportSubject" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="IncidentDate">
+      <column name="IncidentDate" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="ReportDate">
+      <column name="ReportDate" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="RecordingDate">
+      <column name="RecordingDate" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="ReportStatus">
+      <column name="ReportStatus" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="Investigator">
+      <column name="Investigator" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="ReportDescription">
+      <column name="ReportDescription" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="CaseYear">
+      <column name="CaseYear" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="ReportGovernance">
+      <column name="ReportGovernance" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="ReportArea">
+      <column name="ReportArea" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="CreatedBy">
+      <column name="CreatedBy" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="CreationDate">
+      <column name="CreationDate" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="LastModified">
+      <column name="LastModified" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="IsDeleted">
+      <column name="IsDeleted" sql-type="bit" not-null="false" />
+    </property>
+    <property name="Language">
+      <column name="Language" sql-type="int" not-null="false" />
+    </property>
+    
+  </class>
+</hibernate-mapping>

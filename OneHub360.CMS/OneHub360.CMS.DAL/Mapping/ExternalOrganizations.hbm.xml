@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.CMS.DAL" namespace="OneHub360.CMS.DAL" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="ExternalOrganizations" table="ExternalOrganizations" lazy="true" >
+    <id name="Id" column="Id" >
+      <generator class="guid.comb"></generator>
+    </id>
+    <property name="Title">
+      <column name="Title" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="IsG2G">
+      <column name="IsG2G" sql-type="bit" not-null="false" />
+    </property>
+    <property name="CreatedBy">
+      <column name="CreatedBy" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="CreationDate">
+      <column name="CreationDate" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="LastModified">
+      <column name="LastModified" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="IsDeleted">
+      <column name="IsDeleted" sql-type="bit" not-null="false" />
+    </property>
+    <property name="Language">
+      <column name="Language" sql-type="int" not-null="false" />
+    </property>
+    <property name="EntityId">
+      <column name="EntityId" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="IsActive">
+      <column name="IsActive" sql-type="bit" not-null="true" />
+    </property>
+    <property name="G2GSiteID">
+      <column name="G2GSiteID" sql-type="int" not-null="true" />
+    </property>
+    <property name="Logo" type="BinaryBlob">
+      <column name="Logo" not-null="false" />
+    </property>
+    <property name="G2GSiteName">
+      <column name="G2GSiteName"></column>
+    </property>
+    <property name="PersonTitle">
+      <column name="PersonTitle"></column>
+    </property>
+  </class>
+</hibernate-mapping>

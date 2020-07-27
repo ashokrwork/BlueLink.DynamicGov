@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.25428.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneHub360.DB", "OneHub360.DB\OneHub360.DB.csproj", "{643F92E8-5DAD-486E-8733-9AEA05837CAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneHub360.Queue", "OneHub360.Queue\OneHub360.Queue.csproj", "{A7017E03-C46A-4F73-B051-2008FD656F95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneHub360.Business", "OneHub360.Business\OneHub360.Business.csproj", "{CAAE6334-C134-4CA5-823E-D1544D5D91EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneHub360.Authentication", "OneHub360.Authentication\OneHub360.Authentication.csproj", "{1343998E-EB61-43A3-B42D-27B90C2B7802}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{643F92E8-5DAD-486E-8733-9AEA05837CAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{643F92E8-5DAD-486E-8733-9AEA05837CAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{643F92E8-5DAD-486E-8733-9AEA05837CAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{643F92E8-5DAD-486E-8733-9AEA05837CAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7017E03-C46A-4F73-B051-2008FD656F95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7017E03-C46A-4F73-B051-2008FD656F95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7017E03-C46A-4F73-B051-2008FD656F95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7017E03-C46A-4F73-B051-2008FD656F95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAAE6334-C134-4CA5-823E-D1544D5D91EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAAE6334-C134-4CA5-823E-D1544D5D91EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAAE6334-C134-4CA5-823E-D1544D5D91EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAAE6334-C134-4CA5-823E-D1544D5D91EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1343998E-EB61-43A3-B42D-27B90C2B7802}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1343998E-EB61-43A3-B42D-27B90C2B7802}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1343998E-EB61-43A3-B42D-27B90C2B7802}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1343998E-EB61-43A3-B42D-27B90C2B7802}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

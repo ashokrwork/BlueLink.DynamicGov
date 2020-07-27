@@ -1,0 +1,15 @@
+﻿<Page x:Class="OneHub360.CMS.Web.Print.Main"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:OneHub360.CMS.Web.Print"
+      mc:Ignorable="d" 
+      Title="Main"
+     Background="Transparent"
+      Loaded="Page_Loaded">
+
+    <StackPanel Background="Transparent">
+        <Label Name="lblStatus" Content="جاري العمل"></Label>
+    </StackPanel>
+</Page>

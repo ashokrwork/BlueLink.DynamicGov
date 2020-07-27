@@ -1,0 +1,56 @@
+﻿<div id="contentBody" ><!--ng-init="GetFeedCounts()" ng-controller="feedController">-->
+    <div>
+        <div class="col-md-12">
+            <input type="checkbox" />
+            <span>الصفحة الرئيسية</span>
+        </div>
+    </div>
+    <div class="col-md-12" id="DashBoardBox">
+        <div class="col-md-3 col-sm-3 col-xs-6 kpiBox">
+            <a href="/" class="DashTitle">
+                <img src="/img/app/allcorespo.png" alt="" />
+                <p class="DashNmbr">{{allCount}}</p>
+                كل المراسلات
+            </a>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6 kpiBox">
+            <a href="#" class="DashTitle">
+                <img src="/img/app/incomming.png" alt="" />
+                <p class="DashNmbr">{{incomingCount}}</p>
+                المراسلات الواردة
+            </a>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6 kpiBox">
+            <a href="#" class="DashTitle">
+                <img src="/img/app/outcomming.png" alt="" />
+                <p class="DashNmbr">{{outgoingCount}}</p>
+                المراسلات الصادرة
+            </a>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6 kpiBox noBorder">
+            <a href="#" class="DashTitle">
+                <img src="/img/app/draft.png" alt="" />
+                <p class="DashNmbr">{{draftsCount}}</p>
+                المسودات
+            </a>
+        </div>
+    </div>
+    <div class="mailDetailBox">
+        <div class="col-md-12" id="templateBox" ng-controller="newItemStripController">
+            <div ng-if="status == 0">
+                Loading....
+            </div>
+            <div>
+                <h1 ng-bind="message"></h1>
+            </div>
+            <div ng-if="status == 1" ng-repeat="feedTypeData in feedData track by $index">
+                <div class="col-md-2 ">
+                    <a class="btn-large" ui-sref="{{feedTypeData.NewFormUrl}}">
+                        <img ng-src="{{feedTypeData.NewStripImageUrl}}" alt="" /> <br>
+                        <span ng-bind="feedTypeData.Title"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

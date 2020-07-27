@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.CMS.DAL" namespace="OneHub360.CMS.DAL" xmlns="urn:nhibernate-mapping-2.2">
+  <subclass name="IncomingMemo" extends="Correspondence" discriminator-value="2" >
+    <join table="IncomingMemo">
+      <key column="Id" foreign-key="Id"></key>
+      
+      <property name="IncomingNumber">
+        <column name="IncomingNumber" sql-type="varchar" not-null="false" />
+      </property>
+      <property name="IncomingDate">
+        <column name="IncomingDate" sql-type="datetime2" not-null="false" />
+      </property>
+      <property name="ScanningDate">
+        <column name="ScanningDate" sql-type="datetime2" not-null="false" />
+      </property>
+      <property name="ScannedBy">
+        <column name="ScannedBy" sql-type="varchar" not-null="false" />
+      </property>
+      <property name="IndexingDate">
+        <column name="IndexingDate" sql-type="datetime2" not-null="false" />
+      </property>
+      <property name="IndexedBy">
+        <column name="IndexedBy" sql-type="varchar" not-null="false" />
+      </property>
+      <property name="FK_Draft">
+        <column name="FK_Draft"></column>
+      </property>
+      <property name="FK_Outgoing">
+        <column name="FK_Outgoing"></column>
+      </property>
+    </join>
+  </subclass>
+</hibernate-mapping>

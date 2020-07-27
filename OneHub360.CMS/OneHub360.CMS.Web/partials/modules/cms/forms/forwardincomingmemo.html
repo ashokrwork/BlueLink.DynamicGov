@@ -1,0 +1,73 @@
+﻿<div style="background-color:white">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close(false)">&times;</button>
+        <h4 class="modal-title"><img  src="/img/modules/cms/incomingmemo.png" />  {{action.Title}}</h4>
+    </div>
+    <div class="modal-body" >
+        <div ng-show="actionStatus == 0">
+            <loading></loading>
+        </div>
+        <form ng-show="actionStatus == 1" class="form-horizontal" name="newDraftMemoForm" role="form">
+            <div ng-if="!action.IsReply" class="form-group">
+                <div class="col-sm-12 col-xs-12">
+                    <people-Picker title="الرجاء إختيار مرسل إلي"
+                                          selectedobject="addSelectedTo"
+                                          pickerid="toUser"
+                                          reuired="true"></people-Picker>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12 col-xs-12">
+                    <div class="input-group">
+                        <!--<span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>-->
+                        <input type="text" ng-required="true" class="form-control" ng-model="action.Subject" placeholder="موضوع المذكرة">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12 col-xs-12">
+                    <div class="input-group">
+                        <!--<span class="input-group-addon"><i class="fa fa-sticky-note fa-fw"></i></span>-->
+                        <textarea ng-required="false" class="form-control" ng-model="action.Brief" placeholder="محتوي المذكرة"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="form-group">
+                <div class="col-sm-12 col-xs-12">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-lock fa-fw" aria-hidden="true"></i></span>
+                        <input type="password" class="form-control" ng-model="action.Pin" placeholder="كلمة السر للتوقيع الإلكتروني">
+                    </div>
+                </div>
+            </div>-->
+            <div class="form-group">
+                <div class="col-sm-12 col-xs-12">
+                    <div class="input-group">
+                        <span ng-click="SwitchAttachementMode()" class="input-group-addon">
+                        <i  ng-if="!action.AttachAll" class="fa fa-paperclip fa-fw" aria-hidden="true"></i>
+                            <i ng-if="action.AttachAll" class="fa fa-check-square fa-fw" aria-hidden="true"></i></span>
+                        <input ng-if="action.AttachAll" type="text" class="form-control" value="إرفاق جميع مرفقات المراسلة" disabled>
+                        <div ng-if="!action.AttachAll" class="docAttachments">
+                            <div ng-if="incomingMemoAttachements.length == 0">
+                                لا يوجد مرفقات للمراسلة
+                            </div>
+                            <div class="attachItemBox docAttachments" ng-repeat="attachement in incomingMemoAttachements track by $index">
+
+                                <span ng-click="ShowAttachement(attachement)" class="attachItemTitle"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{attachement.Title}}</span>
+                                <span class="IconRed" data-toggle="confirmation" data-title="سيتم حذف الملف, متابعة؟" ng-click="DeleteAttachement(attachement.Id)">
+                                    <input type="checkbox" ng-model="attachement.checked" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-11">
+                    <button type="button" ng-click="ForwardIncomingMemo(true)" class="btn  greenBtn">{{forwardMemoBtnText}}</button>
+                    <button type="button" ng-click="ForwardIncomingMemo(false)" class="btn  greenBtn">{{createForwardMemoBtnText}}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

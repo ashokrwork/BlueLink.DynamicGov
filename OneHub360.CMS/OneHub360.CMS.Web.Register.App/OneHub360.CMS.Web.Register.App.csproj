@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EE18726A-105F-4AF7-B1BC-8CEDC4AF34B8}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OneHub360.CMS.Web.Register.App</RootNamespace>
+    <AssemblyName>OneHub360.CMS.Web.Register.App</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="img\modules\cms\draftletter.png" />
+    <Content Include="img\modules\cms\draftletter259.png" />
+    <Content Include="img\modules\cms\draftmemo.png" />
+    <Content Include="img\modules\cms\draftmemo259.png" />
+    <Content Include="img\modules\cms\government.png" />
+    <Content Include="img\modules\cms\incomingletter.png" />
+    <Content Include="img\modules\cms\incomingmemo.png" />
+    <Content Include="img\modules\cms\msofficelogo.jpg" />
+    <Content Include="img\modules\cms\OneDrive.png" />
+    <Content Include="img\modules\cms\outgoingletter.png" />
+    <Content Include="img\modules\cms\outgoingmemo.png" />
+    <Content Include="img\modules\cms\scan.png" />
+    <Content Include="js\modules\cms\createIncomingLetterController.js" />
+    <Content Include="js\modules\cms\outgoingLettersController.js" />
+    <Content Include="js\modules\cms\updateIncomingLetterController.js" />
+    <Content Include="js\modules\cms\viewOutgoingLetterController.js" />
+    <Content Include="packages.config" />
+    <Content Include="css\fonts\DroidKufi-Bold.eot" />
+    <Content Include="css\fonts\DroidKufi-Bold.ttf" />
+    <Content Include="css\fonts\DroidKufi-Regular.eot" />
+    <Content Include="css\fonts\DroidKufi-Regular.ttf" />
+    <Content Include="css\fonts\fontawesome-webfont.eot" />
+    <Content Include="css\fonts\fontawesome-webfont.ttf" />
+    <Content Include="css\fonts\fontawesome-webfont.woff" />
+    <Content Include="css\fonts\fontawesome-webfont.woff2" />
+    <Content Include="css\fonts\FontAwesome.otf" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="css\fonts\icon.woff2" />
+    <Content Include="js\jquery\jquery-3.1.0.min.map" />
+    <Content Include="js\jquery\jquery-3.1.0.slim.min.map" />
+    <None Include="Properties\PublishProfiles\Register.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\app\bootstrap-dialog.min.css" />
+    <Content Include="css\app\bootstrap-rtl.css" />
+    <Content Include="css\app\bootstrap-theme-rtl.css" />
+    <Content Include="css\app\bootstrap.min.css" />
+    <Content Include="css\app\bootstrap.rtl.css" />
+    <Content Include="css\app\chardinjs.css" />
+    <Content Include="css\app\font-awesome.min.css" />
+    <Content Include="css\app\Impromptu.css" />
+    <Content Include="css\app\style-ar.css" />
+    <Content Include="css\app\Templates-Nav-ar.css" />
+    <Content Include="css\components\autocomplete.css" />
+    <Content Include="css\components\icon.css" />
+    <Content Include="css\components\jquery-ui.css" />
+    <Content Include="css\components\loading-bar.css" />
+    <Content Include="css\components\material.min.css" />
+    <Content Include="css\components\ngToast-animations.min.css" />
+    <Content Include="css\components\ngToast.min.css" />
+    <Content Include="css\fonts\fontawesome-webfont.svg" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="css\intro\introjs-rtl.min.css" />
+    <Content Include="css\intro\introjs.min.css" />
+    <Content Include="img\app\allcorespo.png" />
+    <Content Include="img\app\comment.png" />
+    <Content Include="img\app\cpa-logo.jpg" />
+    <Content Include="img\app\draft.png" />
+    <Content Include="img\app\emptyview.png" />
+    <Content Include="img\app\headIcon.ico" />
+    <Content Include="img\app\incomming.png" />
+    <Content Include="img\app\Logo.png" />
+    <Content Include="img\app\OneHub360.png" />
+    <Content Include="img\app\OneHub360_icon.png" />
+    <Content Include="img\app\OneHub360_w.png" />
+    <Content Include="img\app\outcomming.png" />
+    <Content Include="img\app\outgoingletterg.png" />
+    <Content Include="img\app\outgoingmemog.png" />
+    <Content Include="img\app\share.png" />
+    <Content Include="img\components\autocomplete\nopic.png" />
+    <Content Include="img\components\autocomplete\refresh.png" />
+    <Content Include="img\components\organizationautocomplete\nopic.png" />
+    <Content Include="img\loading.gif" />
+    <Content Include="img\partialloading.gif" />
+    <Content Include="img\trash\me.png" />
+    <Content Include="index.html" />
+    <Content Include="js\angular\angular-animate.min.js" />
+    <Content Include="js\angular\angular-aria.min.js" />
+    <Content Include="js\angular\angular-desktop-notification.js" />
+    <Content Include="js\angular\angular-filter.min.js" />
+    <Content Include="js\angular\angular-local-storage.min.js" />
+    <Content Include="js\angular\angular-locale_ar-kw.js" />
+    <Content Include="js\angular\angular-messages.min.js" />
+    <Content Include="js\angular\angular-notification.js" />
+    <Content Include="js\angular\angular-sanitize.min.js" />
+    <Content Include="js\angular\angular-ui-router.min.js" />
+    <Content Include="js\angular\angular.min.js" />
+    <Content Include="js\app\app.js" />
+    <Content Include="js\app\avaitorController.js" />
+    <Content Include="js\app\commentController.js" />
+    <Content Include="js\app\commentsUpdateController.js" />
+    <Content Include="js\app\config.js" />
+    <Content Include="js\app\feedActionsController.js" />
+    <Content Include="js\app\feedController.js" />
+    <Content Include="js\app\headerController.js" />
+    <Content Include="js\app\newItemStripController.js" />
+    <Content Include="js\app\profileController.js" />
+    <Content Include="js\app\session.js" />
+    <Content Include="js\app\shareController.js" />
+    <Content Include="js\app\shared.js" />
+    <Content Include="js\app\shareUpdateController.js" />
+    <Content Include="js\app\sideNavController.js" />
+    <Content Include="js\app\side_nave.js" />
+    <Content Include="js\authentication\angular-storage.js" />
+    <Content Include="js\authentication\authInterceptorService.js" />
+    <Content Include="js\authentication\authService.js" />
+    <Content Include="js\authentication\loginController.js" />
+    <Content Include="js\bootstrap\bootstrap-confirmation.min.js" />
+    <Content Include="js\bootstrap\bootstrap-dialog.min.js" />
+    <Content Include="js\bootstrap\bootstrap-tooltip.js" />
+    <Content Include="js\bootstrap\bootstrap.js" />
+    <Content Include="js\bootstrap\bootstrap.min.js" />
+    <Content Include="js\bootstrap\ui-bootstrap-tpls.min.js" />
+    <Content Include="js\bootstrap\ui-bootstrap.min.js" />
+    <Content Include="js\components\autocomplete\autocomplete.js" />
+    <Content Include="js\components\loadingbar\loading-bar.js" />
+    <Content Include="js\components\notification\ngToast.min.js" />
+    <Content Include="js\intro\intro.min.js" />
+    <Content Include="js\jquery\bootbox.min.js" />
+    <Content Include="js\jquery\bowser.js" />
+    <Content Include="js\jquery\chardinjs.js" />
+    <Content Include="js\jquery\datepicker-ar.js" />
+    <Content Include="js\jquery\Impromptu.js" />
+    <None Include="js\jquery\jquery-3.1.0.intellisense.js" />
+    <Content Include="js\jquery\jquery-3.1.0.js" />
+    <Content Include="js\jquery\jquery-3.1.0.min.js" />
+    <Content Include="js\jquery\jquery-3.1.0.slim.js" />
+    <Content Include="js\jquery\jquery-3.1.0.slim.min.js" />
+    <Content Include="js\jquery\jquery-3.2.1.min.js" />
+    <Content Include="js\jquery\jquery-migrate-3.0.0.js" />
+    <Content Include="js\jquery\jquery-ui-1.12.0.js" />
+    <Content Include="js\jquery\jquery-ui-1.12.0.min.js" />
+    <Content Include="js\jquery\jquery-ui.min.js" />
+    <Content Include="js\jquery\materialize.min.js" />
+    <Content Include="js\loader\loader.js" />
+    <Content Include="js\loader\modules.js" />
+    <Content Include="js\material\material.min.js" />
+    <Content Include="js\modules\cms\config.js" />
+    <Content Include="js\modules\cms\incomingLettersController.js" />
+    <Content Include="js\modules\cms\indexIncomingLetterController.js" />
+    <Content Include="js\modules\cms\shared\orgUnitController.js" />
+    <Content Include="js\moment\angular-moment.min.js" />
+    <Content Include="js\moment\moment-range.min.js" />
+    <Content Include="js\moment\moment-with-locales.min.js" />
+    <Content Include="js\onedrive\adal.min.js" />
+    <Content Include="js\onedrive\onedrive.js" />
+    <Content Include="js\Paging\directive\dirPagination.tpl.html" />
+    <Content Include="js\Paging\dirPagination.js" />
+    <Content Include="js\require\require.js" />
+    <Content Include="js\uc\Skype.js" />
+    <Content Include="js\upload\ng-file-upload-shim.min.js" />
+    <Content Include="js\upload\ng-file-upload.min.js" />
+    <Content Include="partials\app\aviatorcurrent.html" />
+    <Content Include="partials\app\aviatormulti.html" />
+    <Content Include="partials\app\aviatoroneline.html" />
+    <Content Include="partials\app\aviatorselecteduser.html" />
+    <Content Include="partials\app\aviatortimeline.html" />
+    <Content Include="partials\app\commentbutton.html" />
+    <Content Include="partials\app\commentsview.html" />
+    <Content Include="partials\app\dashboard.html" />
+    <Content Include="partials\app\feed.html" />
+    <Content Include="partials\app\feedactions.html" />
+    <Content Include="partials\app\header.html" />
+    <Content Include="partials\app\login.html" />
+    <Content Include="partials\app\newitem.html" />
+    <Content Include="partials\app\profile.html" />
+    <Content Include="partials\app\search.html" />
+    <Content Include="partials\app\sharebutton.html" />
+    <Content Include="partials\app\sidenav.html" />
+    <Content Include="partials\app\updatesharing.html" />
+    <Content Include="partials\app\user.html" />
+    <Content Include="partials\components\profile\multiUserView.html" />
+    <Content Include="partials\modal\modal.html" />
+    <Content Include="partials\modules\cms\action\createdraftletter.html" />
+    <Content Include="partials\modules\cms\action\createdraftmemo.html" />
+    <Content Include="partials\modules\cms\action\forwardincomingmemo.html" />
+    <Content Include="partials\modules\cms\action\senddraftletter.html" />
+    <Content Include="partials\modules\cms\action\senddraftmemo.html" />
+    <Content Include="partials\modules\cms\action\sendincomingletterfromreg.html" />
+    <Content Include="partials\modules\cms\createincomingletter.html" />
+    <Content Include="partials\modules\cms\outgoingletters.html" />
+    <Content Include="partials\modules\cms\incomingletters.html" />
+    <Content Include="partials\modules\cms\indexincomingletter.html" />
+    <Content Include="partials\modules\cms\shared\aviatorselectedorg.html" />
+    <Content Include="partials\modules\cms\shared\externalorgoneline.html" />
+    <Content Include="partials\modules\cms\shared\externalorgtimeline.html" />
+    <Content Include="partials\modules\cms\viewoutgoingletter.html" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1130</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:1130/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

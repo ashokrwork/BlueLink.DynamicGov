@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="OneHub360.WPF.Register.App.Controls.Incoming.RegisterNewLetter"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OneHub360.WPF.Register.App.Controls.Incoming"
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             mc:Ignorable="d">
+    <GroupBox FlowDirection="RightToLeft" Header="تسجيل كتاب وارد" VerticalAlignment="Top">
+        <StackPanel FlowDirection="RightToLeft">
+
+            <ComboBox Name="listExternalOrganizations" Controls:TextBoxHelper.Watermark="مرسل من" Margin="0,5" ItemsSource="{Binding}"
+                  DisplayMemberPath="PersonTitle"
+                  SelectedValuePath="Id"
+                  SelectedValue="{Binding Path=ExternalOrganization}">
+            </ComboBox>
+            <TextBox Name="txtOutgoingNumber" FlowDirection="RightToLeft" Controls:TextBoxHelper.Watermark="رقم صادر الجهة" Margin="0,5"></TextBox>
+            <DatePicker Name="dateOutgoingDate" FlowDirection="RightToLeft" Controls:TextBoxHelper.Watermark="تاريخ صادر الجهة" Margin="0,5" SelectedDateFormat="Long"></DatePicker>
+            <TextBox Name="txtSubject" FlowDirection="RightToLeft" Controls:TextBoxHelper.Watermark="موضوع الكتاب" Margin="0,5"></TextBox>
+            <CheckBox Name="chkConfidential" FlowDirection="RightToLeft" Margin="0,5">مراسلة سرية</CheckBox>
+            <WrapPanel>
+                <Button Margin="5" Name="btnRegisterLetter" Click="btnRegisterLetter_Click">
+                    <WrapPanel FlowDirection="RightToLeft">
+                        <Image Source="/img/save.png" Width="20"  Stretch="Fill" Margin="5"/>
+                        <TextBlock Margin="5">تسجيل</TextBlock>
+                    </WrapPanel>
+                </Button>
+                <Button Margin="5">
+                    <WrapPanel FlowDirection="RightToLeft">
+                        <Image Source="/img/reset.png" Width="20"  Stretch="Fill" Margin="5"/>
+                        <TextBlock Margin="5">عودة</TextBlock>
+                    </WrapPanel>
+                </Button>
+            </WrapPanel>
+        </StackPanel>
+    </GroupBox>
+</UserControl>

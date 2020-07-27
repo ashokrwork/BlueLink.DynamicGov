@@ -1,0 +1,134 @@
+﻿<div ng-controller="outgoingLettersController" ng-init="LoadLetters()" ng-if="isLoggedIn">
+    <button data-toggle="collapse" data-target="#filterArea" class="btn btn-default filterBtn "> <i class="fa fa-filter" aria-hidden="true"></i> </button>
+
+    <div id="filterArea" class="collapse col-md-12">
+        <div class="filterBox">
+            <div class="col-md-2">
+                <external-Units-Picker title="الرجاء إختيار جهة"
+                                       selectedobject="filteroption.Touserobject"
+                                       pickerid="Touserobject"
+                                       reuired="true"></external-Units-Picker>
+            </div>
+            <div class="col-md-2">
+                <peoplepicker-Current title="الراسل"
+                                      selectedobject="filteroption.Fromuserobject"
+                                      pickerid="fromuserobject"
+                                      reuired="true"></peoplepicker-Current>
+            </div>
+            <div class="col-md-2">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
+                    <input ng-required="true" class="form-control datepicker" ng-model="filteroption.Fromdate" placeholder="ليس قبل">
+                </div>
+            </div>
+            <div class="col-md-2 col-xs-12">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-calendar fa-fw"></i></span>
+                    <input ng-required="true" class="form-control datepicker" ng-model="filteroption.Todate" placeholder="ليس بعد">
+                </div>
+            </div>
+            <div class="col-md-1 ">
+
+                <select ng-model="filteroption.statustext" class="form-control">
+                    <option value="31" selected="selected">مسجل</option>
+                    <option value="32">مفهرس</option>
+                    <option value="33">مصور</option>
+                    <option value="33">مصور ومفهرس</option>
+
+                </select>
+                <!--<input ng-required="true" class="form-control datepicker" ng-model="filteroption.Todate" placeholder="ليس بعد">-->
+
+
+            </div>
+            <div class="col-md-1 col-sm-2 col-xs-6">
+                <button ng-disabled="status == 0" type="button" ng-click="filter()" class="btn  greenBtn"><i class="fa fa-filter fa-fw"></i>بحث</button>
+            </div><div class="col-md-1 col-sm-2 col-xs-6">
+                <button ng-disabled="status == 0" type="button" ng-click="reset()" class="btn  btn-default"><i class="fa fa-filter fa-fw"></i>إالغاء</button>
+
+            </div>
+        </div>
+    </div>
+    <div ng-if="status == 0">
+        <loading></loading>
+    </div>
+    
+    <div style="width:100%;text-align:center" ng-if="noData">
+        <h3>لا يوجد بيانات للعرض</h3>
+    </div>
+
+    <div class="TimeLineBox">
+        <div ng-if="status == 1">
+            <div ng-repeat="(category, letters) in lettersData | map: map | groupBy: 'Category'">
+
+                <div class="timeLin_date {{category}}" ng-click="SlideCategory($event,category)">
+                    <i class="fa fa-calendar fa-lg"></i>
+                    <b> ( {{letters.length}} ) </b><i ng-click="LoadLetters()" ng-if="$index == 0" class="fa fa-refresh fa-lg"> تحميل </i>
+                </div>
+                <content>
+                    <div ng-repeat="letterData in letters">
+                        <div class="timeLin_Item">
+                            <div class="tL_itemIcons">
+                                <div>
+                                    {{letterData.CreationDate | date:'shortTime'}}
+                                </div>
+                            </div>
+                            <div class="tL_itemBody">
+                                <div class="tL-arrow-left"></div>
+                                <div class="row">
+                                    <div class="col-md-1 col-sm-2 col-xs-2 tL-timeBox">
+                                        <img ng-src="/img/modules/cms/outgoingletter.png" width="36" height="36" alt="" />
+                                    </div>
+                                    <div class="col-md-11 col-sm-10 col-xs-10">
+                                        <span class="tL-SenderInfo">
+                                            <aviatortimeline userid="{{letterData.From}}"></aviatortimeline>
+                                        </span>
+
+                                        <span class="arrowleft"><i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i></span>
+                                        <span class="tL-SenderInfo">
+                                            
+                                            <orgunittileline orgid="{{letterData.To}}"></orgunittileline>
+                                        </span>
+
+
+                                        <div class="col-md-12 col-sm-12 col-xs-12 linkBox">
+                                            <a ui-sref="viewoutgoingletter({id:'{{letterData.Id}}'})"><h4>{{letterData.OutgoingNumber}} - {{letterData.Subject}}</h4></a>
+                                        </div>
+                                    </div>
+
+                                    
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </content>
+            </div>
+            <div ng-show="pagecount>0">
+                <span ng-repeat="page in Pages">
+                    <input class="btn loginBtn" type="button" value="{{page}}" ng-click="Getnextpage(page)" />
+                </span>
+            </div>
+            <!--<div ng-if="feedData.length == 0">
+                لا يوجد محتوي للعرض<br />
+                من فضلك قم بإنشاء محتوي جديد
+                <br />
+                <ul ng-controller="newItemStripController">
+                    <div ng-if="status == 0">
+                        Loading....
+                    </div>
+                    <div ng-if="status == 1" ng-repeat="feedTypeData in feedData track by $index">
+                        <a class="btn-floating" data-backdrop="false" data-toggle="modal" href="{{feedTypeData.NewFormUrl}}" data-target="#oneHub360ModalContainer"><i class="{{feedTypeData.NewStripImageUrl}}"></i></a>
+                        <br />
+                    </div>
+                </ul>
+            </div>-->
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $(".datepicker").datepicker();
+    });
+</script>

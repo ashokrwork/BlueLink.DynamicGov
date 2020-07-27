@@ -1,0 +1,89 @@
+﻿<!--<div class="listViewBox col-md-12">
+    <div class="col-md-1 col-sm-1 col-xs-2 timeText">{{feedItemData.CreationDate | date:'shortTime'}}</div>
+    <div class="col-md-1 col-sm-1 col-xs-2 typeIcon">
+        <a ui-sref="viewoutgoingmemo({id:'{{feedItemData.FeedId}}'})">
+            <img ng-src="/img/modules/cms/outgoingmemo.png" width="36" height="36" alt="" />
+            </a>
+</div>
+
+    <div class="col-md-2 col-sm-4 col-xs-12 tL-SenderInfo">
+        <aviatortimeline userid="{{feedItemData.FK_From}}"></aviatortimeline>
+    </div>
+    <div class="col-md-1 col-sm-1 col-xs-2 "> <i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i> </div>
+
+    <div class="col-md-2 col-sm-4 col-xs-12 tL-SenderInfo">
+        <aviatortimeline userid="{{feedItemData.FK_To}}"></aviatortimeline>
+    </div>
+    <div class="col-md-4 col-sm-11 col-xs-10 listItemTitl">
+        <a ng-click="openPreviewDialog(feedItemData,'previewController','/partials/modules/cms/feeder/preview.html')">
+            {{feedItemData.Title}}
+        </a>
+    </div>
+    <div class="col-md-1 col-sm-1 col-xs-2 actionsMinBox">
+        <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-list-ul fa-lg"></i></a>
+        <ul class="dropdown-menu ddmFixBox" role="menu" ng-controller="memoActions" ng-init="InitForOutgoing(feedItemData.Id)">
+            <li>
+                
+                <a ui-sref="viewoutgoingmemo({id:'{{feedItemData.FeedId}}'})">
+                    <i class="fa fa-external-link" aria-hidden="true"></i> مطالعة
+                </a>
+                
+                <feed-Share feeditemid="{{feedItemData.Id}}"></feed-Share>
+                <a ng-href="{{downloadUrl}}" target="_self"><i class="fa fa-download"></i> تنزيل</a>
+                
+            </li>
+
+        </ul>
+    </div>
+
+</div>-->
+
+<!--<div class="card" ng-controller="memoActions" ng-init="InitForIncoming(feedItemData.Id)">
+    <div class="header">
+        <h2 class="info"><strong>مذكرة</strong></h2>
+        <ul class="header-dropdown">
+            <li class="dropdown">
+                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                <ul class="dropdown-menu dropdown-menu-left float-right">
+                    <li><a style="text-align:right" ui-sref="viewoutgoingmemo({id:'{{feedItemData.FeedId}}'})">مطالعة</a></li>
+                    <li><a style="text-align:right" href="javascript:void(0);">مشاركة</a></li>
+                    <li><a style="text-align:right" ng-click="sendDraftMemo()">{{sendTitle}}</a></li>
+                    <li><a style="text-align:right" ng-href="{{downloadUrl}}" target="_self">تنزيل</a></li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+    <div class="body">
+        <aviatortimeline userid="{{feedItemData.FK_To}}"></aviatortimeline>
+        <div class="body widget-user">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h5 class="m-b-0">
+                        <a ui-sref="viewoutgoingmemo({id:'{{feedItemData.FeedId}}'})">
+                            {{feedItemData.Title}}
+                        </a>
+                    </h5>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<div ng-controller="memoActions" ng-init="InitForIncoming(feedItemData.Id)" class="timeline-item blue" date-is="{{feedItemData.CreationDate | date:'fullDate'}} - {{feedItemData.CreationDate | date:'shortTime'}}">
+    <h6><a ui-sref="viewoutgoingmemo({id:'{{feedItemData.FeedId}}'})">{{feedItemData.Title}}</a></h6>
+    <p>
+        {{feedItemData.Text1}}
+    </p>
+    <div class="msg">
+        <small><aviatoroneline userid="{{feedItemData.FK_From}}"></aviatoroneline> > <aviatoroneline userid="{{feedItemData.FK_To}}"></aviatoroneline></small>
+    </div>
+</div>
+

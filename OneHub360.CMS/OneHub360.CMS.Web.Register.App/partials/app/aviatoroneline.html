@@ -1,0 +1,11 @@
+﻿<span callback-fn="loadUser(userId)" class="aviatoroneline">
+    <span ng-if="status == 0">
+        <loading></loading>
+    </span>
+    <span ng-if="status == 1" class="user">
+        <img ng-src="{{UserInfo.Picture}}" style="width:30px;height:30px;margin-top:0px!important" />
+        <b>{{UserInfo.FullName}}</b> |
+        <span>{{UserInfo.About}}</span>
+</span>
+</span>
+

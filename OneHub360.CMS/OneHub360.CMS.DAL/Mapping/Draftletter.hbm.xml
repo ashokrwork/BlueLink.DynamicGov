@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.CMS.DAL" namespace="OneHub360.CMS.DAL" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="DraftLetter" table="DraftLetter" lazy="true" >
+    <id name="Id" column="Id" />
+    <property name="Createdby">
+      <column name="CreatedBy" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="Creationdate">
+      <column name="CreationDate" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="Lastmodified">
+      <column name="LastModified" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="Isdeleted">
+      <column name="IsDeleted" sql-type="bit" not-null="false" />
+    </property>
+    <property name="Language">
+      <column name="Language" sql-type="int" not-null="false" />
+    </property>
+    <property name="Entityid">
+      <column name="EntityId" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="Subject">
+      <column name="Subject" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="From">
+      <column name="From" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="To">
+      <column name="To" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="Incomingnumber">
+      <column name="IncomingNumber" sql-type="varchar" not-null="false" />
+    </property>
+    <property name="Incomingdate">
+      <column name="IncomingDate" sql-type="datetime2" not-null="false" />
+    </property>
+    <property name="Outgoingnumber">
+      <column name="OutgoingNumber" sql-type="varchar" not-null="false" />
+    </property>
+    <property name="Outgoingdate">
+      <column name="OutgoingDate" sql-type="datetime2" not-null="false" />
+    </property>
+    <property name="Confidential">
+      <column name="Confidential" sql-type="bit" not-null="false" />
+    </property>
+    <property name="Sharedwith">
+      <column name="SharedWith" sql-type="varchar" not-null="false" />
+    </property>
+    <property name="FkReplyto">
+      <column name="FK_ReplyTo" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="FkDocument">
+      <column name="FK_Document" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <bag name="OutgoingLetter">
+      <key column="FK_DraftLetter" />
+      <one-to-many class="OutgoingLetter" />
+    </bag>
+  </class>
+</hibernate-mapping>

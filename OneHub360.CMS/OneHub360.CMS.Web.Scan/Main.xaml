@@ -1,0 +1,38 @@
+﻿<Page x:Class="OneHub360.CMS.Web.Scan.Main"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:OneHub360.CMS.Web.Scan"
+      mc:Ignorable="d" 
+     
+      Title="Main">
+
+    <StackPanel Orientation="Vertical" Width="200px">
+        <StackPanel Orientation="Horizontal" x:Name="PanelScanAgain"  Visibility="Collapsed" >
+            <WrapPanel FlowDirection="RightToLeft">
+                <Button Click="btnaddScan_Click" Name="btnaddScan" Width="125" Height="30">
+                    <Button.Content>
+                        <WrapPanel FlowDirection="RightToLeft">
+
+                            <Image Source="/img/scanicon.png" Width="25"></Image>
+                            <Label Foreground="#FFD70505">مسح اخر</Label>
+                        </WrapPanel>
+                    </Button.Content>
+                </Button>
+                <Button Click="btnfinish_Click" Name="btnfinish" Width="73" Margin="2,0,0,0" Height="30"  Foreground="#FFD70505">
+                    حفظ
+                </Button>
+            </WrapPanel>
+        </StackPanel>
+        <Button Click="btnScan_Click" Name="btnScan">
+            <Button.Content>
+                <WrapPanel FlowDirection="RightToLeft">
+
+                    <Image Source="/img/scanicon.png" Width="25"></Image>
+                    <Label Foreground="#FFD70505">مسح ملف من ماسح ضوئي</Label>
+                </WrapPanel>
+            </Button.Content>
+        </Button>
+    </StackPanel>
+</Page>

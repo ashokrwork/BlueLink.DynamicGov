@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.CMS.DAL" namespace="OneHub360.CMS.DAL" xmlns="urn:nhibernate-mapping-2.2">
+  <subclass name="OutgoingMemo" extends="Correspondence" discriminator-value="3" >
+    <join table="OutgoingMemo">
+      <key column="Id" foreign-key="Id"></key>
+      
+      <property name="OutgoingNumber">
+        <column name="OutgoingNumber" sql-type="varchar" not-null="false" />
+      </property>
+      <property name="OutgoingDate">
+        <column name="OutgoingDate" sql-type="datetime2" not-null="false" />
+      </property>
+      <property name="FKDraft">
+        <column name="FK_Draft" sql-type="uniqueidentifier" not-null="true" />
+      </property>
+      <property name="FKIncoming">
+        <column name="FK_Incoming" sql-type="uniqueidentifier" not-null="false" />
+      </property>
+    </join>
+  </subclass>
+</hibernate-mapping>

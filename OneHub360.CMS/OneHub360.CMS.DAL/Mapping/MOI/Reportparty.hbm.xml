@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.CMS.DAL" namespace="OneHub360.CMS.DAL" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="ReportParty" table="ReportParty" lazy="true" >
+    <id name="Id" column="Id" />
+    <property name="ReportId">
+      <column name="ReportId" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="EntityId">
+      <column name="EntityId" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="PartyArabicName">
+      <column name="PartyArabicName" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="PartyIdentificationType">
+      <column name="PartyIdentificationType" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="PartyIdentificationNumber">
+      <column name="PartyIdentificationNumber" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="PartyEnglishName">
+      <column name="PartyEnglishName" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="PartyNationality">
+      <column name="PartyNationality" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="PartyGender">
+      <column name="PartyGender" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="PartyReligion">
+      <column name="PartyReligion" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="PartyBirthDate">
+      <column name="PartyBirthDate" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="PartyAddress">
+      <column name="PartyAddress" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="PartyMobilePhone">
+      <column name="PartyMobilePhone" sql-type="varchar" not-null="false" />
+    </property>
+    <property name="PartySponsorType">
+      <column name="PartySponsorType" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="PartySponsorName">
+      <column name="PartySponsorName" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="PartySponsorMobilePhone">
+      <column name="PartySponsorMobilePhone" sql-type="varchar" not-null="false" />
+    </property>
+    <property name="PartyJobTitle">
+      <column name="PartyJobTitle" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="PartyMailBox">
+      <column name="PartyMailBox" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="PartyDrivingLicenseType">
+      <column name="PartyDrivingLicenseType" sql-type="uniqueidentifier" not-null="false" />
+    </property>
+    <property name="PartyDrivingLicenseNumber">
+      <column name="PartyDrivingLicenseNumber" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="PartyDrivingLicenseStartDate">
+      <column name="PartyDrivingLicenseStartDate" sql-type="datetime2" not-null="false" />
+    </property>
+    <property name="PartyDrivingLicenseEndDate">
+      <column name="PartyDrivingLicenseEndDate" sql-type="datetime2" not-null="false" />
+    </property>
+    <property name="PartyCarType">
+      <column name="PartyCarType" sql-type="uniqueidentifier" not-null="false" />
+    </property>
+    <property name="PartyCarPlateNumber">
+      <column name="PartyCarPlateNumber" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="PartyCarManufactureYear">
+      <column name="PartyCarManufactureYear" sql-type="varchar" not-null="false" />
+    </property>
+    <property name="PartyCarOwnerName">
+      <column name="PartyCarOwnerName" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="PartyCarOwnerAddress">
+      <column name="PartyCarOwnerAddress" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="PartyCarInsuranceNumber">
+      <column name="PartyCarInsuranceNumber" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="PartyCarInsuranceType">
+      <column name="PartyCarInsuranceType" sql-type="uniqueidentifier" not-null="false" />
+    </property>
+    <property name="PartyCarInsuranceCompanyName">
+      <column name="PartyCarInsuranceCompanyName" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="PartyCarInsuranceStartDate">
+      <column name="PartyCarInsuranceStartDate" sql-type="datetime2" not-null="false" />
+    </property>
+    <property name="PartyCarInsuranceEndDate">
+      <column name="PartyCarInsuranceEndDate" sql-type="datetime2" not-null="false" />
+    </property>
+    <property name="CreatedBy">
+      <column name="CreatedBy" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="CreationDate">
+      <column name="CreationDate" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="LastModified">
+      <column name="LastModified" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="IsDeleted">
+      <column name="IsDeleted" sql-type="bit" not-null="false" />
+    </property>
+    <property name="Language">
+      <column name="Language" sql-type="int" not-null="false" />
+    </property>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+﻿<div ng-show="isLoggedIn" id="mySidenav" class="sidenav" ng-controller="sideNavController">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="glyphicon glyphicon-menu-right" aria-hidden="true"></i></a>
+    <div class="side_logo">
+        <a href="">
+            <img src="/img/app/cpa-logo.jpg" alt="" />
+        </a>
+    </div>
+    <nav class="sideNavLinks">
+        <ul ng-if="IsUser()">
+            <!--<li> <a ui-sref="dashboard" onclick="closeNav()">لوحة المعلومات <i class="fa fa-bar-chart" aria-hidden="true"></i></a> </li>-->
+            <!--<li> <a href="http://onehub360sp/">البوابة الداخلية <i class="fa fa-home" aria-hidden="true"></i></a></li>-->
+            <li> <a ui-sref="feed({option:'0'})">مسودات <i class="fa fa-th" aria-hidden="true"></i></a></li>
+            <li> <a ui-sref="feed({option:'1'})">وارد <i class="glyphicon glyphicon-import" aria-hidden="true"></i></a></li>
+            <li> <a ui-sref="feed({option:'2'})">صادر <i class="glyphicon glyphicon-export" aria-hidden="true"></i></a></li>
+            <!--<li> <a href="">الارشيف <i class="glyphicon glyphicon-folder-open" aria-hidden="true"></i></a></li>-->
+            <li> <a ng-controller="loginController" ng-click="doLogout()">تسجيل الخروج <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+        </ul>
+        <ul ng-if="!IsUser()">
+            <li> <a ui-sref="incoming()">وارد <i class="glyphicon glyphicon-import" aria-hidden="true"></i></a></li>
+            <li> <a ui-sref="outgoing()">صادر <i class="glyphicon glyphicon-export" aria-hidden="true"></i></a></li>
+            <li> <a ng-controller="loginController" ng-click="doLogout()">تسجيل الخروج <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+        </ul>
+    </nav>
+</div>

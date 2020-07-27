@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.CMS.DAL" namespace="OneHub360.CMS.DAL" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="UserActionView" table="UserActionView" >
+    <id column="Id" name="Id"/>
+    <property name="CreatedBy">
+      <column name="CreatedBy" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="CreationDate">
+      <column name="CreationDate" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="LastModified">
+      <column name="LastModified" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="IsDeleted">
+      <column name="IsDeleted" sql-type="bit" not-null="false" />
+    </property>
+    <property name="Language" type="OneHub360.DB.Language, OneHub360.DB" not-null="false" />
+    <property name="EntityId">
+      <column name="EntityId" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="Actor">
+      <column name="Actor" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="BrowserType">
+      <column name="BrowserType" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="MachineIP">
+      <column name="MachineIP" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="MachineName">
+      <column name="MachineName" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="ServerName">
+      <column name="ServerName" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="RequestUrl">
+      <column name="RequestUrl" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="FK_Correspondence">
+      <column name="FK_Correspondence" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="FK_UserActionType">
+      <column name="FK_UserActionType" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="ThreadId">
+      <column name="ThreadId" sql-type="uniqueidentifier" not-null="false" />
+    </property>
+    <property name="Destination">
+      <column name="Destination" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="Name">
+      <column name="Name" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="Message">
+      <column name="Message" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="ActionCssClass">
+      <column name="ActionCssClass" />
+    </property>
+  </class>
+</hibernate-mapping>

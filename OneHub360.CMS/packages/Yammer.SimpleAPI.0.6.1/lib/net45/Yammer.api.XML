@@ -1,0 +1,353 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Yammer.api</name>
+    </assembly>
+    <members>
+        <member name="P:Yammer.api.ClientConfigurationContainer.ClientId">
+            <summary>
+            Client ID (ID of your application).
+            </summary>
+        </member>
+        <member name="P:Yammer.api.ClientConfigurationContainer.ClientSecret">
+            <summary>
+            Client secret.
+            </summary>
+        </member>
+        <member name="P:Yammer.api.ClientConfigurationContainer.ClientCode">
+            <summary>
+            Client secret.
+            </summary>
+        </member>
+        <member name="P:Yammer.api.ClientConfigurationContainer.RedirectUri">
+            <summary>
+            Redirect URI (URI user will be redirected to
+            after authentication using third-party service).
+            </summary>
+        </member>
+        <member name="F:Yammer.api.YammerClient.AccessTokenService">
+            <summary>
+            Defines URI of service which issues access token.
+            </summary>
+        </member>
+        <member name="F:Yammer.api.YammerClient.ImpersonateUsersService">
+            <summary>
+            Defines URI of service which gets impersonates info/tokens.
+            </summary>
+        </member>
+        <member name="F:Yammer.api.YammerClient.ImpersonateTokenService">
+            <summary>
+            Defines URI of preauthorized oauth access token for a given user_id/consumer_key combination.
+            </summary>
+        </member>
+        <member name="F:Yammer.api.YammerClient.AccessCodeService">
+            <summary> 
+            Defines URI of service which redirects to login/authorized.
+            </summary>
+        </member>
+        <member name="F:Yammer.api.YammerClient.InvitationsService">
+            <summary>
+            Defines URI of service which sends invitation to user.
+            </summary>
+        </member>
+        <member name="F:Yammer.api.YammerClient.UserServiceByMail">
+            <summary>
+            Defines URI of service which gets user info/details by mail.
+            </summary>
+        </member>
+        <member name="F:Yammer.api.YammerClient.UsersService">
+            <summary>
+            Defines URI of service which gets users list.
+            </summary>
+        </member>
+        <member name="F:Yammer.api.YammerClient.CurrentUserService">
+            <summary>
+            Defines URI of service which gets currently authenticated user.
+            </summary>
+        </member>
+        <member name="F:Yammer.api.YammerClient.PostMessageService">
+            <summary>
+            Defines URI of service which posts and gets messages.
+            </summary>
+        </member>
+        <member name="F:Yammer.api.YammerClient.PrivateMessageService">
+            <summary>
+            Defines URI of service which handles private (instant) messages.
+            </summary>
+        </member>
+        <member name="F:Yammer.api.YammerClient._configuration">
+            <summary>
+            Standard configuration container.
+            </summary>
+        </member>
+        <member name="F:Yammer.api.YammerClient._userRootObject">
+            <summary>
+            Contain current user info when we obtain a token.
+            </summary>
+        </member>
+        <member name="F:Yammer.api.YammerClient._yammerRestClient">
+            <summary>
+            Persistent REST client for Yammer.
+            </summary>
+        </member>
+        <member name="P:Yammer.api.YammerClient.YammerRestClient">
+            <summary>
+            Accessor to a singleton request (RestSharp) object.
+            </summary>
+        </member>
+        <member name="M:Yammer.api.YammerClient.#ctor(Yammer.api.ClientConfigurationContainer)">
+            <summary>
+            Initializes a new instance of the <see cref="N:Yammer"/> class.
+            </summary>
+            <param name="configuration">The configuration.</param>
+        </member>
+        <member name="P:Yammer.api.YammerClient.YammerUsers">
+            <summary>
+            A cached list of known Yammer users.
+            </summary>
+        </member>
+        <member name="P:Yammer.api.YammerClient.AccessToken">
+            <summary>
+            Access token returned by the provider. Can be used for further calls to provider API.
+            </summary>
+        </member>
+        <member name="M:Yammer.api.YammerClient.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="N:Yammer"/> class.
+            </summary>
+            <param name="token">A token use to do action</param>
+        </member>
+        <member name="M:Yammer.api.YammerClient.SetAuthorizationCode(System.String)">
+            <summary>
+            Set a new Authorization (from a user)
+            And try to get a new token (for this user). 
+            </summary>
+            <param name="code"></param>
+        </member>
+        <member name="M:Yammer.api.YammerClient.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="N:Yammer"/> class.
+            </summary>
+            <param name="clientId">Application client id</param>
+            <param name="secretKey">Secret Application key</param>
+            <param name="redirect">Url after Yammer authorize screen</param>
+            <param name="code">Authorized code from yammer</param>
+            <param name="token">token from previous session</param>
+        </member>
+        <member name="M:Yammer.api.YammerClient.GetLoginLinkUri(System.String)">
+            <summary>
+            Returns URI of service which should be called in order to start the authentication process.
+            This URI should be used for rendering login link.
+            </summary>
+            <remarks>
+            Any additional information that will be posted back by service.
+            </remarks>
+        </member>
+        <member name="M:Yammer.api.YammerClient.GetUserInfo">
+            <summary>
+            Get current user info.
+            </summary>
+            <returns>Yammer User object</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.GetToken">
+            <summary>
+            Get an access token.
+            </summary>
+            <returns>The access token</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.ExistUser(System.String)">
+            <summary>
+            Check if the user exists in Yammer.
+            </summary>
+            <param name="mail">The email address of the user</param>
+            <returns>True = Is in Yammer</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.FindUserFromYammerList(System.String)">
+            <summary>
+            Find a user in the cached user list.
+            </summary>
+            <param name="mail">The email address to find</param>
+            <returns>The User object (or NULL if not found)</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.GetUserByMail(System.String)">
+            <summary>
+            Find a user by his email.
+            </summary>
+            <param name="mail">The email address to find</param>
+            <returns>The User2 object (or NULL if not found)</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.GetTokenFromUser(System.String,System.Boolean)">
+            <summary>
+            Try to obtain a user's token
+            - try different methods to obtain this.
+            </summary>
+            <param name="mail">The email address to find</param>
+            <param name="obtainToken">Force to ask an explicit impersonation</param>
+            <returns>The access token (or NULL if not found)</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.AskImpersonateToken(System.Int32)">
+            <summary>
+            Request an access token to impersonate the specified user.
+            </summary>
+            <param name="userId">The User object ID</param>
+            <returns>The access token string</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.SendInvitation(System.String)">
+            <summary>
+            Send an invitation to a new user.
+            </summary>
+            <param name="mailAdress">Email address of the new user</param>
+            <returns>Status == OK if it's completed</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.GetCurrentUser">
+            <summary>
+            Obtain the User object for the currently authenticated user.
+            </summary>
+            <returns>The current user (the owner of token)</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.PostMessage(System.String,System.Int64,System.String)">
+            <summary>
+            Post a simple group message.
+            </summary>
+            <param name="messageToPost">The message body</param>
+            <param name="groupId">The group where the message will appear</param>
+            <param name="topic">The message topic</param>
+            <returns>The message object (with its returned ID)</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.PostMessage(System.String,System.Int64,System.String,Yammer.api.OpenGraphInMessage)">
+            <summary>
+            Post a message with an OpenGraph object.
+            </summary>
+            <param name="messageToPost">The message body</param>
+            <param name="groupId">The group where the message will appear</param>
+            <param name="topic">The message topic</param>
+            <param name="og">The OpenGraph object</param>
+            <returns>The message object (with its returned ID)</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.PostMessage(System.String,System.Int64,System.Collections.Generic.List{System.String},Yammer.api.OpenGraphInMessage)">
+            <summary>
+            Post a message with an OpenGraph object and multiple topics.
+            </summary>
+            <param name="messageToPost">The messsage body</param>
+            <param name="groupId">The group where the message will appear</param>
+            <param name="topics">The list of topics</param>
+            <param name="og">The OpenGraph object</param>
+            <returns>The message object (with its returned ID)</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.PostInstantMessage(System.String,System.Int64,System.String)">
+            <summary>
+            Post a private message to specific user.
+            </summary>
+            <param name="messageToPost">The message body</param>
+            <param name="userId">The receipient's ID</param>
+            <param name="topic">The message topic (NULL for the private message type)</param>
+            <returns>The message object (with its returned ID)</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.RetrieveInstantMessages(System.DateTime)">
+            <summary>
+            Retrieve all private message objects, based on the DateTime argument.
+            </summary>
+            <param name="newerThan">The cutoff timestamp (UTC formatted)</param>
+            <returns>A list of message objects</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.GetUsers">
+            <summary>
+            Get a list of all users.
+            </summary>
+            <returns>A list of User objects</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.GetImpersonateTokens">
+            <summary>
+            Get a list of all user's impersonation tokens.
+            </summary>
+            <returns>A list of Impersonante objects</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.GetAccessToken">
+            <summary>
+            Query for access token and parse the response.
+            </summary>
+        </member>
+        <member name="M:Yammer.api.YammerClient.YammerRequest``1(System.String,RestSharp.Method,System.Object,System.Boolean,System.Boolean)">
+            <summary>
+            Query Yammer and parse JSON response to define the object.
+            </summary>
+            <typeparam name="T">Object type expected</typeparam>
+            <param name="restService">Service URI to query</param>
+            <param name="method">GET or POST</param>
+            <param name="objectForRequest">Other parameters embedded in an object</param>
+            <param name="getAuth">Try to get the access token</param>
+            <param name="useBody">Indicate to use AddBody (true : default) or AddObject (false)</param>
+            <returns>The JSON response parse of type T</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.PostAnyMessage(System.Object)">
+            <summary>
+            Post any type of message.
+            </summary>
+            <param name="obj">Message container</param>
+            <returns>The message object (with its returned ID)</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.YammerRequestAsync``1(System.String,RestSharp.Method,System.Object,System.Boolean)">
+            <summary>
+            Query Yammer and parse JSON response to define the object.
+            </summary>
+            <typeparam name="T">Object type Expected</typeparam>
+            <param name="restService">Service URI to query</param>
+            <param name="method">GET or POST</param>
+            <param name="objectForRequest">Other parameters embedded in an object</param>
+            <param name="getAuth">Try to get the access token</param>
+            <returns>The JSON response parse of type T</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.PostAnyMessageAsync(System.Object)">
+            <summary>
+            Post any type of message.
+            </summary>
+            <param name="obj">Message container</param>
+            <returns>The threaded task's message object (with its returned ID)</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.PostMessageAsync(System.String,System.Int64,System.String)">
+            <summary>
+            Post a simple group message.
+            </summary>
+            <param name="messageToPost">The message body</param>
+            <param name="groupId">The group where the message will appear</param>
+            <param name="topic">The message topic</param>
+            <returns>The threaded task's message object (with its returned ID)</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.PostMessageAsync(System.String,System.Int64,System.String,Yammer.api.OpenGraphInMessage)">
+            <summary>
+            Post a message with an open graph object
+            </summary>
+            <param name="messageToPost">The message body</param>
+            <param name="groupId">The group where the message will appear</param>
+            <param name="topic">The message topic</param>
+            <param name="og">The OpenGraph object</param>
+            <returns>The threaded task's message object (with its returned ID)</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.PostMessageAsync(System.String,System.Int64,System.Collections.Generic.List{System.String},Yammer.api.OpenGraphInMessage)">
+            <summary>
+            Post a message with an OpenGraph object and multiple topics.
+            </summary>
+            <param name="messageToPost">The messsage body</param>
+            <param name="groupId">The group where the message will appear</param>
+            <param name="topics">The list of topics</param>
+            <param name="og">The OpenGraph object</param>
+            <returns>The threaded task's message object (with its returned ID)</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.PostInstantMessageAsync(System.String,System.Int64,System.String)">
+            <summary>
+            Post a private message to specific user.
+            </summary>
+            <param name="messageToPost">The message body</param>
+            <param name="userId">The receipient's ID</param>
+            <param name="topic">The message topic (NULL for the private message type)</param>
+            <returns>The threaded task's message object (with its returned ID)</returns>
+        </member>
+        <member name="M:Yammer.api.YammerClient.RetrieveInstantMessagesAsync(System.DateTime)">
+            <summary>
+            Retrieve all private message objects, based on the DateTime argument.
+            </summary>
+            <param name="newerThan">The cutoff timestamp (UTC formatted)</param>
+            <returns>The threaded task's list of message objects</returns>
+        </member>
+    </members>
+</doc>

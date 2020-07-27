@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping assembly="OneHub360.CMS.DAL" namespace="OneHub360.CMS.DAL" xmlns="urn:nhibernate-mapping-2.2">
+  <sql-query xmlns="urn:nhibernate-mapping-2.2"
+             name="Search">
+      <return-scalar column="Id" type="Guid"/>
+      <return-scalar column="Subject" type="String"/>
+      <return-scalar column="From" type="String"/>
+      <return-scalar column="To" type="String"/>
+      <return-scalar column="ResultType" type="Int32"/>
+      <return-scalar column="Brief" type="String"/>
+    exec Search :keyword,:user
+  </sql-query>
+</hibernate-mapping>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.DB" namespace="OneHub360.DB" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="NHEntity" table="NHEntities" abstract="true">
+    
+    <id name="Id" type="Guid">
+      <column name="Id" not-null="true" />
+      <generator class="guid.comb" />
+    </id>
+    <property name="CreationDate" type="DateTime" not-null="true" />
+    <property name="CreatedBy" type="String" not-null="true" />
+    <property name="LastModified" type="DateTime" not-null="true" />
+    <property name="IsDeleted" type="Boolean" not-null="false" />
+    <property name="Language" type="OneHub360.DB.Language, OneHub360.DB" not-null="false" />
+    <property name="EntityId" type="Guid" not-null="true" />
+  </class>
+</hibernate-mapping>

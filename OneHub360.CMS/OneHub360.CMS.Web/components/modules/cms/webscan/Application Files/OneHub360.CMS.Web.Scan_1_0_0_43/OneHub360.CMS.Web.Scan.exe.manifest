@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="OneHub360.CMS.Web.Scan.exe" version="1.0.0.43" publicKeyToken="c5a45540030dc594" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:publisher="OneHub360" co.v1:suiteName="OneHub360" asmv2:product="OneHub360" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="OneHub360.CMS.Web.Scan" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="OneHub360.CMS.Web.Scan.exe" parameters="" />
+    <hostInBrowser xmlns="urn:schemas-microsoft-com:asm.v3" />
+  </entryPoint>
+  <co.v1:useManifestForTrust xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet version="1" class="System.Security.NamedPermissionSet" Name="LocalIntranet" Description="Default rights given to applications on the local intranet" Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Interop.WIA.dll" size="34816">
+      <assemblyIdentity name="Interop.WIA" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>qzuUbOjmYhuyEUvWsEF+PAm8mqG0pepAEHQYckaBCdc=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OneHub360.CMS.Web.Scan.exe" size="16808">
+      <assemblyIdentity name="OneHub360.CMS.Web.Scan" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>p+H/F5/mXmntae+DwECrDghl/JRor8lf+BEtFQZspgE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="OneHub360.CMS.Web.Scan.exe.config" size="857">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>m7S3w0D72jiRGBpYohybYI1yhN2TDsKkuMwe0BM2QCc=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=CCMOF\ashokr" issuerKeyHash="149687e61ffd1744ef40f2525882fc6f5cef3905" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>L5Iy1higR6Bs71V8W5dDO7NnXfz1MVm7tFZ4qt216TA=</DigestValue></Reference></SignedInfo><SignatureValue>wPVY4mH3fdzosjuZn1PtIXbfIwUWkChDgKGmfNWX3redpcBhvbhdRzIYoXtelrp24XQ9Yv55j3cZwRf9FstQ+G0tqqR30Jx4q9vwnQZiwQeJdfQzdmj9cizO00pZn/BSc9CNbVvSu7TKHNHxmmBmfcWJzNAfpeuUcGbuu6fItjQ=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>146EdWTkSz/r+xw83yPoey+yig4ksVMRGYXnq0Xx1rRMXPC3EOxBJQe2G7UO1yz+yhJ/xsjpDQHLDrSfHLQn97fqzfdppPnOON7pnINx7RFQMxRt6zIo60kLN6636IdnL8mqnC14uP+CnTDiufxbihbvDa6UB5g6mdJEnQGbx1k=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="30e9b5ddaa7856b4bb5931f5fc5d67b33b43975b7c55ef6ca047a018d632922f" Description="" Url=""><as:assemblyIdentity name="OneHub360.CMS.Web.Scan.exe" version="1.0.0.43" publicKeyToken="c5a45540030dc594" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=CCMOF\ashokr</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>O+ZWlv4p9BklO9w6TCRXiKDfeXgO5qkJ9mfDKEmmD5U=</DigestValue></Reference></SignedInfo><SignatureValue>oAp8Ug3FcpBP3tAlka2oS9Ct32kPFqJ3LLQ1eApFlHc723z+0gGIVFf3YSDka7+1Xt58K/IW4Wz69pC9naOOzkq5NoUQ7eF52SBUZhJnB44Jp2cwtg1QcSaEVuwJh6BxaaI09VH6aN5wtxzpL6CwFbMBsrX85geQsGp7LZnsMus=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>146EdWTkSz/r+xw83yPoey+yig4ksVMRGYXnq0Xx1rRMXPC3EOxBJQe2G7UO1yz+yhJ/xsjpDQHLDrSfHLQn97fqzfdppPnOON7pnINx7RFQMxRt6zIo60kLN6636IdnL8mqnC14uP+CnTDiufxbihbvDa6UB5g6mdJEnQGbx1k=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIByTCCATKgAwIBAgIQLeHugw64VoNLqzTaDMTIizANBgkqhkiG9w0BAQsFADAjMSEwHwYDVQQDHhgAQwBDAE0ATwBGAFwAYQBzAGgAbwBrAHIwHhcNMTYxMTA5MTk0OTA1WhcNMTcxMTEwMDE0OTA1WjAjMSEwHwYDVQQDHhgAQwBDAE0ATwBGAFwAYQBzAGgAbwBrAHIwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBANeOhHVk5Es/6/scPN8j6HsvsooOJLFTERmF56tF8da0TFzwtxDsQSUHthu1Dtcs/soSf8bI6Q0Byw60nxy0J/e36s33aaT5zjje6ZyDce0RUDMUbesyKOtJCzeut+iHZy/JqpwteLj/gp0w4rn8W4oW7w2ulAeYOpnSRJ0Bm8dZAgMBAAEwDQYJKoZIhvcNAQELBQADgYEAfN39SP/J2+Ltf5Ze3ZSKEp78TazEBNwf+2etazb7L2M5giWDtUcLZJ2j1e1YwoABjcbf1TTZ3BmpeF1LfiJNpEaRxCdawG4VXJjtqCbxeHg9vaFzBW8gJxSh+FCb5oMM4iAzPSfZ6f/cLUrAOBvU0p9hfTuvd5FmgzZUiZPKEi0=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

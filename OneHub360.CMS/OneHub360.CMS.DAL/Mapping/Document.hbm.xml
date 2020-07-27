@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.CMS.DAL" namespace="OneHub360.CMS.DAL" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Document" table="Document" >
+    <id name="Id" column="Id" >
+    </id>
+    <property name="FK_Template">
+      <column name="FK_Template" />
+    </property>
+    
+    
+    <property name="CreatedBy">
+      <column name="CreatedBy" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="CreationDate">
+      <column name="CreationDate" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="LastModified">
+      <column name="LastModified" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="IsDeleted">
+      <column name="IsDeleted" sql-type="bit" not-null="false" />
+    </property>
+    <property name="Language" type="OneHub360.DB.Language, OneHub360.DB" not-null="false" />
+    <property name="EntityId">
+      <column name="EntityId" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="FileName">
+      <column name="FileName" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="Title">
+      <column name="Title" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="FileBinary" type="BinaryBlob">
+      <column name="FileBinary" not-null="true" />
+    </property>
+    <property name="Signed">
+      <column name="Signed" sql-type="bit" not-null="true" />
+    </property>
+    <property name="SignedBy">
+      <column name="SignedBy" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="SigningDate">
+      <column name="SigningDate" sql-type="datetime2" not-null="false" />
+    </property>
+    <property name="PagesCount">
+      <column name="PagesCount" sql-type="bigint" not-null="false" />
+    </property>
+    <property name="FileNetDocumentID">
+      <column name="FileNetDocumentID"></column>
+    </property>
+  </class>
+</hibernate-mapping>

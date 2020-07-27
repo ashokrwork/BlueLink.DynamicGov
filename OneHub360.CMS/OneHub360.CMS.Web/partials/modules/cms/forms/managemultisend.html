@@ -1,0 +1,51 @@
+﻿<div class="Modal-box">
+    <div ng-init="loadMultiSend()" ngCloak ng-controller="multiSendController">
+        <div class="modal-header">
+            <back-Button></back-Button>
+            <h4 class="modal-title"><img src="/img/app/share.png" width="36" height="36" />  متعدد ونسخة إلي</h4>
+        </div>
+        <div class="modal-body">
+            <div>
+                <people-Picker title="الرجاء إختيار مستخدم كمرسل إليه إضافي"
+                               selectedobject="addAddtionalRecipients"
+                               pickerid="addtionalRecipients"
+                               reuired="true"></people-Picker>
+            </div>
+            <div style="margin-top:10px;margin-bottom:10px">
+                <div ng-if="AddtionalRecipientsList.length == 0">
+                    لا يوجد مستخدمين مختارين كمرسل إليه إضافي
+                </div>
+                <div ng-repeat="userInfoData in AddtionalRecipientsList track by $index">
+                    <div class="input-group" style="margin-top:3px!important">
+                        <span class="form-control">
+                            <aviatoroneline userid="{{userInfoData}}"></aviatoroneline>
+                        </span>
+                        <span class="input-group-addon" ng-click="removeAddtionalRecipients($index)"><i class="fa fa-times"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <people-Picker title="الرجاء إختيار مستخدم لإستقبال نسخة"
+                               selectedobject="addCopyTo"
+                               pickerid="copyTo"
+                               reuired="true"></people-Picker>
+            </div>
+            <div style="margin-top:10px;margin-bottom:10px">
+                <div ng-if="CopyToList.length == 0">
+                    لا يوجد مستخدمين مختارين كمرسل إليه إضافي
+                </div>
+                <div ng-repeat="userInfoData in CopyToList track by $index">
+                    <div class="input-group" style="margin-top:3px!important">
+                        <span class="form-control">
+                            <aviatoroneline userid="{{userInfoData}}"></aviatoroneline>
+                        </span>
+                        <span class="input-group-addon" ng-click="removeCopyTo($index)"><i class="fa fa-times"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button class="form-control btn-green" ng-click="updateMultiSend()" type="button">حفظ التغييرات</button>
+            </div>
+        </div>
+    </div>
+</div>

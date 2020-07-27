@@ -1,0 +1,39 @@
+﻿<div class="listViewBox col-md-12">
+    <div class="col-md-1 col-sm-1 col-xs-10 timeText">{{feedItemData.CreationDate | date:'shortTime'}}</div>
+    <div class="col-md-1 col-sm-1 col-xs-2 typeIcon">
+        <a ui-sref="viewoutgoingletter({id:'{{feedItemData.FeedId}}'})">
+            <img ng-src="/img/modules/cms/outgoingletter.png" width="36" height="36" alt="" />
+        </a>
+    </div>
+
+    <div class="col-md-2 col-sm-4 col-xs-12 tL-SenderInfo">
+        <aviatortimeline userid="{{feedItemData.FK_From}}"></aviatortimeline>
+    </div>
+    <div class="col-md-1 col-sm-1 col-xs-2 "> <i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i> </div>
+
+    <div class="col-md-2 col-sm-4 col-xs-12 tL-SenderInfo">
+        <orgunittileline orgid="{{feedItemData.FK_To}}"></orgunittileline>
+    </div>
+    <div class="col-md-4 col-sm-11 col-xs-10 listItemTitl">
+        <a ng-click="openPreviewDialog(feedItemData,'previewController','/partials/modules/cms/feeder/preview.html')">
+            {{feedItemData.Title}}
+        </a>
+    </div>
+    <div class="col-md-1 col-sm-1 col-xs-2 actionsMinBox">
+        <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-list-ul fa-lg"></i></a>
+        <ul ng-controller="letterActions" ng-init="InitForOutgoing(feedItemData.Id)" class="dropdown-menu ddmFixBox" role="menu">
+            <li>
+                <!--<a href=""><span class="glyphicon glyphicon-flag" aria-hidden="true"></span>  متابعة</a>-->
+                <a ui-sref="viewoutgoingletter({id:'{{feedItemData.FeedId}}'})">
+                    <i class="fa fa-external-link" aria-hidden="true"></i> مطالعة
+                </a>
+                <feed-Share feeditemid="{{feedItemData.Id}}"></feed-Share>
+                <!--<feed-Comment threadid="{{feedItemData.Text3}}"></feed-Comment>-->
+                <a ng-href="{{downloadUrl}}" target="_self"><i class="fa fa-download"></i> تنزيل</a>
+                <!--<a ng-click="sendDraftMemo()"><i class="fa fa-paper-plane" aria-hidden="true"></i><span ng-bind="sendTitle"></span></a>-->
+                <!--<a><i ng-click="PrintDraftMemo()" class="fa fa-print"></i> طباعة</a>-->
+            </li>
+        </ul>
+    </div>
+</div>
+

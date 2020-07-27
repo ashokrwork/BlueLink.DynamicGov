@@ -1,0 +1,15 @@
+﻿<div data-intro="إضغط هنا لتحديث بياناتك الشخصية" ng-init="initCurrent()" ui-sref="profile" class="col-md-3 col-sm-3 col-xs-4 userProfile">
+    <div ng-if="status == 0">
+        <smallloading></smallloading>
+    </div>
+    <div ng-if="status == -1" >
+        <img src="/img/components/autocomplete/nopic.png" />
+        <h5>حدث خطأ في تحميل بيانات المستخدم</h5>
+    </div>
+    <div ng-if="status == 1">
+        <a  >
+            <span ng-bind="UserInfo.FullName"></span>
+            <img ng-src="{{UserInfo.Picture}}"  />
+        </a>
+    </div>
+</div>

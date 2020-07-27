@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.CMS.DAL" namespace="OneHub360.CMS.DAL" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="CorrespondenceDocuments" table="CorrespondenceDocuments" lazy="true" >
+    <id name="Id" column="Id" />
+    <property name="FK_Correspondence">
+      <column name="FK_Correspondence" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="FK_Document">
+      <column name="FK_Document" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="CreatedBy">
+      <column name="CreatedBy" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="CreationDate">
+      <column name="CreationDate" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="LastModified">
+      <column name="LastModified" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="IsDeleted">
+      <column name="IsDeleted" sql-type="bit" not-null="false" />
+    </property>
+    <property name="IsMainDocument">
+      <column name="IsMainDocument" sql-type="bit" not-null="false" />
+    </property>
+    <property name="Language" type="OneHub360.DB.Language, OneHub360.DB" not-null="false" />
+    <property name="EntityId">
+      <column name="EntityId" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.CMS.DAL" namespace="OneHub360.CMS.DAL" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="DraftMemo" table="DraftMemo">
+    <id name="Id" type="Guid">
+      <column name="Id" not-null="true" />
+    </id>
+    <one-to-one name="Correspondence"
+			class="Correspondence"/>
+  </class>
+</hibernate-mapping>

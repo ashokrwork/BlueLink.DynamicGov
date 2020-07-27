@@ -1,0 +1,10 @@
+﻿<span callback-fn="loadOrganization(orgId)">
+    <span ng-if="status == 0">
+        <loading></loading>
+    </span>
+    <span ng-if="status == 1" >
+        <img ng-src="{{OrgInfo.LogoUrl}}" style="width:30px;height:30px;margin-top:-10px!important" />
+        <b>{{OrgInfo.Title}}</b> |
+        <span>{{OrgInfo.PersonTitle}}</span>
+    </span>
+    </span>

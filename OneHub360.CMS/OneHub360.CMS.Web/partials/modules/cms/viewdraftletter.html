@@ -1,0 +1,120 @@
+﻿<div ng-controller="viewDraftLetterController" ng-init="LoadLetter(false)">
+    <div ng-if="status == 0">
+        <loading></loading>
+    </div>
+    <div class="mailDetailBox" ng-if="status == 1">
+        <div class="col-md-12 actionsBoxinner" ng-controller="letterActions"
+             ng-init="InitForDraft(Id)">
+
+            <a data-intro="تعديل بيانات الوثيقة" data-position="top" ui-sref="Modal.editdraftletter({id:'{{Id}}'})"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> تعديل</a>
+            <!--<feed-Comment threadid="{{letterData.ThreadId}}"></feed-Comment>-->
+            <a data-intro="إرسال المسودة" data-position="top" ng-click="sendDraftMemo()"><i class="fa fa-paper-plane" aria-hidden="true"></i><span ng-bind="sendTitle"></span></a>
+
+            <feed-Share data-intro="مشاركة المراسلة" data-position="top" feeditemid="{{Id}}"></feed-Share>
+            <!--<a ng-click="PrintDraftMemo()"><i class="fa fa-print"></i> طباعة</a>-->
+            <a data-intro="مطالعة الوثيقة فقط" data-position="top" ng-click="toggleFullScreen()">
+                <i ng-if="!fullScreen" class="fa fa-arrows-alt"></i><span ng-if="!fullScreen"> كامل الشاشة</span>
+                <i ng-if="fullScreen" class="fa fa-compress" aria-hidden="true"></i><span ng-if="fullScreen"> جميع البيانات</span>
+            </a>
+
+            <a data-intro="تنزبل المسودة كملف مطغوط" data-position="left" ng-href="{{downloadUrl}}" target="_self"><i class="fa fa-download"></i> تنزيل</a>
+            <a data-intro="إعادة تحميل البيانات" data-position="top" ng-click="LoadLetter(false)"><i class="fa fa-refresh" aria-hidden="true"></i> تحديث</a>
+            <a ng-if="isIE" target="_blank" ng-click="PrintDocument()"><i class="fa fa-print"></i> طباعة</a>
+
+        </div>
+        <div ng-class="fullScreen?'col-md-12':'col-md-9'">
+            <div id="detailBody" style="width:100%!important;">
+                <div ng-show="!fullScreen" class="col-md-12 docInfoBox" style="background:#fff; padding:10px; border:#eee 1px solid!important;">
+                    <div class="col-md-2 DocTypeBox"><img src="/img/modules/cms/draftletter.png" alt="Letter" />{{title}}</div>
+                    <div class="col-md-4 tL-SenderInfo">
+                        <aviatortimeline userid="{{letterData.From}}"></aviatortimeline>
+                    </div>
+                    <div class="col-md-1"><i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i></div>
+                    <div class="col-md-4 tL-SenderInfo">
+                        <orgunittileline orgid="{{letterData.To}}"></orgunittileline>
+                    </div>
+
+                    <div class="col-md-12" style="background:#fff; padding:10px; border-top:#eee 1px solid!important;">
+                        <span><b> الموضوع: </b> {{letterData.Subject}}</span> |
+                        <span><b> تاريخ الإنشاء: </b>{{letterData.CreationDate|date:'dd-MM-yyyy hh:mm a'}} </span> |
+                        <span>
+                            <b> تاريخ الإرسال: </b>
+                            <span ng-if="letterData.OutgoingDate != null">{{letterData.OutgoingDate|date:'dd-MM-yyyy hh:mm a'}}</span>
+                            <span ng-if="letterData.OutgoingDate == null">لم ترسل بعد</span>
+                        </span>
+                    </div>
+                </div>
+                <div ng-if="IsDocumentView" class="col-md-12 documentBox" style="background:#fff; padding:10px; border:#eee 1px solid!important;">
+                    <h4><i class="fa {{CurrentDocument.Icon}}" aria-hidden="true"></i> {{CurrentDocument.Title}}</h4>
+                    <iframe id="documentViewFrame"
+                            frameborder='0' ng-src="{{CurrentDocument.ViewUrl}}"></iframe>
+                </div>
+                <div ng-if="!IsDocumentView" class="col-md-12 documentBox" style="padding:10px; border:#eee 1px solid!important;">
+                    <feed-Actions threadid="{{letterData.ThreadId}}"></feed-Actions>
+                </div>
+            </div>
+        </div>
+        <div ng-class="fullScreen?'col-md-12':'col-md-3'" id="ItemDesBox" ng-show="!fullScreen">
+            <div>
+                <div class="DesBody">
+                    <a class="mainDocLink" ng-click="ShowDocumentMainDocument()">
+                        <i class="fa fa-file-pdf-o"></i> الوثيقة الرئيسية
+                    </a>
+                    <a class="actionHisLink" id="myLink" ng-click="ShowActions()"><i class="fa fa-tasks"></i> الاجرائات السابقة</a>
+                    <div class="docAttachments">
+                        <i class="fa fa-paperclip"></i> المرفقات
+                        <div ng-if="attachmentsData.length == 0">
+                            لا يوجد مرفقات للمراسلة
+                        </div>
+                        <br /><br />
+
+                        <div ng-repeat="attachement in attachmentsData track by $index">
+                            <div class="attachItemBox">
+
+                                <span ng-click="ShowAttachement(attachement)" class="attachItemTitle"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{attachement.Title}}</span>
+                                <span class="IconRed" data-toggle="confirmation" data-title="سيتم حذف الملف, متابعة؟" ng-click="DeleteAttachement(attachement.Id)">
+                                    <i class="fa fa-times"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="docAttachments">
+                        <i class="fa fa-plus"></i> إضافة مرفق
+                        <div>
+                            <br />
+                            <div ng-if="Uploading">
+                                <loading></loading>
+                            </div>
+                            <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+
+                            <div ng-if="!Uploading">
+                                <div ngf-drop="selectAttachement($file)" ngf-accept="'application/pdf'" ngf-pattern="'application/pdf'" ngf-capture="camera" ngf-select="selectAttachement($file)" ng-model="file" name="file" class="drop-box">إسحب ملف هنا أو إضغط للإختيار</div>
+                                <!--<div ng-click="openFromOneDrive()" style="text-align:center" class="drop-box">
+                                    <img src="/img/modules/cms/OneDrive.png" width="170" />
+                                </div>-->
+                                <!--<a href="/components/modules/cms/webscan/OneHub360.CMS.Web.Scan.xbap" style="text-align:center" class="drop-box">
+                                    <img src="/img/modules/cms/scan.png" width="170" />
+                                </a>-->
+                                <div class="drop-box" ng-if="isIE">
+                                    <iframe style="width:200px!important;height:30px!important;border:0px!important" ng-src="{{ScanAppLink}}" />
+                                </div>
+                                <div class="drop-box" ng-if="!isIE">
+                                    وظيفة المسح الضوئي تتطلب العمل من خلال برنامج MS Internet Explorer
+                                </div>
+
+                                <div class="input-group" ng-hide="attachementFile == null">
+                                    <span class="input-group-addon"><i class="fa fa-paperclip"></i></span>
+                                    <input type="text" ng-model="attachementFile.title" ng-required="true" class="form-control" placeholder="عنوان الملف">
+                                    <span class="input-group-addon btn" ng-click="UploadAttachement()">
+                                        <i class="fa fa-upload" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

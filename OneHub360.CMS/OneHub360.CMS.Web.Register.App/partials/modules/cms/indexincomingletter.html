@@ -1,0 +1,141 @@
+﻿<div ng-controller="indexIncomingLetterController" ng-init="LoadLetter()">
+    <div ng-if="status == 0">
+        <loading></loading>
+    </div>
+    <div class="mailDetailBox" ng-if="status == 1">
+        <div class="col-md-12 actionsBoxinner">
+            <!--<a href=""><span class="glyphicon glyphicon-flag" aria-hidden="true"></span>  متابعة</a>-->
+            <!--<feed-Comment threadid="{{letterData.ThreadId}}"></feed-Comment>-->
+            <!--<feed-Share feeditemid="{{Id}}"></feed-Share>-->
+            <a ng-click="Forward()"><i class="fa fa-share" aria-hidden="true"></i> تحويل</a>
+            <a ng-href="{{downloadUrl}}" target="_self"><i class="fa fa-download"></i> تنزيل</a>
+            <!--<a><i class="fa fa-print"></i> طباعة</a>-->
+            <!--<a ng-click="toggleFullScreen()">
+                <i ng-if="!fullScreen" class="fa fa-arrows-alt"></i><span ng-if="!fullScreen"> كامل الشاشة</span>
+                <i ng-if="fullScreen" class="fa fa-compress" aria-hidden="true"></i><span ng-if="fullScreen"> جميع البيانات</span>
+            </a>-->
+            <a ng-click="LoadLetter(false)"><i class="fa fa-refresh" aria-hidden="true"></i> تحديث</a>
+            <a ng-click="ShowDocumentMainDocument()"><i class="fa fa-file" aria-hidden="true"></i> الوثيقة الرئيسية</a>
+            <a ng-click="ShowActions()"><i class="fa fa-file" aria-hidden="true"></i> الإجراءات</a>
+            <a ui-sref="Modal.editdraftletter({id:'{{Id}}'})"><i class="fa fa-file" aria-hidden="true"></i>تعديل</a>
+
+            <a ng-click="Replace()"><i class="fa fa-file" aria-hidden="true"></i>استبدال الوثيقة</a>
+            <a ng-click="Delete()"><i class="fa fa-file" aria-hidden="true"></i>مسح</a>
+
+        </div>
+        <div ng-class="fullScreen?'col-md-12':'col-md-9'">
+            <div id="detailBody" style="width:100%!important;">
+                <div ng-show="!fullScreen" class="col-md-12 docInfoBox" style="background:#fff; padding:10px; border:#eee 1px solid!important;">
+                    <div class="col-md-2 DocTypeBox"><img src="/img/modules/cms/incomingletter.png" alt="Memo" />{{title}}</div>
+                    <div class="col-md-4 tL-SenderInfo">
+                        <orgunittileline orgid="{{letterData.From}}"></orgunittileline>
+                    </div>
+                    <div class="col-md-1"><i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i></div>
+
+                    <div class="col-md-4 tL-SenderInfo">
+                        <aviatortimeline userid="{{letterData.To}}"></aviatortimeline>
+                    </div>
+
+                    <div class="col-md-12" style="background:#fff; padding:10px; border-top:#eee 1px solid!important;">
+                        <span><b> الموضوع: </b> {{letterData.Subject}}</span> |
+                        <span><b> تاريخ الإنشاء: </b>{{letterData.CreationDate|date:'dd-MM-yyyy hh:mm a'}} </span> |
+                        <span>
+                            <b> تاريخ الكتاب: </b>
+                            <span>{{letterData.IncomingDate|date:'dd-MM-yyyy hh:mm a'}}</span>
+                        </span> |
+                        <span>
+                            <b> رقم الكتاب: </b>
+                            <span>{{letterData.OutgoingNumber}}</span>
+                        </span>
+                    </div>
+                </div>
+                <div ng-if="IsDocumentView" class="col-md-12 documentBox" style="background:#fff; padding:10px; border:#eee 1px solid!important;">
+                    <h4><i class="fa {{CurrentDocument.Icon}}" aria-hidden="true"></i> {{CurrentDocument.Title}}</h4>
+                    <iframe id="documentViewFrame" ng-if="letterData.Status !== 31"
+                            frameborder='0' ng-src="{{CurrentDocument.ViewUrl}}"></iframe>
+                    <div ng-if="letterData.Status === 31">
+                        <h5> لم يتم تحميل الوثيقة الرئيسية للكتاب بعد</h5>
+                        <br />
+                        <div ngf-drop="selectmainAttachement($file)" ngf-select="selectmainAttachement($file)" ng-model="file" name="file" class="drop-box">إسحب ملف هنا أو إضغط للإختيار</div>
+                        <br />
+                        <div class="drop-box">
+                            <iframe style="width:200px!important;height:30px!important;border:0px!important" ng-src="{{ScanAppLink}}" />
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="!IsDocumentView" class="col-md-12 documentBox" style="padding:10px; border:#eee 1px solid!important;">
+                    <feed-Actions threadid="{{letterData.ThreadId}}"></feed-Actions>
+                </div>
+            </div>
+        </div>
+        <div ng-class="fullScreen?'col-md-12':'col-md-3'" id="ItemDesBox" ng-show="!fullScreen">
+            <div>
+                <div class="DesBody">
+                    <a class="mainDocLink" ng-click="ShowDocumentMainDocument()">
+                        <i class="fa fa-file-pdf-o"></i> الوثيقة
+                    </a>
+                    <a class="actionHisLink" id="myLink" ng-click="ShowActions()"><i class="fa fa-tasks"></i> الاجرائات السابقة</a>
+                    <div class="docAttachments">
+                        <i class="fa fa-paperclip"></i> المرفقات
+                        <div ng-if="attachmentsData.length == 0">
+                            لا يوجد مرفقات للمراسلة
+                        </div>
+                        <br /><br />
+                        <div ng-repeat="attachement in attachmentsData track by $index">
+                            <div class="attachItemBox">
+
+                                <span ng-click="ShowAttachement(attachement)" class="attachItemTitle"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{attachement.Title}}</span>
+                                <span class="IconRed" data-toggle="confirmation" data-title="سيتم حذف الملف, متابعة؟" ng-click="DeleteAttachement(attachement.Id)">
+                                    <i class="fa fa-times"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!--<div class="input-group attachItemBox" ng-repeat="attachement in attachmentsData track by $index">
+                            <span class="attachItemTitle" ng-click="ShowAttachement(attachement)"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{attachement.Title}}</span>
+                        </div>-->
+                    </div>
+                    <div class="docAttachments">
+                        <i class="fa fa-plus"></i> إضافة مرفق
+                        <div>
+                            <br />
+                            <div ng-if="Uploading">
+                                <loading></loading>
+                            </div>
+                            <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+
+                            <div ng-if="!Uploading">
+                                <div ngf-drop="selectAttachement($file)" ngf-accept="'application/pdf'" ngf-pattern="'application/pdf'" ngf-capture="camera" ngf-select="selectAttachement($file)" ng-model="file" name="file" class="drop-box">إسحب ملف هنا أو إضغط للإختيار</div>
+                                <!--<div ng-click="openFromOneDrive()" style="text-align:center" class="drop-box">
+                                    <img src="/img/modules/cms/OneDrive.png" width="170" />
+                                </div>-->
+                                <!--<a href="/components/modules/cms/webscan/OneHub360.CMS.Web.Scan.xbap" style="text-align:center" class="drop-box">
+                                    <img src="/img/modules/cms/scan.png" width="170" />
+                                </a>-->
+                                <div class="drop-box" >
+                                    <iframe style="width:200px!important;height:30px!important;border:0px!important" ng-src="{{ScanAppLinkAttachment}}" />
+
+                                </div>
+                              
+
+                                <div class="input-group" ng-hide="attachementFile == null">
+                                    <span class="input-group-addon"><i class="fa fa-paperclip"></i></span>
+                                    <input type="text" ng-model="attachementFile.title" ng-required="true" class="form-control" placeholder="عنوان الملف">
+                                    <span class="input-group-addon btn" ng-click="UploadAttachement()">
+                                        <i class="fa fa-upload" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-if="status == 2">
+        <h4>
+            تم إرسال هذا الكتاب بالفعل للمستخدم, هل تريد إعادة فهرسة الكتاب؟
+        </h4>
+    </div>
+</div>

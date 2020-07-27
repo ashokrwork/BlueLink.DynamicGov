@@ -1,0 +1,75 @@
+﻿<div ng-controller="viewOutgoingLetterController" ng-init="LoadLetter()">
+    <div ng-if="status == 0">
+        <loading></loading>
+    </div>
+    <div class="mailDetailBox" ng-if="status == 1">
+        <div class="col-md-12 actionsBoxinner" ng-controller="letterActions" 
+             ng-init="InitForOutgoing(Id)">
+            <!--<a href=""><span class="glyphicon glyphicon-flag" aria-hidden="true"></span>  متابعة</a>-->
+            <!--<feed-Comment threadid="{{letterData.ThreadId}}"></feed-Comment>-->
+            <feed-Share feeditemid="{{Id}}"></feed-Share>
+            <a ng-href="{{downloadUrl}}" target="_self"><i class="fa fa-download"></i> تنزيل</a>
+            <!--<a><i class="fa fa-print"></i> طباعة</a>-->
+            <a ng-click="toggleFullScreen()">
+                <i ng-if="!fullScreen" class="fa fa-arrows-alt"></i><span ng-if="!fullScreen"> كامل الشاشة</span>
+                <i ng-if="fullScreen" class="fa fa-compress" aria-hidden="true"></i><span ng-if="fullScreen"> جميع البيانات</span>
+            </a>
+            <a ng-click="LoadMemo(false)"><i class="fa fa-refresh" aria-hidden="true"></i> تحديث</a>
+        </div>
+        <div ng-class="fullScreen?'col-md-12':'col-md-9'">
+            <div id="detailBody" style="width:100%!important;">
+                <div ng-show="!fullScreen" class="col-md-12 docInfoBox" style="background:#fff; padding:10px; border:#eee 1px solid!important;">
+                    <div class="col-md-2 DocTypeBox"><img src="/img/modules/cms/outgoingmemo.png" alt="Memo" />{{title}}</div>
+                    <div class="col-md-4 tL-SenderInfo">
+                        <aviatortimeline userid="{{letterData.From}}"></aviatortimeline>
+                    </div>
+                    <div class="col-md-1"><i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i></div>
+                    <div class="col-md-4 tL-SenderInfo">
+                        <orgunittileline orgid="{{letterData.To}}"></orgunittileline>
+                    </div>
+
+                    <div class="col-md-12" style="background:#fff; padding:10px; border-top:#eee 1px solid!important;">
+                        <span><b> الموضوع: </b> {{letterData.Subject}}</span> |
+                        <span><b> تاريخ الإنشاء: </b>{{letterData.CreationDate|date:'dd-MM-yyyy hh:mm a'}} </span> |
+                        <span>
+                            <b> تاريخ الإرسال: </b>
+                            <span>{{letterData.OutgoingDate|date:'dd-MM-yyyy hh:mm a'}}</span>
+                        </span> | 
+                        <span>
+                            <b> رقم الصادر: </b>
+                            <span>{{letterData.OutgoingNumber}}</span>
+                        </span>
+                    </div>
+                </div>
+                <div ng-if="IsDocumentView" class="col-md-12 documentBox" style="background:#fff; padding:10px; border:#eee 1px solid!important;">
+                    <h4><i class="fa {{CurrentDocument.Icon}}" aria-hidden="true"></i> {{CurrentDocument.Title}}</h4>
+                    <iframe id="documentViewFrame"
+                            frameborder='0' ng-src="{{CurrentDocument.ViewUrl}}"></iframe>
+                </div>
+                <div ng-if="!IsDocumentView" class="col-md-12 documentBox" style=" padding:10px; border:#eee 1px solid!important;">
+                    <feed-Actions threadid="{{letterData.ThreadId}}"></feed-Actions>
+                </div>
+            </div>
+        </div>
+        <div ng-class="fullScreen?'col-md-12':'col-md-3'" id="ItemDesBox" ng-show="!fullScreen">
+            <div>
+                <div class="DesBody">
+                    <a class="mainDocLink" ng-click="ShowDocumentMainDocument()">
+                        <i class="fa fa-file-pdf-o"></i> الوثيقة الرئيسية
+                    </a>
+                    <a class="actionHisLink" id="myLink" ng-click="ShowActions()"><i class="fa fa-tasks"></i> الاجرائات السابقة</a>
+                    <div class="docAttachments">
+                        <i class="fa fa-paperclip"></i> المرفقات
+                        <div ng-if="attachmentsData.length == 0">
+                            لا يوجد مرفقات للمراسلة
+                        </div>
+                        <br /><br />
+                        <div class="input-group attachItemBox" ng-repeat="attachement in attachmentsData track by $index">
+                            <span class="attachItemTitle"  ng-click="ShowAttachement(attachement)"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> {{attachement.Title}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

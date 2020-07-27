@@ -1,0 +1,58 @@
+﻿
+<div class="col-md-12 col-sm-12 menuBar">
+    <div class="col-md-4 col-sm-5 col-xs-12" onclick="openNav()">
+            <span  class="openSideNave" ng-if="IsUser()">
+                <i data-intro="القائمة الرئيسية" data-position="left" class="fa fa-bars fa-lg" aria-hidden="true"></i> نظام التراسل الإلكتروني
+            </span>
+
+        <span class="openSideNave" ng-if="!IsUser()">
+            <i data-intro="القائمة الرئيسية" data-position="left" class="fa fa-bars fa-lg" aria-hidden="true"></i> السجل العام
+        </span>
+        
+    </div>
+    <div class="col-md-5 col-sm-4 col-xs-8 topIconsBox">
+        <div class="btn-group helpBox" id="notifiDrop">
+            <a class="notificationIcon" onclick="StartIntro();"> <i class="fa fa-question" aria-hidden="true"></i></a>
+        </div>
+        <div class="srchBox">
+            <div class="input-group" data-intro="بحث في المراسلات">
+                <span class="input-group-btn">
+                    <button class="btn btn-default srchBtn" ng-click="Search()" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </span>
+                <input   type="text" class="form-control srchInput" ng-model="term" placeholder="بحث">
+            </div>
+        </div>
+
+
+
+        <!-- Single button -->
+        <div class="btn-group" data-intro="إنشاء كتاب جديد" data-position="right">
+            <button type="button" class="btn loginBtn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="plusIcon"> + </span>
+            </button>
+            <ul class="dropdown-menu" ng-if="IsUser()">
+                <li class="addnewitem">
+                    <a ui-sref="modal.createdraftmemo">
+                        <img src="../../img/app/outgoingmemog.png" />مذكرة
+                    </a>
+                </li>
+                <li role="separator" class="divider"></li>
+
+                <li class="addnewitem"><a ui-sref="Modal.createdraftletter"><img src="../../img/app/outgoingletterg.png" />كتاب 
+                    </a></li>
+            </ul>
+
+            <ul class="dropdown-menu" ng-if="!IsUser()">
+                <li class="addnewitem">
+                    <a ui-sref="Modal.createincomingletter">
+                        <img src="../../img/app/incomming.png" />تسجيل كتاب وارد
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div><!--<a ui-sref="userdetails()">-->
+    <aviatorcurrent></aviatorcurrent>
+    <!--</a>-->
+</div>
+

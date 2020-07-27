@@ -1,0 +1,10 @@
+﻿{
+  "WordViewerUrl": "http://cloudready/wv/wordviewerframe.aspx?ui=ar-sa&WOPISrc=",
+  "FilePreviewUrl": "http://cloudready/wv/ResReader.ashx?n=p1.img&WOPIsrc=",
+  "ExcelViewerUrl": "http://cloudready/x/_layouts/xlviewerinternal.aspx?ui=ar-sa&WOPISrc=",
+  "PowerPointViewerUrl": "http://cloudready/p/PowerPointFrame.aspx?ui=ar-sa&WOPISrc=",
+  "CMSServiceBaseUrl": "http://cloudready:363/",
+  "PdfConvertionUrl": "http://cloudready/wv/WordViewer/request.pdf",
+  "NumbersPrefix": "MOF",
+  "ImagePreviewUrl": "http://cloudready/wv/WordPreviewHandler.ashx"
+}

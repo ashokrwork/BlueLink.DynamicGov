@@ -1,0 +1,81 @@
+﻿<div class="Modal-box" ng-controller="createIncomingLetterController" ng-init="Init()" >
+    <div class="modal-header">
+        <back-Button></back-Button>
+        <h4 class="modal-title"><img src="/img/modules/cms/incomingletter.png" />  تسجيل كتاب وارد</h4>
+    </div>
+    <div class="modal-body">
+        <div >
+            <div ng-show="status == 0">
+
+                <loading></loading>
+
+            </div>
+            <div class="ng-hide" ng-show="status == -1">
+                <back-Button></back-Button>
+            </div>
+            <div class="ng-hide" ng-show="status == 1">
+
+                <form class="form-horizontal" name="newDraftLetterForm" role="form">
+                    <div class="form-group">
+                        <div class="col-sm-12 col-xs-12">
+                            <external-Units-Picker title="الرجاء إختيار جهة"
+                                                   selectedobject="addSelectedTo"
+                                                   pickerid="toUser"
+                                                   reuired="true"></external-Units-Picker>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12 col-xs-12">
+                            <span ng-if="!CurrentUser">
+                                <people-Picker title="الرجاء إختيار مرسل إلي"
+                                               selectedobject="addSelectedFrom"
+                                               pickerid="fromUser"
+                                               required="true"></people-Picker>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-sm-12 col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+                                <input type="text" ng-required="true" class="form-control" ng-model="letterData.Subject" placeholder="موضوع الكتاب">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12 col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+                                <input type="text" ng-required="true" class="form-control" ng-model="letterData.OutgoingNumber" placeholder="رقم الكتاب">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="visibility:collapse!important" class="form-group">
+                        <div class="col-sm-12 col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-sticky-note fa-fw"></i></span>
+                                <textarea ng-required="false" class="form-control" ng-model="letterData.Brief" placeholder="محتوي الكتاب"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="visibility:collapse!important" class="form-group">
+                        <div class="col-sm-12 col-xs-12">
+                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
+                                <input type="checkbox" id="switch-2" ng-model="letterData.Confidential" class="mdl-switch__input">
+                                <span class="mdl-switch__label"><i class="fa fa-lock fa-fw"></i>مراسلة سرية</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-11">
+                            <button ng-disabled="status == 0"  type="button" ng-click="PostData()" class="btn  greenBtn">إنشاء</button>
+                            <button ng-disabled="status == 0"  type="button" ng-click="Init()" class="btn  greenBtn">إعادة تعيين</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>

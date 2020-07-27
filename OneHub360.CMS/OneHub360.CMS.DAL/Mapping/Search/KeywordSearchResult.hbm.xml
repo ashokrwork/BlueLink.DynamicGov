@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.CMS.DAL" namespace="OneHub360.CMS.DAL" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="KeywordSearchResult" table="KeywordSearchResult">
+    <id column="Id" name="Id">
+    </id>
+    <property name="Subject">
+      <column name="RSubject"  />
+    </property>
+    <property name="From">
+      <column name="RFrom"  />
+    </property>
+    <property name="To">
+      <column name="RTo"  />
+    </property>
+    <property name="ResultType">
+      <column name="CorrespondenceType" />
+    </property>
+    <property name="Brief">
+      <column name="Brief" />
+    </property>
+    
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,110 @@
+﻿<div class="Modal-box" ng-controller="createDraftMemoController" ng-init="Init()">
+    <div class="modal-header">
+        <back-Button></back-Button>
+        <h4 ng-if="isNew" class="modal-title"><img src="/img/modules/cms/draftmemo.png" />  إنشاء مذكرة</h4>
+        <h4 ng-if="!isNew" class="modal-title"><img src="/img/modules/cms/draftmemo.png" />  تحديث مذكرة</h4>
+    </div>
+    <div class="modal-body">
+        <div>
+            <div ng-show="status == 0">
+
+                <loading></loading>
+
+            </div>
+            <div class="ng-hide" ng-show="status == -1">
+                <back-Button></back-Button>
+            </div>
+            <div class="ng-hide" ng-show="status == 1">
+
+                <form class="form-horizontal" name="newDraftMemoForm" role="form">
+                    <div class="form-group">
+                        <div class="col-sm-12 col-xs-12">
+                            <div ng-if="isNew">
+                                <div ng-if="!CurrentUser">
+                                    <people-Picker title="الرجاء إختيار مرسل من"
+                                                   selectedobject="addSelectedFrom"
+                                                   pickerid="fromUser"
+                                                   required="true"></people-Picker>
+                                </div>
+                                <div ng-if="CurrentUser">
+                                    <div class="input-group">
+                                        <span ng-click="AllowSelectFrom()" class="input-group-addon"><i class="fa fa-user-plus" aria-hidden="true"></i></span>
+                                        <span type="text" ng-required="true" class="form-control"><aviatorselecteduser userid="{{selectedFrom}}"></aviatorselecteduser></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="!isNew">
+                                <div ng-if="!CurrentFrom">
+                                    <people-Picker title="الرجاء إختيار مرسل من"
+                                                   selectedobject="addSelectedFrom"
+                                                   pickerid="fromUser"
+                                                   required="true"></people-Picker>
+                                </div>
+                                <div ng-if="CurrentFrom">
+                                    <div class="input-group">
+                                        <span ng-click="AllowSelectFrom()" class="input-group-addon"><i class="fa fa-user-plus" aria-hidden="true"></i></span>
+                                        <span type="text" ng-required="true" class="form-control"><aviatorselecteduser userid="{{selectedFrom}}"></aviatorselecteduser></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12 col-xs-12">
+                            <span ng-if="isNew">
+                                <people-Picker title="الرجاء إختيار مرسل إلي"
+                                                      selectedobject="addSelectedTo"
+                                                      pickerid="toUser"
+                                                      reuired="true"></people-Picker>
+                            </span>
+                            <div ng-if="!isNew">
+                                <span ng-if="!CurrentTo">
+                                    <people-Picker title="الرجاء إختيار مرسل إلي"
+                                                   selectedobject="addSelectedTo"
+                                                   pickerid="toUser"
+                                                   required="true"></people-Picker>
+                                </span>
+                                <div ng-if="CurrentTo">
+                                    <div class="input-group">
+                                        <span ng-click="AllowSelectTo()" class="input-group-addon"><i class="fa fa-user-plus" aria-hidden="true"></i></span>
+                                        <span type="text" ng-required="true" class="form-control"><aviatorselecteduser userid="{{selectedTo}}"></aviatorselecteduser></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12 col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+                                <input type="text" ng-required="true" class="form-control" ng-model="memoData.Subject" placeholder="موضوع المذكرة">
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="form-group">
+                        <div class="col-sm-12 col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-sticky-note fa-fw"></i></span>
+                                <textarea ng-required="false" class="form-control" ng-model="memoData.Brief" placeholder="محتوي المذكرة"></textarea>
+                            </div>
+                        </div>
+                    </div>-->
+                    <div class="form-group">
+                        <div class="col-sm-12 col-xs-12">
+                            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-2">
+                                <input type="checkbox" id="switch-2" ng-model="memoData.Confidential" class="mdl-switch__input">
+                                <span class="mdl-switch__label"><i class="fa fa-lock fa-fw"></i>إظهار لي فقط</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-11">
+                            <button ng-disabled="status == 0" id="btnCreateDraftMemo" type="button" ng-click="PostData()" class="btn  greenBtn">حفظ</button>
+                            <button ng-disabled="status == 0" id="btnCreateDraftMemo" type="button" ng-click="Init()" class="btn  greenBtn">إعادة تعيين</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

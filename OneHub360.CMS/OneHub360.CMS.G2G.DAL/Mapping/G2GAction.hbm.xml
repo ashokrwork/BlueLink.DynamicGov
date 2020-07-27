@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.CMS.G2G.DAL" namespace="OneHub360.CMS.G2G.DAL" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="G2GAction" table="G2GActions" >
+    <id name="G2GActionID" column="G2GActionID">
+      <generator class="identity" />
+    </id>
+    <property name="G2GActionType">
+      <column name="G2GActionType" sql-type="bit" not-null="true" />
+    </property>
+    <property name="SSite">
+      <column name="SSite" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="RSite">
+      <column name="RSite" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="SADName">
+      <column name="SADName" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="SDate">
+      <column name="SDate" sql-type="datetime" not-null="true" />
+    </property>
+    <property name="SDocVsID">
+      <column name="SDocVsID" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="SAutoReferenceNo">
+      <column name="SAutoReferenceNo" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="G2GSubject">
+      <column name="G2GSubject" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="G2GStatus">
+      <column name="G2GStatus" sql-type="int" not-null="true" />
+    </property>
+    <property name="RADName">
+      <column name="RADName" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="RDate">
+      <column name="RDate" sql-type="datetime" not-null="false" />
+    </property>
+    <property name="RDocVsID">
+      <column name="RDocVsID" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="RAutoReferenceNo">
+      <column name="RAutoReferenceNo" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="AADName">
+      <column name="AADName" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="IsArchived">
+      <column name="IsArchived" sql-type="bit" not-null="true" />
+    </property>
+    <property name="ADate">
+      <column name="ADate" sql-type="datetime" not-null="false" />
+    </property>
+    <property name="SG2GActionID">
+      <column name="SG2GActionID" sql-type="int" not-null="false" />
+    </property>
+    <property name="G2GSRemarks">
+      <column name="G2GSRemarks" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="G2GRRemarks">
+      <column name="G2GRRemarks" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="SArchRefNo">
+      <column name="SArchRefNo" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="SBrSiteID">
+      <column name="SBrSiteID" sql-type="int" not-null="false" />
+    </property>
+    <property name="RBrSiteID">
+      <column name="RBrSiteID" sql-type="int" not-null="false" />
+    </property>
+  </class>
+</hibernate-mapping>

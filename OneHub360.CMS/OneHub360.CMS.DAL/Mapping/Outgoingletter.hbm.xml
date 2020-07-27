@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.CMS.DAL" namespace="OneHub360.CMS.DAL" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="OutgoingLetter" table="OutgoingLetter" lazy="true" >
+    <id name="Id" column="Id" />
+    <many-to-one name="DraftLetter">
+      <column name="FK_DraftLetter" sql-type="uniqueidentifier" not-null="true" />
+    </many-to-one>
+    <property name="Createdby">
+      <column name="CreatedBy" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="Creationdate">
+      <column name="CreationDate" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="Lastmodified">
+      <column name="LastModified" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="Isdeleted">
+      <column name="IsDeleted" sql-type="bit" not-null="false" />
+    </property>
+    <property name="Language">
+      <column name="Language" sql-type="int" not-null="false" />
+    </property>
+    <property name="Entityid">
+      <column name="EntityId" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="Subject">
+      <column name="Subject" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="From">
+      <column name="From" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="To">
+      <column name="To" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="Incomingnumber">
+      <column name="IncomingNumber" sql-type="varchar" not-null="false" />
+    </property>
+    <property name="Incomingdate">
+      <column name="IncomingDate" sql-type="datetime2" not-null="false" />
+    </property>
+    <property name="Outgoingnumber">
+      <column name="OutgoingNumber" sql-type="varchar" not-null="false" />
+    </property>
+    <property name="Outgoingdate">
+      <column name="OutgoingDate" sql-type="datetime2" not-null="false" />
+    </property>
+    <property name="Confidential">
+      <column name="Confidential" sql-type="bit" not-null="false" />
+    </property>
+    <property name="Reviewingdate">
+      <column name="ReviewingDate" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="Reviewedby">
+      <column name="ReviewedBy" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="Movingdate">
+      <column name="MovingDate" sql-type="datetime2" not-null="false" />
+    </property>
+    <property name="Movedby">
+      <column name="MovedBy" sql-type="varchar" not-null="false" />
+    </property>
+    <property name="Deliverydate">
+      <column name="DeliveryDate" sql-type="datetime2" not-null="false" />
+    </property>
+    <property name="Deliverdto">
+      <column name="DeliverdTo" sql-type="varchar" not-null="false" />
+    </property>
+    <property name="Deliveryconfirmationdate">
+      <column name="DeliveryConfirmationDate" sql-type="datetime2" not-null="false" />
+    </property>
+    <property name="FkReplyto">
+      <column name="FK_ReplyTo" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="FkDocument">
+      <column name="FK_Document" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="Status">
+      <column name="Status" sql-type="int" not-null="true" />
+    </property>
+  </class>
+</hibernate-mapping>

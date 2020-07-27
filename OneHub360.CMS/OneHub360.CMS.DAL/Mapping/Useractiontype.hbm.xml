@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.CMS.DAL" namespace="OneHub360.CMS.DAL" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="UserActionType" table="UserActionType"  >
+    <id name="Id" column="Id" >
+      <generator class="guid.comb"></generator>
+    </id>
+    <property name="CreatedBy">
+      <column name="CreatedBy" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="CreationDate">
+      <column name="CreationDate" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="LastModified">
+      <column name="LastModified" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="IsDeleted">
+      <column name="IsDeleted" sql-type="bit" not-null="false" />
+    </property>
+    <property name="Language" type="OneHub360.DB.Language, OneHub360.DB" not-null="false" />
+    <property name="EntityId">
+      <column name="EntityId" />
+    </property>
+    <property name="Name">
+      <column name="Name" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="Message">
+      <column name="Message" sql-type="varchar" not-null="true" />
+    </property>
+  </class>
+</hibernate-mapping>

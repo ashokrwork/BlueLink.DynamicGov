@@ -1,0 +1,14 @@
+﻿<div callback-fn="loadUser(userId)">
+    <div ng-if="status == 0">
+        <smallloading></smallloading>
+    </div>
+    <div ng-if="status == -1" >
+            <img src="/img/components/autocomplete/nopic.png" />
+            <h5>حدث خطأ في تحميل بيانات المستخدم</h5>
+        </div>
+        <div ng-if="status == 1">
+            <img ng-src="{{UserInfo.Picture}}" class="available" />
+            <h5 ng-bind="UserInfo.FullName">Loading...</h5>
+            <h6 ng-bind="UserInfo.About"></h6>
+        </div>
+    </div>

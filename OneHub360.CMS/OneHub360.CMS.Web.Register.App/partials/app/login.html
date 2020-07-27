@@ -1,0 +1,50 @@
+﻿<div ng-controller="loginController" class="LoginBox" ng-init="init()">
+
+    <div class="loginBody">
+        <center>
+            <img src="/img/app/logo.png" alt="" />
+            <!--<br />
+            <a href="http://onehub360sp/">البوابة الداخلية <i class="fa fa-home" aria-hidden="true"></i></a>-->
+        </center>
+        <div ng-if="errormessage != ''"  class="input-group-addon ">{{errormessage}}</div>
+        <div ng-show="errormessage == ''" ng-if="status == 1">
+            <loading></loading>
+           
+        </div>
+        <div ng-if="status == 0">
+            <form ng-if="isModeSelect" class="form-horizontal" id="loginFormModeSelectorBox" name="loginFormModeSelectorBox" role="form">
+                <div class="form-group">
+                    <div ng-if="status == 0" style="text-align:center;">
+                        <h4>
+                            من فضلك حدد وجهة الدخول
+                        </h4>
+                        <button style="margin:5px!important;width:100%!important" type="submit" ng-click="SelectMode(1)" class="btn primary loginBtn ">نظام التراسل الإلكتروني</button>
+                        <br />
+                        <button style="margin:5px!important;width:100%!important" type="submit" ng-click="SelectMode(2)" class="btn primary loginBtn ">نظام السجل العام</button>
+                    </div>
+                </div>
+            </form>
+            <form ng-if="!isModeSelect" class="form-horizontal" id="loginFormBox" ng-submit="doLogin()" name="loginFormBox" role="form">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                        <label for="username" class="input-group-addon" ng-bind="domain"></label>
+                        <input type="text" class="form-control" id="username" ng-model="loginData.userName" placeholder="إسم المستخدم" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i></span>
+                        <input type="password" class="form-control" id="pwd" ng-model="loginData.password" placeholder="كلمة المرور">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div ng-if="status == 0" style="text-align:center;">
+                        <button type="submit" ng-click="doLogin()" class="btn primary loginBtn ">الدخول</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

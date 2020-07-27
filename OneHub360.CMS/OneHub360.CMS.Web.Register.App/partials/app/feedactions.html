@@ -1,0 +1,33 @@
+﻿<h4><i class="fa fa-tasks" aria-hidden="true"></i> إجراءات الوثيقة</h4>
+<div ng-if="noActions">
+    لا يوجد إجراءات مسجلة للعرض
+</div>
+<div class="feedActionsContainer">
+    <div class="TimeLineBox">
+        <div ng-if="!(actionsData.length == 0)">
+            <!--Start Action Template-->
+            <div ng-repeat="(subject, actions)  in actionsData | groupBy: 'Subject'" class="timeLin_Item">
+                <div class="timeLin_action">
+                    {{subject}}
+                </div>
+                <content>
+                    <div ng-repeat="action in actions">
+                        <div class="tL_itemIcons">
+                            <div>
+                                <i ng-class="action.ActionCssClass"></i>
+                            </div>
+                        </div>
+                        <div class="tL_itemBody">
+                            <div class="row">
+                                <div class="col-md-11 col-sm-10 col-xs-10">
+                                    <div ng-include="action.TemplateUrl"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </content>
+                    </div>
+                    <!--End Action Template-->
+            </div>
+    </div>
+</div>

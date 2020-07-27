@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.CMS.DAL" namespace="OneHub360.CMS.DAL" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="IncomingMemoView" table="IncomingMemoView" >
+    <id name="Id" column="Id" />
+    <property name="CreatedBy">
+      <column name="CreatedBy" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="CreationDate">
+      <column name="CreationDate" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="LastModified">
+      <column name="LastModified" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="IsDeleted">
+      <column name="IsDeleted" sql-type="bit" not-null="false" />
+    </property>
+    <property name="Language">
+      <column name="Language" sql-type="int" not-null="false" />
+    </property>
+    <property name="EntityId">
+      <column name="EntityId" sql-type="uniqueidentifier" not-null="true" />
+    </property>
+    <property name="Subject">
+      <column name="Subject" sql-type="nvarchar" not-null="true" />
+    </property>
+    <property name="From">
+      <column name="[From]" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="To">
+      <column name="[To]" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="Confidential">
+      <column name="Confidential" sql-type="bit" not-null="false" />
+    </property>
+    <property name="SharedWith">
+      <column name="SharedWith" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="FK_Parent">
+      <column name="FK_Parent" sql-type="uniqueidentifier" not-null="false" />
+    </property>
+    <property name="ThreadId">
+      <column name="ThreadId" sql-type="uniqueidentifier" not-null="false" />
+    </property>
+    <property name="FK_Document">
+      <column name="FK_Document" sql-type="uniqueidentifier" not-null="false" />
+    </property>
+    <property name="CopyTo">
+      <column name="CopyTo" sql-type="varchar" not-null="false" />
+    </property>
+    <property name="CorrespondenceType">
+      <column name="CorrespondenceType" sql-type="int" not-null="false" />
+    </property>
+    <property name="Brief">
+      <column name="Brief" sql-type="nvarchar" not-null="false" />
+    </property>
+    <property name="IncomingNumber">
+      <column name="IncomingNumber" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="IncomingDate">
+      <column name="IncomingDate" sql-type="datetime2" not-null="true" />
+    </property>
+    <property name="ScanningDate">
+      <column name="ScanningDate" sql-type="datetime2" not-null="false" />
+    </property>
+    <property name="ScannedBy">
+      <column name="ScannedBy" sql-type="varchar" not-null="false" />
+    </property>
+    <property name="IndexingDate">
+      <column name="IndexingDate" sql-type="datetime2" not-null="false" />
+    </property>
+    <property name="IndexedBy">
+      <column name="IndexedBy" sql-type="varchar" not-null="false" />
+    </property>
+    <property name="FK_Draft">
+      <column name="FK_Draft" sql-type="uniqueidentifier" not-null="false" />
+    </property>
+    <property name="FK_Outgoing">
+      <column name="FK_Outgoing" sql-type="uniqueidentifier" not-null="false" />
+    </property>
+    <property name="Status">
+      <column name="Status" sql-type="int" not-null="true" />
+    </property>
+  </class>
+</hibernate-mapping>

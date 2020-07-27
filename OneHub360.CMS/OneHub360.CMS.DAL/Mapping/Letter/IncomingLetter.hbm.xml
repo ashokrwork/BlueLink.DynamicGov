@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="OneHub360.CMS.DAL" namespace="OneHub360.CMS.DAL" xmlns="urn:nhibernate-mapping-2.2">
+  <subclass name="IncomingLetter" extends="Correspondence" discriminator-value="5" >
+    <join table="IncomingLetter">
+      <key column="Id" foreign-key="Id"></key>
+      <property name="IncomingNumber">
+        <column name="IncomingNumber" sql-type="nvarchar" not-null="false" />
+      </property>
+      <property name="IncomingDate">
+        <column name="IncomingDate" sql-type="datetime2" not-null="false" />
+      </property>
+      <property name="RegisteringDate">
+        <column name="RegisteringDate" sql-type="datetime2" not-null="true" />
+      </property>
+      <property name="RegisteredBy">
+        <column name="RegisteredBy" sql-type="varchar" not-null="true" />
+      </property>
+      <property name="OutgoingNumber">
+        <column name="OutgoingNumber" sql-type="nvarchar" not-null="false" />
+      </property>
+    <!--  <property name="OutgoingDate">
+        <column name="OutgoingDate" sql-type="datetime2" not-null="false" />
+      </property>
+      
+      <property name="IndexingDate">
+        <column name="IndexingDate" sql-type="datetime2" not-null="false" />
+      </property>
+      <property name="IndexedBy">
+        <column name="IndexedBy" sql-type="varchar" not-null="false" />
+      </property>
+      <property name="ScanningDate">
+        <column name="ScanningDate" sql-type="datetime2" not-null="false" />
+      </property>
+      <property name="ScannedBy">
+        <column name="ScannedBy" sql-type="varchar" not-null="false" />
+      </property>
+      <property name="SendingDate">
+        <column name="SendingDate" sql-type="datetime2" not-null="false" />
+      </property>
+      <property name="SentBy">
+        <column name="SentBy" sql-type="varchar" not-null="false" />
+      </property>
+      <property name="G2GNumber">
+        <column name="G2GNumber" sql-type="nvarchar" not-null="false" />
+      </property>
+      <property name="G2GDate">
+        <column name="G2GDate" sql-type="datetime2" not-null="false" />
+      </property>-->
+      
+    </join>
+  </subclass>
+</hibernate-mapping>

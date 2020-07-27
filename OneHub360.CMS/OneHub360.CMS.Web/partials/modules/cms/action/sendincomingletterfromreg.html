@@ -1,0 +1,22 @@
+﻿<div class="col-md-11 col-sm-10 col-xs-10">
+    <div class="col-md-12 col-sm-12 col-xs-12 linkBox">
+        <span class="tL-SenderInfo">
+            
+            <orgunitoneline orgid="{{action.Actor}}"></orgunitoneline>
+        </span>
+        <span class="arrowleft" style="margin-top:-7px"><i class="fa fa-angle-double-left fa-2x" aria-hidden="true"></i></span>
+
+        <span class="tL-SenderInfo">
+            <aviatoroneline userid="{{action.Destination}}"></aviatoroneline>
+            
+        </span>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12 linkBox">
+        <h6>
+            <span>{{action.CreationDate | date:'fullDate'}}</span> <span>{{action.CreationDate | date:'shortTime'}}</span>
+            | <span style="color:#EA7C2C">{{action.Message}}</span>
+            <span ng-if="action.Notes"> | {{action.Notes}}</span>
+            <span ng-if="action.FK_Feed == Id"> | <i class="fa fa-info-circle" aria-hidden="true"></i> إجراء علي الوثيقة الحالية</span>
+        </h6>
+    </div>
+</div>
